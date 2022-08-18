@@ -1,20 +1,277 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.admin.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block title %}Admin | {% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="row">
+        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="d-flex align-items-center align-self-start">
+                                <h3 class="mb-0">Dakar ARENA</h3>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="icon icon-box-success ">
+                                <span class="mdi mdi-arrow-top-right icon-item"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <h6 class="text-muted font-weight-normal">Nom de la salle</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="d-flex align-items-center align-self-start">
+                                <h3 class="mb-0">XXXX</h3>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="icon icon-box-success">
+                                <span class="mdi mdi-arrow-top-right icon-item"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <h6 class="text-muted font-weight-normal">Nombre de table</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="d-flex align-items-center align-self-start">
+                                <h3 class="mb-0">XXXX</h3>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="icon icon-box-danger">
+                                <span class="mdi mdi-arrow-bottom-left icon-item"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <h6 class="text-muted font-weight-normal">Nombre d'invités</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="d-flex align-items-center align-self-start">
+                                <h3 class="mb-0">$31.53</h3>
+                                <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="icon icon-box-success ">
+                                <span class="mdi mdi-arrow-top-right icon-item"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <h6 class="text-muted font-weight-normal">Dons</h6>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/Work/BRAND YOU/JOEFOUNDHISCRYSTAL/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/Work/BRAND YOU/JOEFOUNDHISCRYSTAL/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Modifier le nom de la salle</h4>
+                    <form class="forms-sample" method="post" action="{{ path('update_name') }}">
+                        <div class="form-group">
+                            <label for="exampleInputUsername1" class="mt-3">Nom de la salle</label>
+                            <input type="text" name="nom" class="form-control" id="exampleInputUsername1" value="{{ salle }}" placeholder="Username" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary mr-2">Modifier</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CRUD Table -->
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Ajouter une salle</h4>
+                    <form class="forms-sample" method="post" action=" {% if table_selected is defined %} {{ path('update_table') }} {% else %} {{ path('add_table') }} {% endif %}">
+                        <div class="form-group">
+                            <label for="exampleInputUsername1" class="mt-3">Nom de la salle</label>
+
+                            <input type="text" name="nom" class="form-control" id="exampleInputUsername1" placeholder="Username" {% if table_selected is defined %} value="{{ table_selected.nom}} " {% endif %}>
+                        </div>
+                        {% if table_selected is defined %}
+                            <div class="form-group">
+                                <h5>Invites à la table </h5>
+                                {% for invit in table_selected.invites %}
+                                <label class="badge badge-primary">{{ invit.prenom }} {{ invit.nom }} </label>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        {% if table_selected is defined %}
+                            <input type="text" name="id" value="{{ table_selected.id }}" hidden>
+                            <button type="submit" class="btn btn-warning mr-2">Modifier</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-primary mr-2">Ajouter</button>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Liste des tables </h4>
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table" >
+                            <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for tab in tables %}
+                                <tr>
+                                    <td>{{ tab.nom }}</td>
+                                    <td>
+                                        {%  if tab.invites|length > 10 %}
+                                        <label class="badge badge-danger">Table pleine</label></td>
+                                    {% else %}
+                                        <label class="badge badge-primary">{{ 10 - (tab.invites|length) }} places dispo</label></td>
+                                    {% endif %}
+                                    <td>
+                                        <a class="btn btn-outline-primary btn-sm" href="{{ path('dtl_table', {'slug':tab.slug}) }}">
+                                            Details
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CRUD INVITE -->
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Ajouter un invité</h4>
+                    <form class="forms-sample" method="post" action="{{ path('add_invite') }}" enctype="multipart/form-data">
+                        <div class="form-group row mt-3">
+                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Type | Table </label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="exampleFormControlSelect2" name="type">
+                                    <option value="VIRTUEL">Virtuel</option>
+                                    {% for tab in tables %}
+                                        {% if tab.invites|length < 10 %}
+                                            <option value="{{ tab.slug }}">{{ tab.nom }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputUsername1" >Nom</label>
+                            <input type="text" name="nom" class="form-control" id="exampleInputUsername1" placeholder="Nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputUsername1" class="mt-3"> Prenom </label>
+                            <input type="text" name="prenom" class="form-control" id="exampleInputUsername1" placeholder="Prenom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputUsername1" class="mt-3"> Email </label>
+                            <input type="email" name="email" class="form-control" id="exampleInputUsername1" placeholder="Email" required >
+                        </div>
+                        <div class="form-group row">
+                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Telephone</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="telephone" id="exampleInputEmail2" placeholder="Telephone" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Situation</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="exampleFormControlSelect2" name="situation" required>
+                                    <option value="Celibataire">Celibataire</option>
+                                    <option value="Marié(e)">Marié(e)</option>
+                                    <option value="Veuf/Veuve">Veuf/Veuve</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputUsername1" class="mt-3"> Photo </label>
+                            <input type="file" accept="image/*" name="image" class="form-control" id="exampleInputUsername1" placeholder="Photo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleTextarea1">Adresse</label>
+                            <textarea class="form-control" id="exampleTextarea1" rows="3" name="adresse"></textarea>
+                        </div>
+
+                            <button type="submit" class="btn btn-primary mr-2">Ajouter</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Liste des Invites </h4>
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table" >
+                            <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Status/Table</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for invite in invites %}
+                                <tr>
+                                    <td>{{ invite.prenom }} {{ invite.nom }} </td>
+                                    <td>
+                                        {%  if invite.type=="PHYSIQYE" %}
+                                        <label class="badge badge-outline-warning">{{ invite.type }}</label></td>
+                                    {% else %}
+                                        <label class="badge badge-outline-primary">{{ invite.place.nom }}</label></td>
+                                    {% endif %}
+                                    <td>
+                                        <a class="btn btn-outline-primary btn-sm" href="#">
+                                            Details
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}
