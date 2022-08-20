@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Invite;
 use App\Entity\Table;
+use App\Repository\DemandeRepository;
 use App\Repository\InviteRepository;
 use App\Repository\SalleRepository;
 use App\Repository\TableRepository;
@@ -29,30 +30,34 @@ class AdminController extends AbstractController
     private TableRepository $tableRipo;
     private EntityManagerInterface $em;
     private InviteRepository $inviteRipo;
+    private DemandeRepository $demandeRipo;
 
     public function __construct(
         SalleRepository $salleRipo,
         EntityManagerInterface $em,
         TableRepository $tableRipo,
         InviteRepository $inviteRipo,
+        DemandeRepository $demandeRipo
     )
     {
         $this->salleRipo = $salleRipo;
-        $this->em = $em;
-        $this->salle = $salleRipo->find(1);
         $this->tableRipo = $tableRipo;
         $this->inviteRipo = $inviteRipo;
+        $this->em = $em;
+        $this->salle = $salleRipo->find(1);
+        $this->demandes = $demandeRipo->findBy(['etat'=>false]);
+        $this->demandeRipo = $demandeRipo;
     }
 
 
     #[Route('', name: 'admin')]
     public function index(): Response
     {
-        $this->generateQrCode('invit-62fe9b5328256');
         return $this->render('admin/index.html.twig', [
             'salle'=>$this->salle->getNom(),
             'tables'=>$this->tableRipo->findAll(),
-            'invites'=>$this->inviteRipo->findAll()
+            'invites'=>$this->inviteRipo->findAll(),
+            'demandes'=>$this->demandes
         ]);
     }
 
@@ -83,6 +88,7 @@ class AdminController extends AbstractController
         return $this->render('admin/index.html.twig', [
             'salle'=>$this->salle->getNom(),
             'tables'=>$this->tableRipo->findAll(),
+            'demandes'=>$this->demandes,
             'table_selected'=>$this->tableRipo->findOneBy(['slug'=>$slug]),
             'invites'=>$this->inviteRipo->findAll()
         ]);
@@ -109,6 +115,7 @@ class AdminController extends AbstractController
         $invite->setAdresse($data->get('adresse'));
         $invite->setTelephone($data->get('telephone'));
         $invite->setSituation($data->get('situation'));
+        $invite->setValide(false);
 
         //ajout du code qr
         $this->generateQrCode($invite->getSlug());
@@ -137,6 +144,7 @@ class AdminController extends AbstractController
             'salle'=>$this->salle->getNom(),
             'tables'=>$this->tableRipo->findAll(),
             'invites'=>$this->inviteRipo->findAll(),
+            'demandes'=>$this->demandes,
             'invite_selected'=>$this->inviteRipo->findOneBy(['slug'=>$slug]),
         ]);
     }
@@ -174,10 +182,10 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('admin');
     }
 
-    public function generateQrCode($inviteUrl){
+    public function generateQrCode($slug){
         //ajout du code qr
         $writer = new PngWriter();
-        $qrCode = QrCode::create($inviteUrl)
+        $qrCode = QrCode::create('https://www.jordan.com/profile/'.$slug)
             ->setEncoding(new Encoding('UTF-8'))
             ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
             ->setSize(300)
@@ -187,7 +195,7 @@ class AdminController extends AbstractController
             ->setBackgroundColor(new Color(255, 255, 255));
 
         $result = $writer->write($qrCode);
-        $result->saveToFile($this->getParameter("qr").'/testQr.png');
+        $result->saveToFile($this->getParameter("qr").'/'.$slug.'.png');
 
     }
 }

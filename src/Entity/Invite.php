@@ -44,6 +44,9 @@ class Invite
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $valide = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -165,6 +168,18 @@ class Invite
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function isValide(): ?bool
+    {
+        return $this->valide;
+    }
+
+    public function setValide(?bool $valide): self
+    {
+        $this->valide = $valide;
 
         return $this;
     }
