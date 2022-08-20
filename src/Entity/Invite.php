@@ -41,6 +41,9 @@ class Invite
     #[ORM\ManyToOne(inversedBy: 'invites')]
     private ?Table $place = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $email = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -150,6 +153,18 @@ class Invite
     public function setPlace(?Table $place): self
     {
         $this->place = $place;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }

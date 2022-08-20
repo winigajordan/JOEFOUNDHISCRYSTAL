@@ -176,7 +176,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4>Ajouter un invité</h4>
-                    <form class="forms-sample" method="post" action="{{ path('add_invite') }}" enctype="multipart/form-data">
+                    <form class="forms-sample" method="post" action="{% if invite_selected is defined %} {{ path('update_invite')}} {% else %} {{ path('add_invite') }} {% endif%}" enctype="multipart/form-data">
                         <div class="form-group row mt-3">
                             <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Type | Table </label>
                             <div class="col-sm-9">
@@ -193,20 +193,25 @@
 
                         <div class="form-group">
                             <label for="exampleInputUsername1" >Nom</label>
-                            <input type="text" name="nom" class="form-control" id="exampleInputUsername1" placeholder="Nom" required>
+                            <input type="text" name="nom" class="form-control" id="exampleInputUsername1" placeholder="Nom" value="{% if invite_selected is defined %} {{ invite_selected.nom}} {% endif%}" required>
                         </div>
+                        {% if invite_selected is defined %}
+                            <div class="form-group">
+                                <input type="text" name="slug" class="form-control" id="exampleInputUsername1" placeholder="Nom" value="{{ invite_selected.slug }}" hidden>
+                            </div>
+                        {% endif%}
                         <div class="form-group">
                             <label for="exampleInputUsername1" class="mt-3"> Prenom </label>
-                            <input type="text" name="prenom" class="form-control" id="exampleInputUsername1" placeholder="Prenom" required>
+                            <input type="text" name="prenom" class="form-control" id="exampleInputUsername1" placeholder="Prenom" value="{% if invite_selected is defined %} {{ invite_selected.prenom}} {% endif%}" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputUsername1" class="mt-3"> Email </label>
-                            <input type="email" name="email" class="form-control" id="exampleInputUsername1" placeholder="Email" required >
+                            <input type="email" name="email" class="form-control" id="exampleInputUsername1" placeholder="Email" value="{% if invite_selected is defined %} {{ invite_selected.email}} {% endif%}" required >
                         </div>
                         <div class="form-group row">
                             <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Telephone</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="telephone" id="exampleInputEmail2" placeholder="Telephone" required>
+                                <input type="text" class="form-control" name="telephone" id="exampleInputEmail2" placeholder="Telephone" value="{% if invite_selected is defined %} {{ invite_selected.telephone}} {% endif%}" required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -221,14 +226,18 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputUsername1" class="mt-3"> Photo </label>
-                            <input type="file" accept="image/*" name="image" class="form-control" id="exampleInputUsername1" placeholder="Photo" required>
+                            <input type="file" accept="image/*" name="image" class="form-control" id="exampleInputUsername1" placeholder="Photo" {% if invite_selected is not defined %} } required{% endif%} >
                         </div>
                         <div class="form-group">
                             <label for="exampleTextarea1">Adresse</label>
-                            <textarea class="form-control" id="exampleTextarea1" rows="3" name="adresse"></textarea>
+                            <textarea class="form-control" id="exampleTextarea1" rows="3" name="adresse">{% if invite_selected is defined %}{{ invite_selected.adresse}}{% endif%}</textarea>
                         </div>
-
+                        {% if invite_selected is defined %}
+                            <button type="submit" class="btn btn-warning mr-2">Modifier</button>
+                        {% else %}
                             <button type="submit" class="btn btn-primary mr-2">Ajouter</button>
+                        {% endif%}
+
 
                     </form>
                 </div>
@@ -253,13 +262,13 @@
                                 <tr>
                                     <td>{{ invite.prenom }} {{ invite.nom }} </td>
                                     <td>
-                                        {%  if invite.type=="PHYSIQYE" %}
-                                        <label class="badge badge-outline-warning">{{ invite.type }}</label></td>
-                                    {% else %}
-                                        <label class="badge badge-outline-primary">{{ invite.place.nom }}</label></td>
-                                    {% endif %}
+                                        {%  if invite.type!="PHYSIQUE" %}
+                                            <label class="badge badge-outline-warning">{{ invite.type }}</label></td>
+                                        {% else %}
+                                            <label class="badge badge-outline-primary">{{ invite.place.nom }}</label></td>
+                                        {% endif %}
                                     <td>
-                                        <a class="btn btn-outline-primary btn-sm" href="#">
+                                        <a class="btn btn-outline-primary btn-sm" href="{{ path('dtl_invite', {'slug':invite.slug}) }}">
                                             Details
                                         </a>
                                     </td>

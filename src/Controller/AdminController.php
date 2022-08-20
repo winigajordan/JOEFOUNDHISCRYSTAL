@@ -77,7 +77,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/table/update', name:'update_table')]
+    #[Route('/table/data/update', name:'update_table')]
     public function updateTable(Request $request){
         $table = $this->tableRipo->find($request->request->get('id'));
         $table -> setNom($request->request->get('nom'));
@@ -94,6 +94,7 @@ class AdminController extends AbstractController
         $invite->setSlug(uniqid('invit-'));
         $invite->setNom($data->get('nom'));
         $invite->setPrenom($data->get('prenom'));
+        $invite->setEmail($data->get('email'));
         $invite->setAdresse($data->get('adresse'));
         $invite->setTelephone($data->get('telephone'));
         $invite->setSituation($data->get('situation'));
@@ -108,7 +109,7 @@ class AdminController extends AbstractController
         if ($data->get('type')=="VIRTUEL"){
             $invite->setType($data->get('type'));
         } else {
-            $invite->setType("PHYSIQYE");
+            $invite->setType("PHYSIQUE");
             $invite->setPlace($this->tableRipo->findOneBy(['slug'=>$data->get('type')]));
         }
         $this->em->persist($invite);
@@ -116,7 +117,45 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('admin');
     }
 
+    #[Route('/invite/{slug}', name:'dtl_invite')]
+    public function dtlInvite($slug){
+        return $this->render('admin/index.html.twig', [
+            'salle'=>$this->salle->getNom(),
+            'tables'=>$this->tableRipo->findAll(),
+            'invites'=>$this->inviteRipo->findAll(),
+            'invite_selected'=>$this->inviteRipo->findOneBy(['slug'=>$slug]),
+        ]);
+    }
 
+    #[Route('/invite/data/update', name:'update_invite')]
+    public function updateInvite(Request $request){
+        $data = $request->request;
+        $invite = $this->inviteRipo->findOneBy(['slug'=>$data->get('slug')]);
 
+        $invite->setNom($data->get('nom'));
+        $invite->setPrenom($data->get('prenom'));
+        $invite->setEmail($data->get('email'));
+        $invite->setAdresse($data->get('adresse'));
+        $invite->setTelephone($data->get('telephone'));
+        $invite->setSituation($data->get('situation'));
 
+        if ($data->get('type')=="VIRTUEL"){
+            $invite->setType($data->get('type'));
+            $invite->setPlace(null);
+        } else {
+            $invite->setType("PHYSIQUE");
+            $invite->setPlace($this->tableRipo->findOneBy(['slug'=>$data->get('type')]));
+        }
+
+        if (!empty($data->get("image"))){
+            $img=$request->files->get("image");
+            $imageName=uniqid().'.'.$img->guessExtension();
+            $img->move($this->getParameter("profile"),$imageName);
+            $invite->setPhoto($imageName);
+        }
+
+        $this->em->persist($invite);
+        $this->em->flush();
+        return $this->redirectToRoute('admin');
+    }
 }
