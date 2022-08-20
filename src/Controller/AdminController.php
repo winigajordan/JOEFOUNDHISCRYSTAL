@@ -8,6 +8,16 @@ use App\Repository\InviteRepository;
 use App\Repository\SalleRepository;
 use App\Repository\TableRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\Color\Color;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
+use Endroid\QrCode\Label\Label;
+use Endroid\QrCode\Logo\Logo;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+use Endroid\QrCode\Writer\PngWriter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,6 +48,7 @@ class AdminController extends AbstractController
     #[Route('', name: 'admin')]
     public function index(): Response
     {
+        $this->generateQrCode('invit-62fe9b5328256');
         return $this->render('admin/index.html.twig', [
             'salle'=>$this->salle->getNom(),
             'tables'=>$this->tableRipo->findAll(),
@@ -99,6 +110,9 @@ class AdminController extends AbstractController
         $invite->setTelephone($data->get('telephone'));
         $invite->setSituation($data->get('situation'));
 
+        //ajout du code qr
+        $this->generateQrCode($invite->getSlug());
+
         //ajout d'image
         $img=$request->files->get("image");
         $imageName=uniqid().'.'.$img->guessExtension();
@@ -144,6 +158,7 @@ class AdminController extends AbstractController
             $invite->setPlace(null);
         } else {
             $invite->setType("PHYSIQUE");
+            $this->generateQrCode($invite->getSlug());
             $invite->setPlace($this->tableRipo->findOneBy(['slug'=>$data->get('type')]));
         }
 
@@ -157,5 +172,22 @@ class AdminController extends AbstractController
         $this->em->persist($invite);
         $this->em->flush();
         return $this->redirectToRoute('admin');
+    }
+
+    public function generateQrCode($inviteUrl){
+        //ajout du code qr
+        $writer = new PngWriter();
+        $qrCode = QrCode::create($inviteUrl)
+            ->setEncoding(new Encoding('UTF-8'))
+            ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
+            ->setSize(300)
+            ->setMargin(10)
+            ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
+            ->setForegroundColor(new Color(0, 0, 0))
+            ->setBackgroundColor(new Color(255, 255, 255));
+
+        $result = $writer->write($qrCode);
+        $result->saveToFile($this->getParameter("qr").'/testQr.png');
+
     }
 }
