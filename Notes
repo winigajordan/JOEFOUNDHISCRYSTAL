@@ -1,0 +1,20 @@
+afficher les details d'un invité
+modifier les informations d'un invité (si un invité passe de physique à virtuel,$invit->setPlace(null))
+gerer le code qr
+
+demande d'invitation (gerer le champ adresse)
+valider la demande
+
+/validation de presence
+les invités physique deviennent des invités virtuels si ils ne confirment pas leurs présence
+(dans ce cas de figure mettre la table à null)
+et essayer d'envoyer
+
+gerer le liens de la reunion zoom
+envoyer le liens aux invités virtuels
+envoyer les liens aux nouveaux invités
+
+
+envoyer les invitations par mail
+gerer la galerie
+
