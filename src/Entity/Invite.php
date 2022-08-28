@@ -47,6 +47,9 @@ class Invite
     #[ORM\Column(nullable: true)]
     private ?bool $valide = null;
 
+    #[ORM\OneToOne(mappedBy: 'invite', cascade: ['persist', 'remove'])]
+    private ?InvitationsEnvoye $invitationsEnvoye = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -180,6 +183,23 @@ class Invite
     public function setValide(?bool $valide): self
     {
         $this->valide = $valide;
+
+        return $this;
+    }
+
+    public function getInvitationsEnvoye(): ?InvitationsEnvoye
+    {
+        return $this->invitationsEnvoye;
+    }
+
+    public function setInvitationsEnvoye(InvitationsEnvoye $invitationsEnvoye): self
+    {
+        // set the owning side of the relation if necessary
+        if ($invitationsEnvoye->getInvite() !== $this) {
+            $invitationsEnvoye->setInvite($this);
+        }
+
+        $this->invitationsEnvoye = $invitationsEnvoye;
 
         return $this;
     }
