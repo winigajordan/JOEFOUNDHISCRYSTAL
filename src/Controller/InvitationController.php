@@ -27,6 +27,7 @@ class InvitationController extends AbstractController
         if (!$data->get('validation')){
             $invite->setPlace(null);
             $invite->setType("VIRTUEL");
+
         }
         $invite->setValide(true);
         $em->persist($invite);

@@ -12,6 +12,7 @@ use App\Repository\ReunionRepository;
 use App\Repository\SalleRepository;
 use App\Repository\TableRepository;
 use App\Service\Mail\ApiMailJet;
+use App\Service\MessageSender\WhatsAppApi;
 use Doctrine\ORM\EntityManagerInterface;
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\Color\Color;
@@ -209,7 +210,7 @@ class AdminController extends AbstractController
     public function generateQrCode($slug){
         //ajout du code qr
         $writer = new PngWriter();
-        $qrCode = QrCode::create('https://www.jordan.com/profile/'.$slug)
+        $qrCode = QrCode::create('http://127.0.0.1:8000/invitation/'.$slug)
             ->setEncoding(new Encoding('UTF-8'))
             ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
             ->setSize(300)
@@ -225,14 +226,25 @@ class AdminController extends AbstractController
 
     #[Route('/send/invitation', name:'send_invits')]
     public function sendInvits(){
-        $invits = $this->inviteRipo->findBy(['type'=>'VIRTUEL']);
+        $invits = $this->inviteRipo->findAll();
+        //dd($invits);
+/*
+        $whatsApp = new WhatsAppApi();
+        $whatsApp->sender();
+*/
         $mail = new ApiMailJet();
         foreach ($invits as $invit){
+
             if (!$invit->getInvitationsEnvoye()){
-                $mail->send($invit->getEmail(), $this->reunion->getUrl(), $this->reunion->getPassword());
-                $sent = (new InvitationsEnvoye())
-                    ->setInvite($invit);
-                $this->em->persist($sent);
+                if ($invit->getType()=='VIRTUEL') {
+                    $mail->send($invit->getEmail(), $this->reunion->getUrl(), $this->reunion->getPassword());
+                    $sent = (new InvitationsEnvoye())
+                        ->setInvite($invit);
+                    $this->em->persist($sent);
+                } else {
+                    $mail->physique($invit->getEmail(), );
+                }
+
             }
         }
         $this->em->flush();
