@@ -3,6 +3,7 @@
 {% block title %}Admin | {% endblock %}
 
 {% block body %}
+    <!-- Stats -->
     <div class="row">
         <div class="col-xl col-sm-6 grid-margin stretch-card">
             <div class="card">
@@ -87,7 +88,7 @@
     </div>
 
     <!-- Nom de la salle -->
-    <div class="row">
+    <div class="row" id="salle">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
@@ -104,17 +105,48 @@
         </div>
     </div>
 
+    <!-- Gestion meet -->
+    <div class="row" id="meet">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Informations de la reunion</h4>
+                    <form class="forms-sample" method="post" action="{{ path('update_link') }}">
+
+                        <div class="row d-flex justify-content-center mt-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputName1">Lien</label>
+                                    <input type="url" name="link" class="form-control" id="exampleInputName1" placeholder="Link" value="{{ reunion.url }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputName1">Password</label>
+                                    <input type="text" name="password" class="form-control" id="exampleInputName1" placeholder="Password" value="{{ reunion.password }}" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mr-2">Modifier</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- CRUD Table -->
-    <div class="row">
+    <div class="row" id="tables">
         <div class="col-md-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4>Ajouter une salle</h4>
+                    <h4>Ajouter une table</h4>
                     <form class="forms-sample" method="post" action=" {% if table_selected is defined %} {{ path('update_table') }} {% else %} {{ path('add_table') }} {% endif %}">
                         <div class="form-group">
-                            <label for="exampleInputUsername1" class="mt-3">Nom de la salle</label>
+                            <label for="exampleInputUsername1" class="mt-3">Nom de la table</label>
 
-                            <input type="text" name="nom" class="form-control" id="exampleInputUsername1" placeholder="Username" {% if table_selected is defined %} value="{{ table_selected.nom}} " {% endif %}>
+                            <input type="text" name="nom" class="form-control" id="exampleInputUsername1" placeholder="Nom" required {% if table_selected is defined %} value="{{ table_selected.nom}} " {% endif %}>
                         </div>
                         {% if table_selected is defined %}
                             <div class="form-group">
@@ -173,62 +205,9 @@
         </div>
     </div>
 
-    <!-- CRUD Demandes -->
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Liste des demandes </h4>
-                    </p>
-                    <div class="table-responsive">
-                        <table class="table" >
-                            <thead>
-                            <tr>
-                                <th>Nom</th>
-                                <th>Email</th>
-                                <th>Numero de telephone</th>
-                                <th>Acion | Table</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for dm in demandes %}
-                                <form method="post" action="{{ path('demande_traitement') }}">
-                                    <tr>
-                                        <td> {{dm.prenom}} {{ dm.nom }}</td>
-                                        <td> {{dm.email}} </td>
-                                        <td> {{dm.telephone}} </td>
-                                        <td>
-
-                                            <select class="form-control" id="exampleFormControlSelect2" name="type" req >
-                                                <option value="ANNULER">Annuler</option>
-                                                <option value="VIRTUEL">Virtuel</option>
-                                                {% for tab in tables %}
-                                                    {% if tab.invites|length < 10 %}
-                                                        <option value="{{ tab.slug }}">{{ tab.nom }}</option>
-                                                    {% endif %}
-                                                {% endfor %}
-
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input type="text" name="slug" value="{{ dm.slug }}" hidden>
-                                            <input type="submit" value="VALIDER" class="form-control btn-outline-primary">
-                                        </td>
-                                    </tr>
-                                </form>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- CRUD INVITE -->
     <div class="row">
-        <div class="col-md-6 grid-margin stretch-card">
+        <div class="col-md-6 grid-margin stretch-card" id="addInvite">
             <div class="card">
                 <div class="card-body">
                     <h4>Ajouter un invité</h4>
@@ -299,7 +278,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 grid-margin stretch-card">
+        <div class="col-md-6 grid-margin stretch-card" id="listeInvite">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Liste des Invites </h4>
@@ -310,6 +289,8 @@
                             <tr>
                                 <th>Nom</th>
                                 <th>Status/Table</th>
+                                <th>Invitation Validé</th>
+                                <th>Invitation envoyé</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -319,10 +300,10 @@
                                     <td>{{ invite.prenom }} {{ invite.nom }} </td>
                                     <td>
                                         {%  if invite.type!="PHYSIQUE" %}
-                                            <label class="badge badge-outline-warning">{{ invite.type }}</label></td>
-                                        {% else %}
-                                            <label class="badge badge-outline-primary">{{ invite.place.nom }}</label></td>
-                                        {% endif %}
+                                        <label class="badge badge-outline-warning">{{ invite.type }}</label></td>
+                                    {% else %}
+                                        <label class="badge badge-outline-primary">{{ invite.place.nom }}</label></td>
+                                    {% endif %}
                                     <td>
                                         <a class="btn btn-outline-primary btn-sm" href="{{ path('dtl_invite', {'slug':invite.slug}) }}">
                                             Details
@@ -337,6 +318,61 @@
             </div>
         </div>
     </div>
+
+    <!-- CRUD Demandes -->
+    <div class="row" id="demandes">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Liste des demandes </h4>
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table" >
+                            <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Email</th>
+                                <th>Numero de telephone</th>
+                                <th>Acion | Table</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for dm in demandes %}
+                                <form method="post" action="{{ path('demande_traitement') }}">
+                                    <tr>
+                                        <td> {{dm.prenom}} {{ dm.nom }}</td>
+                                        <td> {{dm.email}} </td>
+                                        <td> {{dm.telephone}} </td>
+                                        <td>
+
+                                            <select class="form-control" id="exampleFormControlSelect2" name="type" req >
+                                                <option value="ANNULER">Annuler</option>
+                                                <option value="VIRTUEL">Virtuel</option>
+                                                {% for tab in tables %}
+                                                    {% if tab.invites|length < 10 %}
+                                                        <option value="{{ tab.slug }}">{{ tab.nom }}</option>
+                                                    {% endif %}
+                                                {% endfor %}
+
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="slug" value="{{ dm.slug }}" hidden>
+                                            <input type="submit" value="VALIDER" class="form-control btn-outline-primary">
+                                        </td>
+                                    </tr>
+                                </form>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
 {% endblock %}

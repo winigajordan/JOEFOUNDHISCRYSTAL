@@ -2,12 +2,17 @@
 
 namespace App\Controller;
 
+use App\Entity\InvitationsEnvoye;
 use App\Entity\Invite;
 use App\Entity\Table;
 use App\Repository\DemandeRepository;
+use App\Repository\InvitationsEnvoyeRepository;
 use App\Repository\InviteRepository;
+use App\Repository\ReunionRepository;
 use App\Repository\SalleRepository;
 use App\Repository\TableRepository;
+use App\Service\Mail\ApiMailJet;
+use App\Service\MessageSender\WhatsAppApi;
 use Doctrine\ORM\EntityManagerInterface;
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\Color\Color;
@@ -31,22 +36,30 @@ class AdminController extends AbstractController
     private EntityManagerInterface $em;
     private InviteRepository $inviteRipo;
     private DemandeRepository $demandeRipo;
+    private ReunionRepository $reunionRipo;
+    private InvitationsEnvoyeRepository $invitSendRipo;
 
     public function __construct(
         SalleRepository $salleRipo,
         EntityManagerInterface $em,
         TableRepository $tableRipo,
         InviteRepository $inviteRipo,
-        DemandeRepository $demandeRipo
+        DemandeRepository $demandeRipo,
+        ReunionRepository $reunionRipo,
+        InvitationsEnvoyeRepository $invitSendRipo
     )
     {
+        $this->em = $em;
         $this->salleRipo = $salleRipo;
         $this->tableRipo = $tableRipo;
         $this->inviteRipo = $inviteRipo;
-        $this->em = $em;
+        $this->reunionRipo = $reunionRipo;
+        $this->reunion = $reunionRipo->find(1);
         $this->salle = $salleRipo->find(1);
         $this->demandes = $demandeRipo->findBy(['etat'=>false]);
         $this->demandeRipo = $demandeRipo;
+        //$this->invitSent = $invitSendRipo->
+
     }
 
 
@@ -55,6 +68,7 @@ class AdminController extends AbstractController
     {
         return $this->render('admin/index.html.twig', [
             'salle'=>$this->salle->getNom(),
+            'reunion'=> $this->reunion,
             'tables'=>$this->tableRipo->findAll(),
             'invites'=>$this->inviteRipo->findAll(),
             'demandes'=>$this->demandes
@@ -69,6 +83,15 @@ class AdminController extends AbstractController
         $this->em->persist($salle);
         $this->em->flush();
        return $this->redirectToRoute('admin');
+    }
+
+    #[Route('/reunion/update', name: 'update_link', methods: 'post')]
+    public function updateLink(Request $request){
+        $this->reunion->setUrl($request->request->get('link'));
+        $this->reunion->setPassword($request->request->get('password'));
+        $this->em->persist($this->reunion);
+        $this->em->flush();
+        return $this->redirectToRoute('admin');
     }
 
     #[Route('/table/add', name:'add_table')]
@@ -87,6 +110,7 @@ class AdminController extends AbstractController
     {
         return $this->render('admin/index.html.twig', [
             'salle'=>$this->salle->getNom(),
+            'reunion'=> $this->reunion,
             'tables'=>$this->tableRipo->findAll(),
             'demandes'=>$this->demandes,
             'table_selected'=>$this->tableRipo->findOneBy(['slug'=>$slug]),
@@ -142,6 +166,7 @@ class AdminController extends AbstractController
     public function dtlInvite($slug){
         return $this->render('admin/index.html.twig', [
             'salle'=>$this->salle->getNom(),
+            'reunion'=> $this->reunion,
             'tables'=>$this->tableRipo->findAll(),
             'invites'=>$this->inviteRipo->findAll(),
             'demandes'=>$this->demandes,
@@ -185,7 +210,7 @@ class AdminController extends AbstractController
     public function generateQrCode($slug){
         //ajout du code qr
         $writer = new PngWriter();
-        $qrCode = QrCode::create('https://www.jordan.com/profile/'.$slug)
+        $qrCode = QrCode::create('http://127.0.0.1:8000/invitation/'.$slug)
             ->setEncoding(new Encoding('UTF-8'))
             ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
             ->setSize(300)
@@ -197,5 +222,32 @@ class AdminController extends AbstractController
         $result = $writer->write($qrCode);
         $result->saveToFile($this->getParameter("qr").'/'.$slug.'.png');
 
+    }
+
+    #[Route('/send/invitation', name:'send_invits')]
+    public function sendInvits(){
+        $invits = $this->inviteRipo->findAll();
+        //dd($invits);
+/*
+        $whatsApp = new WhatsAppApi();
+        $whatsApp->sender();
+*/
+        $mail = new ApiMailJet();
+        foreach ($invits as $invit){
+
+            if (!$invit->getInvitationsEnvoye()){
+                if ($invit->getType()=='VIRTUEL') {
+                    $mail->send($invit->getEmail(), $this->reunion->getUrl(), $this->reunion->getPassword());
+                    $sent = (new InvitationsEnvoye())
+                        ->setInvite($invit);
+                    $this->em->persist($sent);
+                } else {
+                    $mail->physique($invit->getEmail(), );
+                }
+
+            }
+        }
+        $this->em->flush();
+        return $this->redirectToRoute('admin');
     }
 }

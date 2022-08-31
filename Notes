@@ -11,6 +11,7 @@ les invités physique deviennent des invités virtuels si ils ne confirment pas 
 et essayer d'envoyer
 
 gerer le liens de la reunion zoom
+
 envoyer le liens aux invités virtuels
 envoyer les liens aux nouveaux invités
 
@@ -18,3 +19,15 @@ envoyer les liens aux nouveaux invités
 envoyer les invitations par mail
 gerer la galerie
 
+curl -i -X POST `
+  https://graph.facebook.com/v13.0/102069372646783/messages `
+  -H 'Authorization: Bearer EAAGVpZApLcP4BADhphrP3s6RWaBMD8qJkXl5zWKeaWRnUVoE1f6BjZAaAXzp5s4MmsYINazR4DAGi3HS8CnhzJvP0jrYaSQELF0V7SK9D8SqtsrqUH3PMcgFb3VGFRN5whEuL6oblZByvFCZAPSsahUmZCsTwNNZB5xTeTY6ZCZCPnESEXMJZC1z5tItNthc9FLu1KtrtWvnw3GxKGQ7Fa3rY' `
+  -H 'Content-Type: application/json' `
+  -d '{ "messaging_product": "whatsapp", "to": "221772570206", "type": "template", "template": { "name": "hello_world", "language": { "code": "en_US" } } }'
+
+
+
+https://developers.facebook.com/tools/debug/accesstoken/?access_token=EAAGVpZApLcP4BAG2Tgh5ZBxn8fWNZBZA2ZCgWJ26HIxua1eUEyTkaZBwxfTddvgDR77uUoCQZA4fbAb6FIjme1vCX2z2Klo5EOCC5RVkQlOcfQYZCOeLJZAcCFRZBlnwVUuaZBHTz65NHMif2CZBiysHJcwgVKGmAnm2YsV6tXGjLYM6MmpG1NwS69ZAE
+
+
+EAAGVpZApLcP4BAG2Tgh5ZBxn8fWNZBZA2ZCgWJ26HIxua1eUEyTkaZBwxfTddvgDR77uUoCQZA4fbAb6FIjme1vCX2z2Klo5EOCC5RVkQlOcfQYZCOeLJZAcCFRZBlnwVUuaZBHTz65NHMif2CZBiysHJcwgVKGmAnm2YsV6tXGjLYM6MmpG1NwS69ZAE
