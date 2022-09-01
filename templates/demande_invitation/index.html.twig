@@ -1,34 +1,71 @@
-{% extends 'test.html.twig' %}
+{% extends 'front.html.twig' %}
 
-{% block title %}Demande invitation{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
-<div class="container">
-    <div class="card m-5">
-        <form class="m-5" method="post" action="{{ path('demande_invitation') }}">
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nom</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="nom">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Prenom</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" name="prenom">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Email</label>
-                <input type="email" class="form-control" id="exampleInputPassword1" name="email">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Telephone</label>
-                <input type="number" class="form-control" id="exampleInputPassword1" name="telephone">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Situation</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" name="situation">
-            </div>
 
-            <button type="submit" class="btn btn-primary">Demander</button>
-        </form>
-    </div>
-</div>
+
+
+    <section class="registration-content">
+        <div class="registration-form">
+            <h1>Guest Wedding Registration</h1>
+            <form method="post" action="{{ path('demande_invitation') }}" enctype="multipart/form-data">
+
+                <div class="radios">
+                    <div>
+                        <label for="mr">Mr</label>
+                        <input type="radio" name="civilite" id="homme" value="homme" checked>
+                    </div>
+                    <div>
+                        <label for="mrs">Mrs/ Miss</label>
+                        <input type="radio" name="civilite" id="femme" value="femme">
+                    </div>
+                </div>
+
+                <div class="names">
+                    <div>
+                        <label for="firstName">First Name</label>
+                        <input type="text" name="nom" id="firstName" style="padding-left: 10px; font-family: 'Metal';" required>
+                    </div>
+                    <div>
+                        <label for="lastName">Last Name</label>
+                        <input type="text" name="prenom" id="lastName" style="padding-left: 10px; font-family: 'Metal';" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="coupleLastName">Email</label>
+                    <input type="text" name="email" id="coupleLastName" style="padding-left: 10px; font-family: 'Metal';" required>
+                </div>
+
+                <div>
+                    <label for="relationToCouple"></label>
+                    <select name="situation" id="relationToCouple" style="padding-left: 10px; font-family: 'Metal';">
+                        <option value="epuse">Bride's family guest</option>
+                        <option value="epoux">Groom's family guest</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="couplePicture">Take or Upload Picture</label>
+                    <input type="file" name="image" id="couplePicture" style="padding-left: 10px; font-family: 'Metal';" required>
+                </div>
+                <input type="submit" value="Send">
+
+            </form>
+        </div>
+
+        <div class="registration-panel">
+            <div class="registration-title">
+                <img src="{{ asset('front/images/for-single.png') }}" id="for-single-pic" alt="">
+                <p>For Single</p>
+            </div>
+            <div class="registration-links">
+                <div class="next">
+                    <img src="{{ asset('front/images/next-right.png') }}" alt="">
+                    <p>For Couple</p>
+                </div>
+                <p>Make a gift donation</p>
+            </div>
+        </div>
+    </section>
 {% endblock %}

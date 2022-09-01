@@ -15,8 +15,15 @@ class InvitationController extends AbstractController
     #[Route('/{slug}', name: 'invitation')]
     public function index($slug, InviteRepository $inviteRepository): Response
     {
+        $invit = $inviteRepository->findOneBy(['slug'=>$slug, 'type'=>'PHYSIQUE']);
+        if ($invit==null){
+            return $this->redirectToRoute('app_home');
+        }
+        if ($invit->isValide()){
+            return $this->redirectToRoute('app_home');
+        }
         return $this->render('invitation/index.html.twig', [
-           'invit'=>$inviteRepository->findOneBy(['slug'=>$slug])
+           'invit'=>$invit
         ]);
     }
 
@@ -24,15 +31,20 @@ class InvitationController extends AbstractController
     public function update(Request $request, EntityManagerInterface $em, InviteRepository $invitRipo){
         $data = $request->request;
         $invite = $invitRipo->findOneBy(['slug'=>$data->get('slug')]);
-        if (!$data->get('validation')){
+        $invite->setValide(true);
+        if ($data->get('validation')=='no'){
             $invite->setPlace(null);
             $invite->setType("VIRTUEL");
-
+            $em->persist($invite);
+            $em->flush();
+            return $this->redirectToRoute('app_home');
+        } else {
+            return $this->redirectToRoute('app_informations', ['slug'=>$data->get('slug')]);
         }
-        $invite->setValide(true);
-        $em->persist($invite);
-        $em->flush();
+        //dd($invite);
 
-        return $this->redirectToRoute('admin');
+
+
+
     }
 }

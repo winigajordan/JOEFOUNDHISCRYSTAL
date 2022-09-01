@@ -7,6 +7,8 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: InviteRepository::class)]
+#[ORM\InheritanceType('SINGLE_TABLE')]
+#[ORM\DiscriminatorMap(['invite' => 'Invite', 'couple' => 'Couple'])]
 class Invite
 {
     #[ORM\Id]
@@ -49,6 +51,11 @@ class Invite
 
     #[ORM\OneToOne(mappedBy: 'invite', cascade: ['persist', 'remove'])]
     private ?InvitationsEnvoye $invitationsEnvoye = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $civilite = null;
+
+
 
     public function getId(): ?int
     {
@@ -203,4 +210,18 @@ class Invite
 
         return $this;
     }
+
+    public function getCivilite(): ?string
+    {
+        return $this->civilite;
+    }
+
+    public function setCivilite(?string $civilite): self
+    {
+        $this->civilite = $civilite;
+
+        return $this;
+    }
+
+
 }

@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-#[Route('/demande')]
+#[Route('/registration')]
 class DemandeInvitationController extends AbstractController
 {
     #[Route('/invitation', name: 'app_demande_invitation')]
@@ -33,14 +33,21 @@ class DemandeInvitationController extends AbstractController
     public function demandeAdd(Request $request, EntityManagerInterface $em): Response
     {
         $data = $request->request;
+
         $demande = (new Demande())
+            ->setCivilite($data->get('civilite'))
             ->setNom($data->get('nom'))
             ->setPrenom($data->get('prenom'))
             ->setEmail($data->get('email'))
-            ->setTelephone($data->get('telephone'))
+            ->setTelephone("--")
             ->setSituation($data->get('situation'))
             ->setSlug(uniqid('dmd-'))
             ->setEtat(false);
+        //ajout d'image
+        $img=$request->files->get("image");
+        $imageName=$demande->getSlug().'.'.$img->guessExtension();
+        $img->move($this->getParameter("profile"),$imageName);
+        $demande->setImage($imageName);
         $em->persist($demande);
         $em->flush();
         return $this->redirectToRoute('app_demande_invitation');
@@ -51,13 +58,14 @@ class DemandeInvitationController extends AbstractController
         $demande = $demandeRipo->findOneBy(['slug'=>$request->request->get('slug')]);
         if ($request->request->get("type")!="ANNULER"){
             $invite = (new Invite())
+                ->setCivilite($demande->getCivilite())
                 ->setSlug(uniqid('invit-'))
                 ->setSituation($demande->getSituation())
                 ->setTelephone($demande->getTelephone())
                 ->setEmail($demande->getEmail())
                 ->setNom($demande->getNom())
                 ->setPrenom($demande->getPrenom())
-                ->setPhoto('-')
+                ->setPhoto($demande->getImage())
                 ->setAdresse('adresse')
                 ->setValide(false);
 
@@ -79,10 +87,10 @@ class DemandeInvitationController extends AbstractController
     public function generateQrCode($slug){
         //ajout du code qr
         $writer = new PngWriter();
-        $qrCode = QrCode::create('https://www.jordan.com/profile/'.$slug)
+        $qrCode = QrCode::create($_SERVER['HTTP_HOST'].'/informations/'.$slug)
             ->setEncoding(new Encoding('UTF-8'))
             ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
-            ->setSize(300)
+            ->setSize(365)
             ->setMargin(10)
             ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
             ->setForegroundColor(new Color(0, 0, 0))
