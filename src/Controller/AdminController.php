@@ -210,10 +210,10 @@ class AdminController extends AbstractController
     public function generateQrCode($slug){
         //ajout du code qr
         $writer = new PngWriter();
-        $qrCode = QrCode::create('http://127.0.0.1:8000/invitation/'.$slug)
+        $qrCode = QrCode::create($_SERVER['HTTP_HOST'].'/informations/'.$slug)
             ->setEncoding(new Encoding('UTF-8'))
             ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
-            ->setSize(300)
+            ->setSize(365)
             ->setMargin(10)
             ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
             ->setForegroundColor(new Color(0, 0, 0))
@@ -226,24 +226,21 @@ class AdminController extends AbstractController
 
     #[Route('/send/invitation', name:'send_invits')]
     public function sendInvits(){
+
         $invits = $this->inviteRipo->findAll();
-        //dd($invits);
-/*
-        $whatsApp = new WhatsAppApi();
-        $whatsApp->sender();
-*/
         $mail = new ApiMailJet();
         foreach ($invits as $invit){
 
             if (!$invit->getInvitationsEnvoye()){
                 if ($invit->getType()=='VIRTUEL') {
                     $mail->send($invit->getEmail(), $this->reunion->getUrl(), $this->reunion->getPassword());
-                    $sent = (new InvitationsEnvoye())
-                        ->setInvite($invit);
-                    $this->em->persist($sent);
+
                 } else {
-                    $mail->physique($invit->getEmail(), );
+                    $mail->physique($invit->getEmail(), 'link');
                 }
+                $sent = (new InvitationsEnvoye())
+                    ->setInvite($invit);
+                $this->em->persist($sent);
 
             }
         }

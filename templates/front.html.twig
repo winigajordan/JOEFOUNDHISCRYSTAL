@@ -5,13 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} {% endblock %}</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('front/css/style.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Licorice">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Metal">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lohit Bengali">
     <link href='https://fonts.googleapis.com/css?family=Lily Script One' rel='stylesheet'>
 </head>
 <body>
+<nav>
+    <div class="container menu">
+        <div class="menu-left">
+            <h4>#JoeFoundHis<br>Crystal</h4>
+            <p>Home</p>
+        </div>
+        <div class="menu-right">
+            <ul>
+                <li>Invitation</li>
+                <li>Program</li>
+                <li>Gallery</li>
+                <li>Registration</li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
 {% block body %}{% endblock %}
 </body>
 

@@ -1,32 +1,49 @@
-{% extends 'test.html.twig' %}
+{% extends 'front.html.twig' %}
 
-{% block title %}Test QR Code {% endblock %}
+{% block title %} Confirmation de presence {% endblock %}
 
 {% block body %}
-<div class="container mt-5">
-    <div class="row mt-5">
-        <div class="col-4">
-            <div class="card p-3">
-                <div class="row">
-                    <div class="col-6" >
-                        <img src="{{ asset('Files/qrcode/invit-6301246a2a509.png') }} " alt="bonjour">
-                    </div>
+    <section class="home-header">
 
+    </section>
+
+    <section class="marriage-invitation" id="private-invitation">
+
+    </section>
+
+    <section class="invitation-links">
+        <div class="opposite-hearts">
+            <img src="{{ asset('front/images/Drawings-Of-Hearts-PNG-Photo-Image 1.png') }}" alt="">
+            <img src="{{ asset('front/images/Drawings-Of-Hearts-PNG-Photo-Image 2.png') }}" alt="">
+        </div>
+        <div class="invitations-links-bottom">
+            <a><p>Download the invitation card</p></a>
+            <a><p>Make your Gift & Donation</p></a>
+        </div>
+    </section>
+
+    <section id="public-invitation-bottom">
+        <img src="{{ asset('front/images/wedding-couple 2.png') }}" alt="">
+        <div id="invitation-confirmation-form">
+            <p>Confirm your presence</p>
+            <form method="post" action="{{ path('invitation_validation') }}">
+                <p>Will you attend the ceremony ?</p>
+                <div>
+                    <div>
+                        <input type="radio" value="yes" name="validation" id="yes" checked>
+                        <label for="yes">Yes, I Will</label>
+                    </div>
+                    <div>
+                        <input type="radio" value="no" name="validation" id="no">
+                        <label for="no">No, I can't (Virtual Attendance)</label>
+                        <input type="text" name="slug" value="{{ invit.slug }}" style="display: none" >
+                    </div>
                 </div>
 
-                <p> Nom : {{ invit.nom }}</p>
-                <p> Prenom : {{ invit.prenom}} </p>
-                <p> Telephone : {{ invit.telephone }}</p>
-                <form method="post" action="{{ path('invitation_validation') }}">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked name="validation">
-                        <label class="form-check-label" for="flexSwitchCheckChecked">Je serai present</label>
-                    </div>
-                    <input type="text" name="slug" value="{{ invit.slug }}" hidden>
-                    <input type="submit" class="form-control mt-3 ">
-                </form>
-            </div>
+                <input type="submit" value="Send" id="submit-confirmation">
+            </form>
         </div>
-    </div>
-</div>
+    </section>
+
+    <section class="filler"></section>
 {% endblock %}

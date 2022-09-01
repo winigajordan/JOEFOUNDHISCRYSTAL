@@ -1,20 +1,110 @@
-{% extends 'base.html.twig' %}
+{% extends 'front.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <section class="home-header">
+        <div id="home-header-top">
+            <p id="chris">Christabel</p>
+            <img src="{{ asset('front/images/couple.png') }}" alt="" height="594px" width="594px">
+            <p id="joel">Joel</p>
+        </div>
+        <div id="home-header-bottom">
+            <p>Our Wedding</p>
+        </div>
+    </section>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/Work/BRAND YOU/JOEFOUNDHISCRYSTAL/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/Work/BRAND YOU/JOEFOUNDHISCRYSTAL/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <section class="home-story">
+        <img src="{{ asset('front/images/Drawings-Of-Hearts-PNG-Photo-Image 2.png') }}" alt="" class="home-story-back-pic hearts" id="heart-1">
+        <img src="{{ asset('front/images/Drawings-Of-Hearts-PNG-Photo-Image 2.png') }}" alt="" class="home-story-back-pic hearts" id="heart-2">
+        <img src="{{ asset('front/images/Drawings-Of-Hearts-PNG-Photo-Image 2.png') }}" alt="" class="home-story-back-pic hearts" id="heart-3">
+        <img src="{{ asset('front/images/Drawings-Of-Hearts-PNG-Photo-Image 2.png') }}" alt="" class="home-story-back-pic hearts" id="heart-4">
+        <img src="{{asset('front/images/—Pngtree—flower continuous one line art_4011135 1.png')}}" alt="" class="home-story-back-pic flowers" id="flower-1">
+        <img src="{{asset('front/images/—Pngtree—flower continuous one line art_4011135 1.png')}}" alt="" class="home-story-back-pic flowers" id="flower-2">
+        <img src="{{asset('front/images/—Pngtree—flower continuous one line art_4011135 1.png')}}" alt="" class="home-story-back-pic flowers" id="flower-3">
+        <div id="home-story-top">
+            <div id="our-story-image">
+                <img src="{{ asset('front/images/story.png') }}" alt="">
+            </div>
+            <div id="our-story">
+                <h1>Our story</h1>
+                <p>
+                    I met Christabel on July 1st, 2019, at Murtala Mohamed international airport. Our mutual friend Angela insisted on seeing me off to the airport.
+                    We went to the airport lounge for lunch and while there I decided to make Everyone feel at ease, especially her. So I engaged her in a conversation about her field. She was very relaxed and confident while explaining her real estate business.Being a lover of real estate and a civil engineer, We bounded our discussion around it.
+                </p>
+            </div>
+        </div>
+        <div id="home-story-bottom">
+            <p>
+                My next visit to Nigeria was on the 28th of November 2019 for business. I gave her a surprise visit to the kingdom hall of  Jehovah’s witnesses. when she turned around during the song, she was so shocked to see me. she could not stand on her feet, lol. From there we discussed more business. Most of our discussion was centered around real estate for more than one year.
+            </p>
+            <p>
+                But I started loving her calm attitude and kindness toward her work and general lifestyle. I ask her why a beautiful lady like her was still single. She laughed and she told me she’s still waiting for a kindhearted man.
+                <br>I jumped on the opportunity, showing her my kind heart and as a french guy,I had to quickly mark my territory lol Since no one was doing so … hahaha. She was a bit confused, but we gradually built trust in each other.
+            </p>
+            <p>
+                I left 2 weeks after, came back Feb 2021 due to covid, our friendship became stronger and stronger, she started seeing me as her best friend, and I always look at her as my partner.
+                We spent 2 weeks together in Feb 2021 and that was when I realized that I will love to spend the rest of my life with her.
+            </p>
+            <p>
+                It wasn’t all smooth but patience & Jah’s grace carried us through.
+                I waited another year which means March 2022 to prove my seriousness and commitment.
+                On the 29th of March 2022 at Radisson blu VI  Lagos at 9:20 pm, I planned the proposal WITH MOM AND I SPA, Klala films and photo, Radisson blue management and here we are today. I am the happiest man on earth.
+            </p>
+            <p>
+                Baby, I  LOVE  YOU  AND  WILL  CONTINUE  TO  LOVE  YOU
+            </p>
+        </div>
+
+    </section>
+
+    <section id="countdown">
+        <div>
+            <a><p>Registration for<br>E-Invitation</p></a>
+        </div>
+        <div>
+            <img src="{{ asset('front/images/savethedate_wh.gif') }}" alt="" id="save-the-date-gif">
+        </div>
+        <div id="countdown-localisation">
+            <h4>Saturday October 22nd 2022</h4>
+            <div>
+                <img src="{{ asset('front/images/maplocalization_89142 1.png') }}" alt="">
+                <p>@ Kingdom Hall of Jehovah's<br> Witnesses (Lekki Lagos ELF Bus-Stop)<br> at 10:00 am </p>
+            </div>
+        </div>
+        <div>
+
+        </div>
+    </section>
+
+    <section id="wedding-program-home">
+
+        <div id="wedding-program-top">
+            <img src="{{ asset('front/images/flower-top.png') }}" alt="">
+            <h1>Wedding Program</h1>
+        </div>
+
+        <div id="wedding-program-mid">
+            <div>
+                <p>Civil <br>registration<br> Wedding</p>
+            </div>
+
+            <div>
+                <p>Wedding<br> Religious<br> ceremony</p>
+            </div>
+
+            <div>
+                <p>Wedding<br> party</p>
+            </div>
+        </div>
+
+        <div id="wedding-program-bottom">
+            <div>
+                <a><p>Make your gift & Donation</p></a>
+            </div>
+            <img src="{{ asset('front/images/flower-bottom.png') }}" alt="">
+        </div>
+
+    </section>
 {% endblock %}

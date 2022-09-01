@@ -35,7 +35,8 @@ a{
     display: flex;
     flex-direction: row;    
 }
-.menu-left > p{
+.menu-left > p
+{
     margin-left: 50px;
 }
 .menu-left > h4{
