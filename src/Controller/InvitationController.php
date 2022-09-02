@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\InvitationsEnvoyeRepository;
 use App\Repository\InviteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,23 +29,20 @@ class InvitationController extends AbstractController
     }
 
     #[Route('/update/validation', name: 'invitation_validation')]
-    public function update(Request $request, EntityManagerInterface $em, InviteRepository $invitRipo){
+    public function update(Request $request, EntityManagerInterface $em, InviteRepository $invitRipo, InvitationsEnvoyeRepository $sentRipo){
         $data = $request->request;
         $invite = $invitRipo->findOneBy(['slug'=>$data->get('slug')]);
         $invite->setValide(true);
         if ($data->get('validation')=='no'){
             $invite->setPlace(null);
             $invite->setType("VIRTUEL");
+            $sent = $sentRipo->findOneBy(['invite'=>$invite]);
+            $em->remove($sent);
             $em->persist($invite);
             $em->flush();
             return $this->redirectToRoute('app_home');
         } else {
             return $this->redirectToRoute('app_informations', ['slug'=>$data->get('slug')]);
         }
-        //dd($invite);
-
-
-
-
     }
 }

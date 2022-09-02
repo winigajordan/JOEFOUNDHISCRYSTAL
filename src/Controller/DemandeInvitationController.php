@@ -20,34 +20,28 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/registration')]
 class DemandeInvitationController extends AbstractController
 {
-    #[Route('/invitation', name: 'app_demande_invitation')]
-    public function index(): Response
+    #[Route('/invitation/{etat}', name: 'app_demande_invitation', defaults: ['etat'=>'single'])]
+    public function index($etat): Response
     {
-
         return $this->render('demande_invitation/index.html.twig', [
-            'controller_name' => 'DemandeInvitationController',
+            'etat'=>$etat
         ]);
     }
 
     #[Route('/add', name: 'demande_invitation')]
     public function demandeAdd(Request $request, EntityManagerInterface $em): Response
     {
-        $data = $request->request;
+        $demande = $this->generateDemande($request);
+        $em->persist($demande);
+        $em->flush();
+        return $this->redirectToRoute('app_demande_invitation');
+    }
 
-        $demande = (new Demande())
-            ->setCivilite($data->get('civilite'))
-            ->setNom($data->get('nom'))
-            ->setPrenom($data->get('prenom'))
-            ->setEmail($data->get('email'))
-            ->setTelephone("--")
-            ->setSituation($data->get('situation'))
-            ->setSlug(uniqid('dmd-'))
-            ->setEtat(false);
-        //ajout d'image
-        $img=$request->files->get("image");
-        $imageName=$demande->getSlug().'.'.$img->guessExtension();
-        $img->move($this->getParameter("profile"),$imageName);
-        $demande->setImage($imageName);
+    #[Route('/add/couple', name: 'couple_invitation')]
+    public function demandeCoupleAdd(Request $request, EntityManagerInterface $em): Response
+    {
+        $demande = $this->generateDemande($request);
+        $demande->setHerName($request->request->get('herName'));
         $em->persist($demande);
         $em->flush();
         return $this->redirectToRoute('app_demande_invitation');
@@ -97,5 +91,27 @@ class DemandeInvitationController extends AbstractController
             ->setBackgroundColor(new Color(255, 255, 255));
         $result = $writer->write($qrCode);
         $result->saveToFile($this->getParameter("qr").'/'.$slug.'.png');
+    }
+
+
+    public function generateDemande(Request $request): Demande
+    {
+        $data = $request->request;
+        $demande = (new Demande())
+            ->setCivilite($data->get('civilite'))
+            ->setNom($data->get('nom'))
+            ->setPrenom($data->get('prenom'))
+            ->setEmail('')
+            ->setTelephone(str_replace(' ', '', $data->get('telephone')))
+            ->setSituation($data->get('situation'))
+            ->setSlug(uniqid('dmd-'))
+            ->setEtat(false);
+
+        //ajout d'image
+        $img = $request->files->get("image");
+        $imageName = $demande->getSlug() . '.' . $img->guessExtension();
+        $img->move($this->getParameter("profile"), $imageName);
+        $demande->setImage($imageName);
+        return $demande;
     }
 }

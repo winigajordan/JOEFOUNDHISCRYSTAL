@@ -42,6 +42,9 @@ class Demande
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $herName = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -152,6 +155,18 @@ class Demande
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getHerName(): ?string
+    {
+        return $this->herName;
+    }
+
+    public function setHerName(?string $herName): self
+    {
+        $this->herName = $herName;
 
         return $this;
     }

@@ -1,71 +1,130 @@
 {% extends 'front.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %} Registation {% endblock %}
 
 {% block body %}
 
+    {% if etat == 'single' %}
+        <section class="registration-content">
+            <div class="registration-form">
+                <h1>Guest Wedding Registration</h1>
+                <form method="post" action="{{ path('demande_invitation') }}" enctype="multipart/form-data">
 
+                    <div class="radios">
+                        <div>
+                            <label for="mr">Mr</label>
+                            <input type="radio" name="civilite" id="homme" value="homme" checked>
+                        </div>
+                        <div>
+                            <label for="mrs">Mrs/ Miss</label>
+                            <input type="radio" name="civilite" id="femme" value="femme">
+                        </div>
+                    </div>
 
-    <section class="registration-content">
-        <div class="registration-form">
-            <h1>Guest Wedding Registration</h1>
-            <form method="post" action="{{ path('demande_invitation') }}" enctype="multipart/form-data">
+                    <div class="names">
+                        <div>
+                            <label for="firstName">First Name</label>
+                            <input type="text" name="nom" id="firstName" style="padding-left: 10px; font-family: 'Metal';" required>
+                        </div>
+                        <div>
+                            <label for="lastName">Last Name</label>
+                            <input type="text" name="prenom" id="lastName" style="padding-left: 10px; font-family: 'Metal';" required>
+                        </div>
+                    </div>
 
-                <div class="radios">
                     <div>
-                        <label for="mr">Mr</label>
-                        <input type="radio" name="civilite" id="homme" value="homme" checked>
+                        <label for="coupleLastName">Whatsapp Number</label>
+                        <input type="text" name="telephone" placeholder="+XX XXXXXXXX" id="coupleLastName" style="padding-left: 10px; font-family: 'Metal';" required>
+                    </div>
+
+                    <div>
+                        <label for="relationToCouple"></label>
+                        <select name="situation" id="relationToCouple" style="padding-left: 10px; font-family: 'Metal';">
+                            <option value="epouse">Bride's family guest</option>
+                            <option value="epoux">Groom's family guest</option>
+                        </select>
                     </div>
                     <div>
-                        <label for="mrs">Mrs/ Miss</label>
-                        <input type="radio" name="civilite" id="femme" value="femme">
+                        <label for="couplePicture">Take or Upload Picture</label>
+                        <input type="file" name="image" id="couplePicture" style="padding-left: 10px; font-family: 'Metal';" required>
                     </div>
-                </div>
+                    <input type="submit" value="Send">
 
-                <div class="names">
-                    <div>
-                        <label for="firstName">First Name</label>
-                        <input type="text" name="nom" id="firstName" style="padding-left: 10px; font-family: 'Metal';" required>
-                    </div>
-                    <div>
-                        <label for="lastName">Last Name</label>
-                        <input type="text" name="prenom" id="lastName" style="padding-left: 10px; font-family: 'Metal';" required>
-                    </div>
-                </div>
-
-                <div>
-                    <label for="coupleLastName">Email</label>
-                    <input type="text" name="email" id="coupleLastName" style="padding-left: 10px; font-family: 'Metal';" required>
-                </div>
-
-                <div>
-                    <label for="relationToCouple"></label>
-                    <select name="situation" id="relationToCouple" style="padding-left: 10px; font-family: 'Metal';">
-                        <option value="epuse">Bride's family guest</option>
-                        <option value="epoux">Groom's family guest</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="couplePicture">Take or Upload Picture</label>
-                    <input type="file" name="image" id="couplePicture" style="padding-left: 10px; font-family: 'Metal';" required>
-                </div>
-                <input type="submit" value="Send">
-
-            </form>
-        </div>
-
-        <div class="registration-panel">
-            <div class="registration-title">
-                <img src="{{ asset('front/images/for-single.png') }}" id="for-single-pic" alt="">
-                <p>For Single</p>
+                </form>
             </div>
-            <div class="registration-links">
-                <div class="next">
-                    <img src="{{ asset('front/images/next-right.png') }}" alt="">
+
+            <div class="registration-panel">
+                <div class="registration-title">
+                    <img src="{{ asset('front/images/for-single.png') }}" id="for-single-pic" alt="">
+                    <p>For Single</p>
+                </div>
+                <div class="registration-links">
+                    <a href="{{ path('app_demande_invitation', {'etat':'couple'}) }}" class="next">
+                        <img src="{{ asset('front/images/next-right.png') }}" alt="">
+                        <p>For Couple</p>
+                    </a>
+                    <p>Make a gift donation</p>
+                </div>
+            </div>
+        </section>
+    {% else %}
+        <section class="registration-content">
+            <div class="registration-panel">
+                <div class="registration-title">
+                    <img src="{{ asset('front/images/for-couple.png') }}" alt="">
                     <p>For Couple</p>
                 </div>
-                <p>Make a gift donation</p>
+                <div class="registration-links">
+                    <p>Make a gift donation</p>
+                    <a href="{{ path('app_demande_invitation') }}" class="next">
+                        <p>For Single</p>
+                        <img src="{{ asset('front/images/next-left.png') }}" alt="">
+                    </a>
+                </div>
             </div>
-        </div>
-    </section>
+            <div class="registration-form">
+                <h1>Guest Wedding Registration</h1>
+                <form method="post" action="{{ path('couple_invitation') }}" enctype="multipart/form-data">
+                    <input type="text" name="civilite" value="homme" style="display: none" >
+                    <div>
+                        <label for="coupleLastName">Couple Last Name</label>
+                        <input type="text" name="nom" id="coupleLastName" style="padding-left: 10px; font-family: 'Metal';" required>
+                    </div>
+
+                    <div class="names">
+                        <div>
+                            <label for="mrFirstName">Mr First Name</label>
+                            <input type="text" name="prenom" id="mrFirstName" style="padding-left: 10px; font-family: 'Metal';" required>
+                        </div>
+                        <div>
+                            <label for="mrsFirstName">Couple Last Name</label>
+                            <input type="text" name="herName" id="mrsFirstName" style="padding-left: 10px; font-family: 'Metal';" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="coupleLastName">Whatsapp Number</label>
+                        <input type="text" placeholder="+XX XXXXXXXX" name="telephone" id="coupleLastName" style="padding-left: 10px; font-family: 'Metal';" required>
+                    </div>
+
+                    <div>
+                        <label for="relationToCouple"></label>
+                        <select name="situation" id="relationToCouple" style="padding-left: 10px; font-family: 'Metal';" required>
+                            <option value="epouse">Bride's family guest</option>
+                            <option value="epoux">Groom's family guest</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="couplePicture">Take or Upload Picture</label>
+                        <input type="file" name="image" id="couplePicture" style="padding-left: 10px; font-family: 'Metal';" required>
+                    </div>
+
+                    <p>NB: Take a picture together</p>
+                    <input type="submit" value="Send">
+
+                </form>
+            </div>
+        </section>
+    {% endif %}
 {% endblock %}
