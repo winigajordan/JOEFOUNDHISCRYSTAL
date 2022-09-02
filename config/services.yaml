@@ -6,6 +6,7 @@
 parameters:
     profile : '%kernel.project_dir%/public/Files/profiles'
     qr : '%kernel.project_dir%/public/Files/qrcode'
+    app.local : [en, fr]
 
 services:
     # default configuration for services in *this* file

@@ -1,0 +1,34 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Invitation{% endblock %}
+
+{% block body %}
+    <section class="home-header">
+
+    </section>
+
+    <section class="marriage-invitation" id="public-invitation">
+
+    </section>
+
+    <section class="invitation-links">
+        <div class="opposite-hearts">
+            <img src="{{ asset('front/images/Drawings-Of-Hearts-PNG-Photo-Image 1.png') }}" alt="">
+            <img src="{{ asset('front/images/Drawings-Of-Hearts-PNG-Photo-Image 2.png') }}" alt="">
+        </div>
+        <div class="invitations-links-bottom">
+            <a href="{{ asset('front/images/invitation-public.png') }}" target="_blank"><p>Download the invitation card</p></a>
+            <a><p>Make your Gift & Donation</p></a>
+        </div>
+    </section>
+
+    <section id="public-invitation-bottom">
+        <img src="{{ asset('front/images/wedding-couple 1.png') }}" alt="">
+        <div>
+            <p>Save your place right here</p>
+            <a href="{{ path('app_demande_invitation') }}"><p>Link to wedding registration</p></a>
+        </div>
+    </section>
+
+    <section class="filler"></section>
+{% endblock %}

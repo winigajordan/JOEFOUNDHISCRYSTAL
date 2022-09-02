@@ -11,7 +11,11 @@
             <p id="joel">Joel</p>
         </div>
         <div id="home-header-bottom">
-            <p>Our Wedding</p>
+            <p>
+                {% trans %}
+                Our Wedding
+                {% endtrans %}
+            </p>
         </div>
     </section>
 
@@ -28,32 +32,51 @@
                 <img src="{{ asset('front/images/story.png') }}" alt="">
             </div>
             <div id="our-story">
-                <h1>Our story</h1>
+                <h1>
+                    {% trans %}
+                    Our story
+                    {% endtrans %}
+                </h1>
                 <p>
+                    {% trans %}
                     I met Christabel on July 1st, 2019, at Murtala Mohamed international airport. Our mutual friend Angela insisted on seeing me off to the airport.
                     We went to the airport lounge for lunch and while there I decided to make Everyone feel at ease, especially her. So I engaged her in a conversation about her field. She was very relaxed and confident while explaining her real estate business.Being a lover of real estate and a civil engineer, We bounded our discussion around it.
+                    {% endtrans %}
                 </p>
             </div>
         </div>
         <div id="home-story-bottom">
             <p>
+                {% trans %}
                 My next visit to Nigeria was on the 28th of November 2019 for business. I gave her a surprise visit to the kingdom hall of  Jehovah’s witnesses. when she turned around during the song, she was so shocked to see me. she could not stand on her feet, lol. From there we discussed more business. Most of our discussion was centered around real estate for more than one year.
+                {% endtrans %}
             </p>
             <p>
+                {% trans %}
                 But I started loving her calm attitude and kindness toward her work and general lifestyle. I ask her why a beautiful lady like her was still single. She laughed and she told me she’s still waiting for a kindhearted man.
-                <br>I jumped on the opportunity, showing her my kind heart and as a french guy,I had to quickly mark my territory lol Since no one was doing so … hahaha. She was a bit confused, but we gradually built trust in each other.
+                {% endtrans %}
+                <br>
+                {% trans %}
+                I jumped on the opportunity, showing her my kind heart and as a french guy,I had to quickly mark my territory lol Since no one was doing so … hahaha. She was a bit confused, but we gradually built trust in each other.
+                {% endtrans %}
             </p>
             <p>
+                {% trans %}
                 I left 2 weeks after, came back Feb 2021 due to covid, our friendship became stronger and stronger, she started seeing me as her best friend, and I always look at her as my partner.
                 We spent 2 weeks together in Feb 2021 and that was when I realized that I will love to spend the rest of my life with her.
+                {% endtrans %}
             </p>
             <p>
+                {% trans %}
                 It wasn’t all smooth but patience & Jah’s grace carried us through.
                 I waited another year which means March 2022 to prove my seriousness and commitment.
                 On the 29th of March 2022 at Radisson blu VI  Lagos at 9:20 pm, I planned the proposal WITH MOM AND I SPA, Klala films and photo, Radisson blue management and here we are today. I am the happiest man on earth.
+                {% endtrans %}
             </p>
             <p>
+                {% trans %}
                 Baby, I  LOVE  YOU  AND  WILL  CONTINUE  TO  LOVE  YOU
+                {% endtrans %}
             </p>
         </div>
 
@@ -61,16 +84,23 @@
 
     <section id="countdown">
         <div>
-            <a><p>Registration for<br>E-Invitation</p></a>
+            <a href="{{ path('app_demande_invitation') }}" >
+                <p> {% trans %}Registration for {% endtrans %}
+                    <br>
+                    {% trans %}E-Invitation {% endtrans %}</p></a>
         </div>
         <div>
             <img src="{{ asset('front/images/savethedate_wh.gif') }}" alt="" id="save-the-date-gif">
         </div>
         <div id="countdown-localisation">
-            <h4>Saturday October 22nd 2022</h4>
+            <h4>
+                {% trans %}Saturday October 22nd 2022 {% endtrans %}</h4>
             <div>
                 <img src="{{ asset('front/images/maplocalization_89142 1.png') }}" alt="">
-                <p>@ Kingdom Hall of Jehovah's<br> Witnesses (Lekki Lagos ELF Bus-Stop)<br> at 10:00 am </p>
+                <p> {% trans %}@ Kingdom Hall of Jehovah's  {% endtrans%} <br>
+                    {% trans %}Witnesses (Lekki Lagos ELF Bus-Stop) {% endtrans %}<br>
+                    {% trans %}at 10:00 am
+                {% endtrans %}</p>
             </div>
         </div>
         <div>
@@ -82,26 +112,31 @@
 
         <div id="wedding-program-top">
             <img src="{{ asset('front/images/flower-top.png') }}" alt="">
-            <h1>Wedding Program</h1>
+            <h1>
+                <a href="{{ path('app_programme') }}" style="color: #fff;">
+                    {% trans %}Wedding Program {% endtrans %}
+                </a>
+            </h1>
         </div>
 
         <div id="wedding-program-mid">
             <div>
-                <p>Civil <br>registration<br> Wedding</p>
+                <p>{% trans %}Civil registration Wedding {% endtrans %}</p>
             </div>
 
             <div>
-                <p>Wedding<br> Religious<br> ceremony</p>
+                <p>
+                    {% trans %}Wedding Religious  ceremony {% endtrans %}</p>
             </div>
 
             <div>
-                <p>Wedding<br> party</p>
+                <p>{% trans %}Wedding party{% endtrans %}</p>
             </div>
         </div>
 
         <div id="wedding-program-bottom">
             <div>
-                <a><p>Make your gift & Donation</p></a>
+                <a><p>{% trans %}Make your gift & Donation{% endtrans %}</p></a>
             </div>
             <img src="{{ asset('front/images/flower-bottom.png') }}" alt="">
         </div>

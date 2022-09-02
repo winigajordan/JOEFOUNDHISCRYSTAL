@@ -1,0 +1,40 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Gallery{% endblock %}
+
+{% block body %}
+    <section id="album-header">
+        <h1> {% trans %}Our Pictures {% endtrans %}</h1>
+        <div id="acknowlegments">
+            <h1>{% trans %}Acknowlegments{% endtrans %}</h1>
+            <p>
+                {% trans %}
+                    We thank to all our value guests ( familly, friends, organization)that contributed to make alive this <br>wedding that will be memorable for us. Thank you once again for y'all kind gesture, prayer, advise,<br> encouragements and donation to make it succesful. GLORY to Jehovah GOD.
+                {% endtrans %}
+            </p>
+        </div>
+        <div id="album-header-links">
+            <p>
+                <a  href="{{ path('app_demande_invitation') }}">
+                    {% trans %}Registration for E-Invitation {% endtrans %}
+                </a>
+            </p>
+            <p>
+                {% trans %}
+                    Make your Gift & Donation
+                {% endtrans %}
+            </p>
+        </div>
+    </section>
+
+    <section id="pictures">
+        <img src="{{ asset('front/images/01.png') }}" alt="">
+        <img src="{{ asset('front/images/02.png') }}" alt="">
+        <img src="{{ asset('front/images/03.png') }}" alt="">
+        <img src="{{ asset('front/images/04.png') }}" alt="">
+        <img src="{{ asset('front/images/05.png') }}" alt="">
+        <img src="{{ asset('front/images/06.png') }}" alt="">
+    </section>
+
+
+{% endblock %}
