@@ -226,23 +226,27 @@ class AdminController extends AbstractController
 
     #[Route('/send/invitation', name:'send_invits')]
     public function sendInvits(){
-
+        set_time_limit(1850);
         $invits = $this->inviteRipo->findAll();
-        $mail = new ApiMailJet();
+        $api = new WhatsAppApi();
         foreach ($invits as $invit){
 
             if (!$invit->getInvitationsEnvoye()){
                 if ($invit->getType()=='VIRTUEL') {
-                    $mail->send($invit->getEmail(), $this->reunion->getUrl(), $this->reunion->getPassword());
-
+                    //$mail->send($invit->getEmail(), $this->reunion->getUrl(), $this->reunion->getPassword());
+                    $api->text($invit->getTelephone(), "invitvirtuel");
+                    //un invite virtuel n'a pas la possibilité de valider son
+                    $invit->setValide(true);
+                    $this->em->persist($invit);
                 } else {
-                    $mail->physique($invit->getEmail(), 'link');
+                    //$mail->physique($invit->getEmail(), 'link');
+                    $api->text($invit->getTelephone(), "invitphysique");
                 }
                 $sent = (new InvitationsEnvoye())
                     ->setInvite($invit);
                 $this->em->persist($sent);
-
             }
+            sleep(6);
         }
         $this->em->flush();
         return $this->redirectToRoute('admin');

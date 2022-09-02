@@ -290,7 +290,7 @@
                                 <th>Status/Table</th>
                                 <th>Invitation Validé</th>
                                 <th>Invitation envoyé</th>
-                                <th></th>
+                                <th>Link </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -303,6 +303,20 @@
                                     {% else %}
                                         <label class="badge badge-outline-primary">{{ invite.place.nom }}</label></td>
                                     {% endif %}
+                                    <td>
+                                        {%  if invite.valide %}
+                                            <label class="badge badge-outline-primary">OUI</label></td>
+                                        {% else %}
+                                            <label class="badge badge-outline-warning">NON</label></td>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {%  if invite.invitationsEnvoye %}
+                                                <label class="badge badge-outline-primary">OUI</label></td>
+                                        {% else %}
+                                            <label class="badge badge-outline-warning">NON</label></td>
+                                        {% endif %}
+                                    </td>
                                     <td>
                                         <a class="btn btn-outline-primary btn-sm" href="{{ path('dtl_invite', {'slug':invite.slug}) }}">
                                             Details
