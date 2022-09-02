@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\HerPlace;
 use App\Entity\InvitationsEnvoye;
 use App\Entity\Invite;
 use App\Entity\Table;
@@ -135,11 +136,15 @@ class AdminController extends AbstractController
         $invite->setSlug(uniqid('invit-'));
         $invite->setNom($data->get('nom'));
         $invite->setPrenom($data->get('prenom'));
-        $invite->setEmail($data->get('email'));
+        $invite->setEmail('');
         $invite->setAdresse($data->get('adresse'));
         $invite->setTelephone($data->get('telephone'));
         $invite->setSituation($data->get('situation'));
         $invite->setValide(false);
+
+        if ($data->get('hername')!= null){
+            $invite->setHerName($data->get('hername'));
+        }
 
         //ajout du code qr
         $this->generateQrCode($invite->getSlug());
@@ -154,8 +159,22 @@ class AdminController extends AbstractController
         if ($data->get('type')=="VIRTUEL"){
             $invite->setType($data->get('type'));
         } else {
+            $tab = $this->tableRipo->findOneBy(['slug'=>$data->get('type')]);
             $invite->setType("PHYSIQUE");
-            $invite->setPlace($this->tableRipo->findOneBy(['slug'=>$data->get('type')]));
+            $invite->setPlace($tab);
+            if (!empty($data->get('hername'))){
+                if ((count($tab->getHerPlaces()) + count($tab->getInvites()) )>8)
+                {
+                    $this->addFlash('table_waring', 'Cette table ne peut pas accueillir un couple');
+                    return $this->redirectToRoute('admin');
+                } else
+                {
+                    $hp = (new HerPlace())
+                        ->setInvite($invite)
+                        ->setPlace($tab);
+                    $this->em->persist($hp);
+                }
+            }
         }
         $this->em->persist($invite);
         $this->em->flush();
@@ -181,18 +200,50 @@ class AdminController extends AbstractController
 
         $invite->setNom($data->get('nom'));
         $invite->setPrenom($data->get('prenom'));
-        $invite->setEmail($data->get('email'));
+        $invite->setEmail("");
         $invite->setAdresse($data->get('adresse'));
         $invite->setTelephone($data->get('telephone'));
         $invite->setSituation($data->get('situation'));
+
+        if (!empty($data->get('hername'))){
+            $invite->setHerName($data->get('hername'));
+        }
 
         if ($data->get('type')=="VIRTUEL"){
             $invite->setType($data->get('type'));
             $invite->setPlace(null);
         } else {
+            //verie si c'est un invite physique
             $invite->setType("PHYSIQUE");
             $this->generateQrCode($invite->getSlug());
-            $invite->setPlace($this->tableRipo->findOneBy(['slug'=>$data->get('type')]));
+            $tab = $this->tableRipo->findOneBy(['slug'=>$data->get('type')]);
+            $invite->setPlace($tab);
+
+            //verifie si il a un counjoint
+            if (!empty($data->get('hername'))){
+
+                //on verifie si le conjoint avait deja une place sinon on lui en crée
+                if (!$invite->getHerPlace()){
+
+                    //vérifie le nombre de place disponible
+                    if ((count($tab->getHerPlaces()) + count($tab->getInvites()) )>8)
+                    {
+                        $this->addFlash('table_waring', 'Cette table ne peut pas accueillir un couple');
+                        return $this->redirectToRoute('admin');
+                    } else
+                    {
+                        $hp = (new HerPlace())
+                            ->setInvite($invite)
+                            ->setPlace($tab);
+                        $this->em->persist($hp);
+                    }
+                }
+
+            }
+            //ole champ du conjoint est vide donc on supprime la place que la personne occupait après avoir testé
+            elseif ($invite->getHerPlace()) {
+                $this->em->remove($invite->getHerPlace());
+            }
         }
 
         if (!empty($data->get("image"))){

@@ -29,9 +29,13 @@ class Table
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
+    #[ORM\OneToMany(mappedBy: 'place', targetEntity: HerPlace::class)]
+    private Collection $herPlaces;
+
     public function __construct()
     {
         $this->invites = new ArrayCollection();
+        $this->herPlaces = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -101,6 +105,36 @@ class Table
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, HerPlace>
+     */
+    public function getHerPlaces(): Collection
+    {
+        return $this->herPlaces;
+    }
+
+    public function addHerPlace(HerPlace $herPlace): self
+    {
+        if (!$this->herPlaces->contains($herPlace)) {
+            $this->herPlaces->add($herPlace);
+            $herPlace->setPlace($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHerPlace(HerPlace $herPlace): self
+    {
+        if ($this->herPlaces->removeElement($herPlace)) {
+            // set the owning side to null (unless already changed)
+            if ($herPlace->getPlace() === $this) {
+                $herPlace->setPlace(null);
+            }
+        }
 
         return $this;
     }

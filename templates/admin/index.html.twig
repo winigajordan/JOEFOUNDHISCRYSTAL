@@ -185,10 +185,10 @@
                                 <tr>
                                     <td>{{ tab.nom }}</td>
                                     <td>
-                                        {%  if tab.invites|length > 10 %}
+                                        {%  if  (tab.invites|length + tab.herPlaces|length) == 10 %}
                                         <label class="badge badge-danger">Table pleine</label></td>
                                     {% else %}
-                                        <label class="badge badge-primary">{{ 10 - (tab.invites|length) }} places dispo</label></td>
+                                        <label class="badge badge-primary">{{ 10 - (tab.invites|length + tab.herPlaces|length) }} places dispo</label></td>
                                     {% endif %}
                                     <td>
                                         <a class="btn btn-outline-primary btn-sm" href="{{ path('dtl_table', {'slug':tab.slug}) }}">
@@ -211,6 +211,11 @@
             <div class="card">
                 <div class="card-body">
                     <h4>Ajouter un invité</h4>
+                    {% for message in app.flashes('table_waring') %}
+                    <div class="alert alert-secondary alert-dismissible show fade">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
                     <form class="forms-sample" method="post" action="{% if invite_selected is defined %} {{ path('update_invite')}} {% else %} {{ path('add_invite') }} {% endif%}" enctype="multipart/form-data">
                         <div class="form-group row mt-3">
                             <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Type | Table </label>
@@ -240,8 +245,8 @@
                             <input type="text" name="prenom" class="form-control" id="exampleInputUsername1" placeholder="Prenom" value="{% if invite_selected is defined %} {{ invite_selected.prenom}} {% endif%}" required>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputUsername1" class="mt-3"> Email </label>
-                            <input type="email" name="email" class="form-control" id="exampleInputUsername1" placeholder="Email" value="{% if invite_selected is defined %} {{ invite_selected.email}} {% endif%}" required >
+                            <label for="exampleInputUsername1" class="mt-3"> Nom du/de la conjoint(e) </label>
+                            <input type="text" name="hername" class="form-control" id="exampleInputUsername1" placeholder="Prenom" value="{% if invite_selected is defined %} {{ invite_selected.herName}} {% endif%}" >
                         </div>
                         <div class="form-group row">
                             <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Telephone</label>
@@ -344,7 +349,6 @@
                             <thead>
                             <tr>
                                 <th>Nom</th>
-                                <th>Email</th>
                                 <th>Numero de telephone</th>
                                 <th>Acion | Table</th>
                                 <th></th>
@@ -355,16 +359,22 @@
                                 <form method="post" action="{{ path('demande_traitement') }}">
                                     <tr>
                                         <td> {{dm.prenom}} {{ dm.nom }}</td>
-                                        <td> {{dm.email}} </td>
                                         <td> {{dm.telephone}} </td>
                                         <td>
 
                                             <select class="form-control" id="exampleFormControlSelect2" name="type" req >
                                                 <option value="ANNULER">Annuler</option>
                                                 <option value="VIRTUEL">Virtuel</option>
+
                                                 {% for tab in tables %}
-                                                    {% if tab.invites|length < 10 %}
-                                                        <option value="{{ tab.slug }}">{{ tab.nom }}</option>
+                                                    {% if dm.herName is null %}
+                                                        {% if tab.invites|length < 10 %}
+                                                            <option value="{{ tab.slug }}">{{ tab.nom }}</option>
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {% if (tab.invites|length + tab.herPlaces|length)  < 9 %}
+                                                            <option value="{{ tab.slug }}">{{ tab.nom }}</option>
+                                                        {% endif %}
                                                     {% endif %}
                                                 {% endfor %}
 

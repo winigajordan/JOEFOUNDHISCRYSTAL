@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Demande;
+use App\Entity\HerPlace;
 use App\Entity\Invite;
 use App\Repository\DemandeRepository;
 use App\Repository\TableRepository;
@@ -63,11 +64,22 @@ class DemandeInvitationController extends AbstractController
                 ->setAdresse('adresse')
                 ->setValide(false);
 
+            if ($demande->getHerName()){
+                $invite->setHerName($demande->getHerName());
+            }
+
             if ($request->request->get('type')=="VIRTUEL"){
                 $invite->setType($request->request->get('type'));
             } else {
+                $tab = $tableRipo->findOneBy(['slug'=>$request->request->get('type')]);
                 $invite->setType("PHYSIQUE");
-                $invite->setPlace($tableRipo->findOneBy(['slug'=>$request->request->get('type')]));
+                if ($demande->getHerName()){
+                    $hp = new HerPlace();
+                    $hp->setPlace($tab);
+                    $hp->setInvite($invite);
+                    $em->persist($hp);
+                }
+                $invite->setPlace($tab);
             }
             $this->generateQrCode($invite->getSlug());
             $demande->setEtat(true);
