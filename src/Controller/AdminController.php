@@ -6,30 +6,29 @@ use App\Entity\HerPlace;
 use App\Entity\InvitationsEnvoye;
 use App\Entity\Invite;
 use App\Entity\Table;
+use App\Entity\User;
 use App\Repository\DemandeRepository;
 use App\Repository\InvitationsEnvoyeRepository;
 use App\Repository\InviteRepository;
 use App\Repository\ReunionRepository;
 use App\Repository\SalleRepository;
 use App\Repository\TableRepository;
-use App\Service\Mail\ApiMailJet;
 use App\Service\MessageSender\WhatsAppApi;
 use Doctrine\ORM\EntityManagerInterface;
-use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\Color\Color;
 use Endroid\QrCode\Encoding\Encoding;
-use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
 use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
-use Endroid\QrCode\Label\Label;
-use Endroid\QrCode\Logo\Logo;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-#[Route('/admin')]
+
+#[Route('/admin'), IsGranted("ROLE_ADMIN")]
 class AdminController extends AbstractController
 {
     private SalleRepository $salleRipo;
@@ -39,6 +38,7 @@ class AdminController extends AbstractController
     private DemandeRepository $demandeRipo;
     private ReunionRepository $reunionRipo;
     private InvitationsEnvoyeRepository $invitSendRipo;
+    private $encoder;
 
     public function __construct(
         SalleRepository $salleRipo,
@@ -47,7 +47,8 @@ class AdminController extends AbstractController
         InviteRepository $inviteRipo,
         DemandeRepository $demandeRipo,
         ReunionRepository $reunionRipo,
-        InvitationsEnvoyeRepository $invitSendRipo
+        InvitationsEnvoyeRepository $invitSendRipo,
+        UserPasswordHasherInterface $encoder,
     )
     {
         $this->em = $em;
@@ -59,7 +60,7 @@ class AdminController extends AbstractController
         $this->salle = $salleRipo->find(1);
         $this->demandes = $demandeRipo->findBy(['etat'=>false]);
         $this->demandeRipo = $demandeRipo;
-        //$this->invitSent = $invitSendRipo->
+        $this->encoder = $encoder;
 
     }
 
@@ -277,6 +278,9 @@ class AdminController extends AbstractController
 
     #[Route('/send/invitation', name:'send_invits')]
     public function sendInvits(){
+
+        //$this->createAdmin("Joe", "Admin", "admin@gmail.com", "1234");
+        //dd();
         set_time_limit(1850);
         $invits = $this->inviteRipo->findAll();
         $api = new WhatsAppApi();
@@ -301,5 +305,16 @@ class AdminController extends AbstractController
         }
         $this->em->flush();
         return $this->redirectToRoute('admin');
+    }
+
+    public function createAdmin($nom, $prenom, $mail, $password){
+        $user = (new User())
+            ->setPrenom($prenom)
+            ->setNom($nom)
+            ->setEmail($mail)
+            ->setRoles(['ROLE_ADMIN']);
+        $user->setPassword($this->encoder->hashPassword($user, $password));
+        $this->em->persist($user);
+        $this->em->flush();
     }
 }
