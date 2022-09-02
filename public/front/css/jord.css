@@ -39,6 +39,7 @@ a{
 {
     margin-left: 50px;
 }
+
 .menu-left > h4{
     font-size: 20px;
     font-weight: normal;
@@ -56,6 +57,10 @@ a{
     list-style-type: none;
     gap: 90px;
     font-size: 20px;
+}
+
+.menu-right >ul >li >a{
+    color: #fff;
 }
 /*-------------------------- END MENU---------------------------------*/
 
@@ -329,6 +334,7 @@ a{
     height: 79px;
     display: flex;
     justify-content: center;
+    padding: 15px;
     align-items: center;
     box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.25);
     border-radius: 8px;

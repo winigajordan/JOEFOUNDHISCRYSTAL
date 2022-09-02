@@ -18,14 +18,42 @@
     <div class="container menu">
         <div class="menu-left">
             <h4>#JoeFoundHis<br>Crystal</h4>
-            <p>Home</p>
+            <p>
+                <a href="{{ path('app_home') }}" style="color: #fff;">
+                    Home
+                </a>
+            </p>
         </div>
         <div class="menu-right">
             <ul>
-                <li>Invitation</li>
-                <li>Program</li>
-                <li>Gallery</li>
-                <li>Registration</li>
+                <li>
+                    <a href="{{ path('app_unique_invitation') }}">
+                        Invitation
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('app_programme') }}">
+                        Program
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('app_gallery') }}">
+                        Gallery
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('app_demande_invitation') }}">
+                        Registration
+                    </a>
+                </li>
+                {% for locale in locales %}
+                    {% if locale != app.request.locale %}
+                    <li>
+                        <a href="{{ path('translation', {'locale':locale}) }}">
+                            {{ locale }}
+                        </a></li>
+                    {% endif %}
+                {% endfor %}
             </ul>
         </div>
 
