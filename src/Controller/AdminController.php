@@ -8,6 +8,7 @@ use App\Entity\Invite;
 use App\Entity\Table;
 use App\Entity\User;
 use App\Repository\DemandeRepository;
+use App\Repository\HerPlaceRepository;
 use App\Repository\InvitationsEnvoyeRepository;
 use App\Repository\InviteRepository;
 use App\Repository\ReunionRepository;
@@ -39,6 +40,7 @@ class AdminController extends AbstractController
     private ReunionRepository $reunionRipo;
     private InvitationsEnvoyeRepository $invitSendRipo;
     private $encoder;
+    private HerPlaceRepository $hpRipo;
 
     public function __construct(
         SalleRepository $salleRipo,
@@ -49,6 +51,7 @@ class AdminController extends AbstractController
         ReunionRepository $reunionRipo,
         InvitationsEnvoyeRepository $invitSendRipo,
         UserPasswordHasherInterface $encoder,
+        HerPlaceRepository $hpRipo,
     )
     {
         $this->em = $em;
@@ -61,6 +64,7 @@ class AdminController extends AbstractController
         $this->demandes = $demandeRipo->findBy(['etat'=>false]);
         $this->demandeRipo = $demandeRipo;
         $this->encoder = $encoder;
+        $this->hpRipo = $hpRipo;
 
     }
 
@@ -163,6 +167,7 @@ class AdminController extends AbstractController
             $tab = $this->tableRipo->findOneBy(['slug'=>$data->get('type')]);
             $invite->setType("PHYSIQUE");
             $invite->setPlace($tab);
+            //verifie si il ya une conjointe
             if (!empty($data->get('hername'))){
                 if ((count($tab->getHerPlaces()) + count($tab->getInvites()) )>8)
                 {
@@ -198,27 +203,44 @@ class AdminController extends AbstractController
     public function updateInvite(Request $request){
         $data = $request->request;
         $invite = $this->inviteRipo->findOneBy(['slug'=>$data->get('slug')]);
-
+        //dd($data);
         $invite->setNom($data->get('nom'));
         $invite->setPrenom($data->get('prenom'));
         $invite->setEmail("");
         $invite->setAdresse($data->get('adresse'));
         $invite->setTelephone($data->get('telephone'));
         $invite->setSituation($data->get('situation'));
-
+        if (!empty($data->get("image"))){
+            $img=$request->files->get("image");
+            $imageName=uniqid().'.'.$img->guessExtension();
+            $img->move($this->getParameter("profile"),$imageName);
+            $invite->setPhoto($imageName);
+        }
         if (!empty($data->get('hername'))){
             $invite->setHerName($data->get('hername'));
+        } else {
+            $invite->setHerName(null);
         }
+        $this->em->persist($invite);
 
         if ($data->get('type')=="VIRTUEL"){
             $invite->setType($data->get('type'));
             $invite->setPlace(null);
+            $this->em->persist($invite);
+
+            //verifier si c'était un couple
+            if ($invite->getHerPlace()){
+                //supression de la place du conjoint
+                $this->em->remove($invite->getHerPlace());
+            }
+
         } else {
             //verie si c'est un invite physique
             $invite->setType("PHYSIQUE");
             $this->generateQrCode($invite->getSlug());
             $tab = $this->tableRipo->findOneBy(['slug'=>$data->get('type')]);
             $invite->setPlace($tab);
+            $this->em->persist($invite);
 
             //verifie si il a un counjoint
             if (!empty($data->get('hername'))){
@@ -241,20 +263,15 @@ class AdminController extends AbstractController
                 }
 
             }
-            //ole champ du conjoint est vide donc on supprime la place que la personne occupait après avoir testé
-            elseif ($invite->getHerPlace()) {
-                $this->em->remove($invite->getHerPlace());
+            //le champ du conjoint est vide donc on supprime la place que la personne occupait après avoir testé
+            else {
+                if ($invite->getHerPlace()) {
+                    $this->em->remove($this->hpRipo->findOneBy(['invite'=>$invite]));
+                    $invite->setHerName(null);
+                }
             }
         }
 
-        if (!empty($data->get("image"))){
-            $img=$request->files->get("image");
-            $imageName=uniqid().'.'.$img->guessExtension();
-            $img->move($this->getParameter("profile"),$imageName);
-            $invite->setPhoto($imageName);
-        }
-
-        $this->em->persist($invite);
         $this->em->flush();
         return $this->redirectToRoute('admin');
     }
@@ -289,13 +306,18 @@ class AdminController extends AbstractController
             if (!$invit->getInvitationsEnvoye()){
                 if ($invit->getType()=='VIRTUEL') {
                     //$mail->send($invit->getEmail(), $this->reunion->getUrl(), $this->reunion->getPassword());
+                    $url = $this->reunion->getUrl();
+                    $password = $this->reunion->getPassword();
+                    $msg = "Bonjour, compte tenu de votre indisponibilité, nous vous invitons à suivre notre maniage sur le lien suivant : $url \n mot de passe : $password ";
                     $api->text($invit->getTelephone(), "invit virtuel");
                     //un invite virtuel n'a pas la possibilité de valider son
                     $invit->setValide(true);
                     $this->em->persist($invit);
                 } else {
                     //$mail->physique($invit->getEmail(), 'link');
-                    $api->text($invit->getTelephone(), "invit physique");
+                    $link = $_SERVER['HTTP_HOST'].'/invitation/'.$invit->getSlug();
+                    $msg = "Bonjour, nous vous invitons à confirmer votre présence à notre mariage en vous rendant sur ce lien : $link \n \n ce lien est unique et vous ne pourez confirmer votre présence qu'une fois";
+                    $api->text($invit->getTelephone(), $msg);
                 }
                 $sent = (new InvitationsEnvoye())
                     ->setInvite($invit);
@@ -316,5 +338,10 @@ class AdminController extends AbstractController
         $user->setPassword($this->encoder->hashPassword($user, $password));
         $this->em->persist($user);
         $this->em->flush();
+    }
+
+    public function messageText($text){
+        $msg = str_replace(' ', '%20', $text);
+        return str_replace('\n', '%0A');
     }
 }

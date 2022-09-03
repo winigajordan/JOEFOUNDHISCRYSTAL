@@ -246,7 +246,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputUsername1" class="mt-3"> Nom du/de la conjoint(e) </label>
-                            <input type="text" name="hername" class="form-control" id="exampleInputUsername1" placeholder="Prenom" value="{% if invite_selected is defined %} {{ invite_selected.herName}} {% endif%}" >
+                            <input type="text" name="hername" class="form-control" id="exampleInputUsername1" placeholder="Prenom" {% if invite_selected is defined %}value="{{ invite_selected.herName}}"{% endif%} >
                         </div>
                         <div class="form-group row">
                             <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Telephone</label>
