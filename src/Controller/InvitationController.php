@@ -21,7 +21,7 @@ class InvitationController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
         if ($invit->isValide()){
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_informations', ['slug'=>$slug]);
         }
         return $this->render('invitation/index.html.twig', [
            'invit'=>$invit
@@ -36,15 +36,24 @@ class InvitationController extends AbstractController
         if ($data->get('validation')=='no'){
             $invite->setPlace(null);
             $invite->setType("VIRTUEL");
+            $invite->setValide(false);
             $sent = $sentRipo->findOneBy(['invite'=>$invite]);
-            $em->remove($sent);
             $em->persist($invite);
+            $em->remove($sent);
+            if($invite->getHerPlace()){
+                $em->remove($invite->getHerPlace());
+                
+            }
+        
+            
             $em->flush();
             return $this->redirectToRoute('app_home');
         }
             else
         {
+            $em->flush();
             return $this->redirectToRoute('app_informations', ['slug'=>$data->get('slug')]);
         }
+        
     }
 }

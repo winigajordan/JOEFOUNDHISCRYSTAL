@@ -310,16 +310,17 @@
                                     {% endif %}
                                     <td>
                                         {%  if invite.valide %}
-                                            <label class="badge badge-outline-primary">OUI</label></td>
+                                            <label class="badge badge-outline-primary">OUI</label>
                                         {% else %}
-                                            <label class="badge badge-outline-warning">NON</label></td>
+                                            <label class="badge badge-outline-warning">NON</label>
                                         {% endif %}
                                     </td>
                                     <td>
                                         {%  if invite.invitationsEnvoye %}
-                                                <label class="badge badge-outline-primary">OUI</label></td>
+                                            <a class="badge badge-outline-primary">NON</a>
                                         {% else %}
-                                            <label class="badge badge-outline-warning">NON</label></td>
+                                        <a href="{{path('send_one_invit', {'slug':invite.slug})}}" class="btn btn-outline-success">Envoyer</a>
+                                        
                                         {% endif %}
                                     </td>
                                     <td>

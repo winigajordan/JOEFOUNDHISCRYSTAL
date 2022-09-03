@@ -15,8 +15,10 @@ class WhatsAppApi
             "recipient=".$number.
             "&apikey=".$this->apiKey.
             "&text=".$message."&json=yes";
+        //dd($url);
         $context = stream_context_create(['http' => ['ignore_errors' => true]]);
-        file_get_contents($url, false, $context);
+        $data = file_get_contents($url, false, $context);
+        //dd($data);
 
     }
 }
