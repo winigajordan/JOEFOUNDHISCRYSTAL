@@ -309,7 +309,7 @@ class AdminController extends AbstractController
                     $url = $this->reunion->getUrl();
                     $password = $this->reunion->getPassword();
                     $msg = "Bonjour, compte tenu de votre indisponibilité, nous vous invitons à suivre notre maniage sur le lien suivant : $url \n mot de passe : $password ";
-                    $api->text($invit->getTelephone(), "invit virtuel");
+                    $api->text($invit->getTelephone(), $this->messageText($msg));
                     //un invite virtuel n'a pas la possibilité de valider son
                     $invit->setValide(true);
                     $this->em->persist($invit);
@@ -317,7 +317,7 @@ class AdminController extends AbstractController
                     //$mail->physique($invit->getEmail(), 'link');
                     $link = $_SERVER['HTTP_HOST'].'/invitation/'.$invit->getSlug();
                     $msg = "Bonjour, nous vous invitons à confirmer votre présence à notre mariage en vous rendant sur ce lien : $link \n \n ce lien est unique et vous ne pourez confirmer votre présence qu'une fois";
-                    $api->text($invit->getTelephone(), $msg);
+                    $api->text($invit->getTelephone(), $this->messageText($msg));
                 }
                 $sent = (new InvitationsEnvoye())
                     ->setInvite($invit);
@@ -342,6 +342,6 @@ class AdminController extends AbstractController
 
     public function messageText($text){
         $msg = str_replace(' ', '%20', $text);
-        return str_replace('\n', '%0A');
+        return str_replace('\n', '%0A', $msg);
     }
 }
