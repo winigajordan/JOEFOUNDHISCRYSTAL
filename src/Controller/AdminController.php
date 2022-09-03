@@ -143,7 +143,7 @@ class AdminController extends AbstractController
         $invite->setPrenom($data->get('prenom'));
         $invite->setEmail('');
         $invite->setAdresse($data->get('adresse'));
-        $invite->setTelephone($data->get('telephone'));
+        $invite->setTelephone(str_replace(' ', '', $data->get('telephone')));
         $invite->setSituation($data->get('situation'));
         $invite->setValide(false);
 
@@ -208,7 +208,7 @@ class AdminController extends AbstractController
         $invite->setPrenom($data->get('prenom'));
         $invite->setEmail("");
         $invite->setAdresse($data->get('adresse'));
-        $invite->setTelephone($data->get('telephone'));
+        $invite->setTelephone(str_replace(' ', '', $data->get('telephone')));
         $invite->setSituation($data->get('situation'));
         if (!empty($data->get("image"))){
             $img=$request->files->get("image");
@@ -295,9 +295,6 @@ class AdminController extends AbstractController
 
     #[Route('/send/invitation', name:'send_invits')]
     public function sendInvits(){
-
-        //$this->createAdmin("Joe", "Admin", "admin@gmail.com", "1234");
-        //dd();
         set_time_limit(1850);
         $invits = $this->inviteRipo->findAll();
         $api = new WhatsAppApi();
@@ -308,16 +305,16 @@ class AdminController extends AbstractController
                     //$mail->send($invit->getEmail(), $this->reunion->getUrl(), $this->reunion->getPassword());
                     $url = $this->reunion->getUrl();
                     $password = $this->reunion->getPassword();
-                    $msg = "Bonjour, compte tenu de votre indisponibilité, nous vous invitons à suivre notre maniage sur le lien suivant : $url \n mot de passe : $password ";
-                    $api->text($invit->getTelephone(), "invit virtuel");
+                    $msg = "Bonjour, compte tenu de votre indisponibilité, nous vous invitons à suivre notre maniage sur le lien suivant : $url %0A mot de passe : $password ";
+                    $api->text($invit->getTelephone(), $this->messageText($msg));
                     //un invite virtuel n'a pas la possibilité de valider son
                     $invit->setValide(true);
                     $this->em->persist($invit);
                 } else {
                     //$mail->physique($invit->getEmail(), 'link');
                     $link = $_SERVER['HTTP_HOST'].'/invitation/'.$invit->getSlug();
-                    $msg = "Bonjour, nous vous invitons à confirmer votre présence à notre mariage en vous rendant sur ce lien : $link \n \n ce lien est unique et vous ne pourez confirmer votre présence qu'une fois";
-                    $api->text($invit->getTelephone(), $msg);
+                    $msg = "Bonjour, nous vous invitons à confirmer votre présence à notre mariage en vous rendant sur ce lien : $link %0A %0A ce lien est unique et vous ne pourez confirmer votre présence qu'une fois";
+                    $api->text($invit->getTelephone(), $this->messageText($msg));
                 }
                 $sent = (new InvitationsEnvoye())
                     ->setInvite($invit);
@@ -329,6 +326,34 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('admin');
     }
 
+    #[Route('/send/invitation/{slug}', name:'send_one_invit')]
+    public function sendOneInvit($slug, Request $request){
+        $api = new WhatsAppApi();
+        $invit = $this->inviteRipo->findOneBy(['slug'=>$slug]);
+        if ($invit->getType()=='VIRTUEL') {
+           
+            $url = $this->reunion->getUrl();
+            $password = $this->reunion->getPassword();
+            $msg = "Bonjour, compte tenu de votre indisponibilité, nous vous invitons à suivre notre maniage sur le lien suivant : $url %0A mot de passe : $password ";
+            
+            $api->text($invit->getTelephone(), $this->messageText($msg));
+            $invit->setValide(true);
+        } else {
+            
+            $link = $_SERVER['HTTP_HOST'].'/invitation/'.$invit->getSlug();
+            $msg = "Bonjour, nous vous invitons à confirmer votre présence à notre mariage en vous rendant sur ce lien : $link %0A %0A ce lien est unique et vous ne pourez confirmer votre présence qu'une fois";
+            
+            $api->text($invit->getTelephone(), $this->messageText($msg));
+        }
+        $sent = (new InvitationsEnvoye())
+            ->setInvite($invit);
+
+        $this->em->persist($sent);
+        $this->em->persist($invit);
+        $this->em->flush();
+        return $this->redirect($request->headers->get('referer'));
+    }
+
     public function createAdmin($nom, $prenom, $mail, $password){
         $user = (new User())
             ->setPrenom($prenom)
@@ -338,10 +363,12 @@ class AdminController extends AbstractController
         $user->setPassword($this->encoder->hashPassword($user, $password));
         $this->em->persist($user);
         $this->em->flush();
+        
     }
 
     public function messageText($text){
         $msg = str_replace(' ', '%20', $text);
-        return str_replace('\n', '%0A');
+        $msg = str_replace('/', '%2F',$msg);
+        return $msg;
     }
 }
