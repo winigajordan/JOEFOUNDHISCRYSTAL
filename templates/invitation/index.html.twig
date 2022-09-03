@@ -17,30 +17,29 @@
             <img src="{{ asset('front/images/Drawings-Of-Hearts-PNG-Photo-Image 2.png') }}" alt="">
         </div>
         <div class="invitations-links-bottom">
-            <a><p>Download the invitation card</p></a>
-            <a><p>Make your Gift & Donation</p></a>
+            <a href="{{ asset('front/images/invitation-private.png') }}" target="_blank"><p>{% trans %}Download the invitation card{% endtrans %}</p></a>
+            <a><p>{%trans %}Make your Gift & Donation{% endtrans %}</p></a>
         </div>
     </section>
 
     <section id="public-invitation-bottom">
         <img src="{{ asset('front/images/wedding-couple 2.png') }}" alt="">
         <div id="invitation-confirmation-form">
-            <p>Confirm your presence</p>
+            <p>{% trans %}Confirm your presence{% endtrans %}</p>
             <form method="post" action="{{ path('invitation_validation') }}">
-                <p>Will you attend the ceremony ?</p>
+                <p>{% trans %}Will you attend the ceremony ? {% endtrans %}</p>
                 <div>
                     <div>
                         <input type="radio" value="yes" name="validation" id="yes" checked>
-                        <label for="yes">Yes, I Will</label>
+                        <label for="yes">{% trans %}Yes, I Will {% endtrans %}</label>
                     </div>
                     <div>
                         <input type="radio" value="no" name="validation" id="no">
-                        <label for="no">No, I can't (Virtual Attendance)</label>
+                        <label for="no">{% trans %}No, I can't (Virtual Attendance){% endtrans %}</label>
                         <input type="text" name="slug" value="{{ invit.slug }}" style="display: none" >
                     </div>
                 </div>
-
-                <input type="submit" value="Send" id="submit-confirmation">
+                <input type="submit" value=" {% trans %}Send{% endtrans %}" id="submit-confirmation">
             </form>
         </div>
     </section>
