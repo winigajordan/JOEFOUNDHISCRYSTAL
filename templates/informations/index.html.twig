@@ -4,7 +4,7 @@
 
 {% block body %}
     <section id="my-information">
-        <h1>Your information</h1>
+        <h1>{% trans %}Your information{% endtrans %}</h1>
         <div id="inner-information">
 
             <div id="qr-code-block">
@@ -15,11 +15,11 @@
 
                 <div>
                     <img src="{{asset('Files/qrcode/')}}{{ qrcode }}" alt="" width="150px" height="150px">
-                    <p>Scan to download your information</p>
+                    <p>{% trans %}Scan to download your information{% endtrans %}</p>
                 </div>
 
                 <div>
-                    <p class="nb">NB: Without your QR code or your<br>information you can’t attend to reception</p>
+                    <p class="nb" style="padding-left: 15px">{% trans %}NB: Without your QR code or your<br>information you can’t attend to reception{% endtrans %}</p>
                 </div>
 
             </div>
@@ -28,23 +28,23 @@
 
                 <form>
                     <div>
-                        <label for="coupleLastName">Last Name</label>
+                        <label for="coupleLastName">{% trans %}Last Name{% endtrans %}</label>
                         <input type="text" name="" id="coupleLastName" class="infos-input" style="padding-left: 25px; border:none;  font-family: 'Metal'" disabled value="{{ invite.nom }}">
                     </div>
                     <div>
-                        <label for="firstName">First Name</label>
+                        <label for="firstName">{% trans %}First Name{% endtrans %}</label>
                         <input type="text" name="" id="firstName" class="infos-input" style="padding-left: 25px; border:none; font-family: 'Metal'" disabled value="{{ invite.prenom }}">
                     </div>
                     <div>
-                        <label for="number">Whatsapp Number</label>
+                        <label for="number">{% trans %}Whatsapp Number{% endtrans %}</label>
                         <input type="text" name="" id="number" class="infos-input" style="padding-left: 25px; border:none; font-family: 'Metal'" disabled value="{{ invite.telephone }}">
                     </div>
                     <div>
-                        <label for="coupleLastName">Relationship with future couple</label>
-                        <input type="text" name="" id="relationToCouple" class="infos-input" style="padding-left: 25px; border:none; font-family: 'Metal'" disabled value="{% if invite.situation == "epoux" %} Groom's family guest  {%else %}  Bride's family guest {% endif %}">
+                        <label for="coupleLastName">{% trans %}Relationship with future couple{% endtrans %}</label>
+                        <input type="text" name="" id="relationToCouple" class="infos-input" style="padding-left: 25px; border:none; font-family: 'Metal'" disabled value="{% if invite.situation == "epoux" %} {% trans %} Groom's family guest {% endtrans%}  {%else %}  {% trans %}Bride's family guest {% endtrans%} {% endif %}">
                     </div>
                     <div>
-                        <label for="table">Table</label>
+                        <label for="table">{% trans %}Table{% endtrans %}</label>
                         <input type="text" name="" id="table" class="infos-input" style="padding-left: 25px; border:none; font-family: 'Metal'" disabled value="{{ invite.place.nom }}">
                     </div>
                 </form>
@@ -56,7 +56,7 @@
 
     <section id="information-page-bottom">
         <img src="{{ asset('front/images/card 1.png') }}" alt="">
-        <p>See Wedding Program</p>
+        <p>{% trans %}See Wedding Program{% endtrans %}</p>
     </section>
 
     <section class="filler"></section>

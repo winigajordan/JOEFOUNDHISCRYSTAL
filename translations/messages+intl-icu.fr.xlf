@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
     <header>
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
@@ -108,6 +108,162 @@
       <trans-unit id="uVnd4T6" resname="We thank to all our value guests ( familly, friends, organization)that contributed to make alive this &lt;br&gt;wedding that will be memorable for us. Thank you once again for y'all kind gesture, prayer, advise,&lt;br&gt; encouragements and donation to make it succesful. GLORY to Jehovah GOD.">
         <source>We thank to all our value guests ( familly, friends, organization)that contributed to make alive this &lt;br&gt;wedding that will be memorable for us. Thank you once again for y'all kind gesture, prayer, advise,&lt;br&gt; encouragements and donation to make it succesful. GLORY to Jehovah GOD.</source>
         <target><![CDATA[Nous remercions tous nos précieux invités (famille, amis, organisation) qui ont contribué à faire vivre ce <br>mariage qui sera mémorable pour nous. Merci encore pour votre aimable geste, vos prières, vos conseils,<br> vos encouragements et vos dons pour en faire un succès. GLOIRE à Jéhovah DIEU.]]></target>
+      </trans-unit>
+      <trans-unit id="CtMu.E5" resname="Download the invitation card">
+        <source>Download the invitation card</source>
+        <target>Télécharger la carte d'invitation</target>
+      </trans-unit>
+      <trans-unit id="X4ran1c" resname="Save your place right here">
+        <source>Save your place right here</source>
+        <target>Réservez votre place ici</target>
+      </trans-unit>
+      <trans-unit id="KEkVw_0" resname="Link to wedding registration">
+        <source>Link to wedding registration</source>
+        <target>Lien vers l'enregistrement du mariage</target>
+      </trans-unit>
+      <trans-unit id="PrRzfOD" resname="Civil Registration&lt;br&gt;Wedding">
+        <source>Civil Registration&lt;br&gt;Wedding</source>
+        <target><![CDATA[Mariage<br>Civil]]></target>
+      </trans-unit>
+      <trans-unit id="51gnKSS" resname="Ikoyi Lagos  Friday October 21st 2022">
+        <source>Ikoyi Lagos  Friday October 21st 2022</source>
+        <target>Ikoyi Lagos Vendredi 21 octobre 2022</target>
+      </trans-unit>
+      <trans-unit id="RyBAE_X" resname="Wedding Religious&lt;br&gt; Ceremony">
+        <source>Wedding Religious&lt;br&gt; Ceremony</source>
+        <target><![CDATA[Mariage<br> Religieux]]></target>
+      </trans-unit>
+      <trans-unit id=".lwkTjy" resname="Kingdom hall of Jehovah's Witnesses (lekki Lagos ELF BUS-STOP), October 22nd 2022 10:00 AM">
+        <source>Kingdom hall of Jehovah's Witnesses (lekki Lagos ELF BUS-STOP), October 22nd 2022 10:00 AM</source>
+        <target>Salle du Royaume des Témoins de Jéhovah (lekki Lagos ELF BUS-STOP), le 22 octobre 2022 à 10h00</target>
+      </trans-unit>
+      <trans-unit id="_c9ebaO" resname="See the location">
+        <source>See the location</source>
+        <target>Voir la localisation</target>
+      </trans-unit>
+      <trans-unit id="a_VW.xV" resname="Wedding Party">
+        <source>Wedding Party</source>
+        <target>Réception</target>
+      </trans-unit>
+      <trans-unit id="0R9Gkbs" resname="Radisson Blu Anchorage Hotel  Lagos , October 22nd 2022 01:00 PM (Limited access, only by e-invitation confirmation or hard copy invitation)">
+        <source>Radisson Blu Anchorage Hotel  Lagos , October 22nd 2022 01:00 PM (Limited access, only by e-invitation confirmation or hard copy invitation)</source>
+        <target>Radisson Blu Anchorage Hotel Lagos, le 22 octobre 2022 à 13h00 (Accès limité, uniquement sur confirmation d'invitation électronique ou sur invitation papier) </target>
+      </trans-unit>
+      <trans-unit id="8v399V8" resname="Scan to see food menu">
+        <source>Scan to see food menu</source>
+        <target>Scannez pour voir le menu</target>
+      </trans-unit>
+      <trans-unit id="yyeB8Tb" resname="Thank You !!!">
+        <source>Thank You !!!</source>
+        <target>Merci !!!</target>
+      </trans-unit>
+      <trans-unit id="_5B9k8I" resname="Guest Wedding Registration">
+        <source>Guest Wedding Registration</source>
+        <target>Invitation au mariage</target>
+      </trans-unit>
+      <trans-unit id="eCDxtv0" resname="Mr">
+        <source>Mr</source>
+        <target>M.</target>
+      </trans-unit>
+      <trans-unit id="K1iN5ty" resname="Mrs/ Miss">
+        <source>Mrs/ Miss</source>
+        <target>Mlle/Mme</target>
+      </trans-unit>
+      <trans-unit id="ls5uYZO" resname="First Name">
+        <source>First Name</source>
+        <target>Prénom(s) </target>
+      </trans-unit>
+      <trans-unit id="9VVjs4a" resname="Last Name">
+        <source>Last Name</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="4KdjfKs" resname="Whatsapp Number">
+        <source>Whatsapp Number</source>
+        <target>Numéro Whatsapp</target>
+      </trans-unit>
+      <trans-unit id="6uRlnsI" resname="Bride's family guest">
+        <source>Bride's family guest</source>
+        <target>Invité de la famille de la mariée</target>
+      </trans-unit>
+      <trans-unit id="F_6JxOt" resname="Groom's family guest">
+        <source>Groom's family guest</source>
+        <target>Invitation de la famille du marié</target>
+      </trans-unit>
+      <trans-unit id=".4.x19O" resname="Take or Upload Picture">
+        <source>Take or Upload Picture</source>
+        <target>Uploader votre photo</target>
+      </trans-unit>
+      <trans-unit id="0pI6dK." resname="For Single">
+        <source>For Single</source>
+        <target>Célibataire</target>
+      </trans-unit>
+      <trans-unit id="SUoBnJB" resname="For Couple">
+        <source>For Couple</source>
+        <target>Pour les couples</target>
+      </trans-unit>
+      <trans-unit id="40s7e5l" resname="Make a gift donation">
+        <source>Make a gift donation</source>
+        <target>Fair un don en cadeau</target>
+      </trans-unit>
+      <trans-unit id="_62SSgD" resname="Your information">
+        <source>Your information</source>
+        <target>Vos informations </target>
+      </trans-unit>
+      <trans-unit id="GgAxRmq" resname="Scan to download your information">
+        <source>Scan to download your information</source>
+        <target><![CDATA[Scannez pour télécharger <br> vos informations]]></target>
+      </trans-unit>
+      <trans-unit id="jMYlPho" resname="NB: Without your QR code or your&lt;br&gt;information you can’t attend to reception">
+        <source>NB: Without your QR code or your&lt;br&gt;information you can’t attend to reception</source>
+        <target>NB: Sans votre code QR ou vos informations vous ne pouvez pas vous présenter à la réception</target>
+      </trans-unit>
+      <trans-unit id="lsxUnem" resname="Relationship with future couple">
+        <source>Relationship with future couple</source>
+        <target> Invité par </target>
+      </trans-unit>
+      <trans-unit id="FtHJBQo" resname="Table">
+        <source>Table</source>
+        <target>Table</target>
+      </trans-unit>
+      <trans-unit id="SH4IqMF" resname="See Wedding Program">
+        <source>See Wedding Program</source>
+        <target>Voir le programme de mariage</target>
+      </trans-unit>
+      <trans-unit id="aG4TR4e" resname="Will you attend the ceremony ?">
+        <source>Will you attend the ceremony ?</source>
+        <target>Serez-vous présent à la cérémonie  ?</target>
+      </trans-unit>
+      <trans-unit id="g2rjgeu" resname="Yes, I Will">
+        <source>Yes, I Will</source>
+        <target>Oui, je serai présent</target>
+      </trans-unit>
+      <trans-unit id="sHzywTw" resname="No, I can't (Virtual Attendance)">
+        <source>No, I can't (Virtual Attendance)</source>
+        <target>Non, je la suivrai en ligne </target>
+      </trans-unit>
+      <trans-unit id="9vRoj.I" resname="Send">
+        <source>Send</source>
+        <target>Envoyer</target>
+      </trans-unit>
+      <trans-unit id="6iLqXmn" resname="Confirm your presence">
+        <source>Confirm your presence</source>
+        <target>Confirmation de présence</target>
+      </trans-unit>
+      <trans-unit id="1p6lLt6" resname="Couple Last Name">
+        <source>Couple Last Name</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="C_fj.VK" resname="Mr First Name">
+        <source>Mr First Name</source>
+        <target>Prénom de l'homme</target>
+      </trans-unit>
+      <trans-unit id="GyLN5ge" resname="Mme First Name">
+        <source>Mme First Name</source>
+        <target>Prénom de la femme</target>
+      </trans-unit>
+      <trans-unit id="1PIdGbo" resname="Take a picture together">
+        <source>Take a picture together</source>
+        <target>Prenez une photo ensemble</target>
       </trans-unit>
     </body>
   </file>

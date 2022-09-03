@@ -41,7 +41,9 @@ class InvitationController extends AbstractController
             $em->persist($invite);
             $em->flush();
             return $this->redirectToRoute('app_home');
-        } else {
+        }
+            else
+        {
             return $this->redirectToRoute('app_informations', ['slug'=>$data->get('slug')]);
         }
     }

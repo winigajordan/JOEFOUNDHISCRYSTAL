@@ -289,13 +289,13 @@ class AdminController extends AbstractController
             if (!$invit->getInvitationsEnvoye()){
                 if ($invit->getType()=='VIRTUEL') {
                     //$mail->send($invit->getEmail(), $this->reunion->getUrl(), $this->reunion->getPassword());
-                    $api->text($invit->getTelephone(), "invitvirtuel");
+                    $api->text($invit->getTelephone(), "invit virtuel");
                     //un invite virtuel n'a pas la possibilité de valider son
                     $invit->setValide(true);
                     $this->em->persist($invit);
                 } else {
                     //$mail->physique($invit->getEmail(), 'link');
-                    $api->text($invit->getTelephone(), "invitphysique");
+                    $api->text($invit->getTelephone(), "invit physique");
                 }
                 $sent = (new InvitationsEnvoye())
                     ->setInvite($invit);
