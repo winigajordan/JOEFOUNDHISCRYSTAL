@@ -17,9 +17,10 @@ class HerPlace
     #[ORM\JoinColumn(nullable: false)]
     private ?Table $place = null;
 
-    #[ORM\OneToOne(inversedBy: 'herPlace', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\OneToOne(inversedBy: 'herPlace')]
     private ?Invite $invite = null;
+
+
 
     public function getId(): ?int
     {
@@ -43,10 +44,11 @@ class HerPlace
         return $this->invite;
     }
 
-    public function setInvite(Invite $invite): self
+    public function setInvite(?Invite $invite): self
     {
         $this->invite = $invite;
 
         return $this;
     }
+
 }

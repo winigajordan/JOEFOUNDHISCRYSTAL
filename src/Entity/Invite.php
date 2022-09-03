@@ -53,11 +53,12 @@ class Invite
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $civilite = null;
 
-    #[ORM\OneToOne(mappedBy: 'invite', cascade: ['persist', 'remove'])]
-    private ?HerPlace $herPlace = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $herName = null;
+
+    #[ORM\OneToOne(mappedBy: 'invite', cascade: ['persist', 'remove'])]
+    private ?HerPlace $herPlace = null;
 
 
 
@@ -227,22 +228,9 @@ class Invite
         return $this;
     }
 
-    public function getHerPlace(): ?HerPlace
-    {
-        return $this->herPlace;
-    }
 
-    public function setHerPlace(HerPlace $herPlace): self
-    {
-        // set the owning side of the relation if necessary
-        if ($herPlace->getInvite() !== $this) {
-            $herPlace->setInvite($this);
-        }
 
-        $this->herPlace = $herPlace;
 
-        return $this;
-    }
 
     public function getHerName(): ?string
     {
@@ -252,6 +240,28 @@ class Invite
     public function setHerName(?string $herName): self
     {
         $this->herName = $herName;
+
+        return $this;
+    }
+
+    public function getHerPlace(): ?HerPlace
+    {
+        return $this->herPlace;
+    }
+
+    public function setHerPlace(?HerPlace $herPlace): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($herPlace === null && $this->herPlace !== null) {
+            $this->herPlace->setInvite(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($herPlace !== null && $herPlace->getInvite() !== $this) {
+            $herPlace->setInvite($this);
+        }
+
+        $this->herPlace = $herPlace;
 
         return $this;
     }
