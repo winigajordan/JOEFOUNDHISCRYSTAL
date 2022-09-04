@@ -56,7 +56,10 @@
 
     <section id="information-page-bottom">
         <img src="{{ asset('front/images/card 1.png') }}" alt="">
-        <p>{% trans %}See Wedding Program{% endtrans %}</p>
+        <p><a href="{{ path('app_programme') }}">
+                {% trans %}See Wedding Program{% endtrans %}
+            </a>
+        </p>
     </section>
 
     <section class="filler"></section>

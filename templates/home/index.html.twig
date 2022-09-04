@@ -29,11 +29,10 @@
         <img src="{{asset('front/images/—Pngtree—flower continuous one line art_4011135 1.png')}}" alt="" class="home-story-back-pic flowers" id="flower-3">
         <div id="home-story-top">
             <div id="our-story-image">
-                <img src="{{ asset('front/images/story.png') }}" alt="">
+               <img src="{{asset('front/images/story.png')}}" alt=""> 
             </div>
             <div id="our-story">
-                <h1>
-                    {% trans %}
+                <h1>{% trans %}
                     Our story
                     {% endtrans %}
                 </h1>
@@ -49,16 +48,16 @@
             <p>
                 {% trans %}
                 My next visit to Nigeria was on the 28th of November 2019 for business. I gave her a surprise visit to the kingdom hall of  Jehovah’s witnesses. when she turned around during the song, she was so shocked to see me. she could not stand on her feet, lol. From there we discussed more business. Most of our discussion was centered around real estate for more than one year.
-                {% endtrans %}
+                {% endtrans %}                
             </p>
             <p>
                 {% trans %}
-                But I started loving her calm attitude and kindness toward her work and general lifestyle. I ask her why a beautiful lady like her was still single. She laughed and she told me she’s still waiting for a kindhearted man.
-                {% endtrans %}
-                <br>
-                {% trans %}
-                I jumped on the opportunity, showing her my kind heart and as a french guy,I had to quickly mark my territory lol Since no one was doing so … hahaha. She was a bit confused, but we gradually built trust in each other.
-                {% endtrans %}
+            But I started loving her calm attitude and kindness toward her work and general lifestyle. I ask her why a beautiful lady like her was still single. She laughed and she told me she’s still waiting for a kindhearted man.
+            {% endtrans %}
+            <br>
+            {% trans %}
+            I jumped on the opportunity, showing her my kind heart and as a french guy,I had to quickly mark my territory lol Since no one was doing so … hahaha. She was a bit confused, but we gradually built trust in each other.
+            {% endtrans %}
             </p>
             <p>
                 {% trans %}
@@ -71,7 +70,7 @@
                 It wasn’t all smooth but patience & Jah’s grace carried us through.
                 I waited another year which means March 2022 to prove my seriousness and commitment.
                 On the 29th of March 2022 at Radisson blu VI  Lagos at 9:20 pm, I planned the proposal WITH MOM AND I SPA, Klala films and photo, Radisson blue management and here we are today. I am the happiest man on earth.
-                {% endtrans %}
+                {% endtrans %}    
             </p>
             <p>
                 {% trans %}
@@ -84,61 +83,69 @@
 
     <section id="countdown">
         <div>
-            <a href="{{ path('app_demande_invitation') }}" >
-                <p> {% trans %}Registration for {% endtrans %}
+            <a><p>{% trans %}Registration for {% endtrans %}
                     <br>
-                    {% trans %}E-Invitation {% endtrans %}</p></a>
+                    {% trans %}E-Invitation {% endtrans %}
+                </p></a>
         </div>
         <div>
-            <img src="{{ asset('front/images/savethedate_wh.gif') }}" alt="" id="save-the-date-gif">
+            <img src="{{asset('front/images/savethedate_wh.gif')}}" alt="" id="save-the-date-gif">
         </div>
         <div id="countdown-localisation">
-            <h4>
-                {% trans %}Saturday October 22nd 2022 {% endtrans %}</h4>
-            <div>
-                <img src="{{ asset('front/images/maplocalization_89142 1.png') }}" alt="">
-                <p> {% trans %}@ Kingdom Hall of Jehovah's  {% endtrans%} <br>
-                    {% trans %}Witnesses (Lekki Lagos ELF Bus-Stop) {% endtrans %}<br>
-                    {% trans %}at 10:00 am
-                {% endtrans %}</p>
-            </div>
+            <h4>{% trans %}Saturday October 22nd 2022 {% endtrans %}</h4>
+                <div>
+                    <img src="{{asset('front/images/maplocalization_89142 1.png')}}" alt="">
+                    <p> {% trans %}@ Kingdom Hall of Jehovah's  {% endtrans%} <br>
+                        {% trans %}Witnesses (Lekki Lagos ELF Bus-Stop) {% endtrans %}<br>
+                        {% trans %}at 10:00 am
+                        {% endtrans %}</p>
+                </div>
+                <div id="time-countdown">
+                    <div class="time-item">
+                        <h2 id="days">00</h2>
+                        <p>Days</p>
+                    </div>
+                    <div class="time-item">
+                        <h2 id="hours">00</h2>
+                        <p>Hours</p>
+                    </div>
+                    <div class="time-item">
+                        <h2 id="minutes">00</h2>
+                        <p>Minutes</p>
+                    </div>
+                    <div class="time-item">
+                        <h2 id="seconds">00</h2>
+                        <p>Seconds</p>
+                    </div>
+                </div>
         </div>
-        <div>
 
-        </div>
     </section>
 
     <section id="wedding-program-home">
 
         <div id="wedding-program-top">
-            <img src="{{ asset('front/images/flower-top.png') }}" alt="">
-            <h1>
-                <a href="{{ path('app_programme') }}" style="color: #fff;">
-                    {% trans %}Wedding Program {% endtrans %}
-                </a>
-            </h1>
+            <img src="{{asset('front/images/flower-top.png')}}" alt="">
         </div>
-
+        <h1>{% trans %}Wedding Program {% endtrans %}</h1>
         <div id="wedding-program-mid">
             <div>
                 <p>{% trans %}Civil registration Wedding {% endtrans %}</p>
             </div>
 
             <div>
-                <p>
-                    {% trans %}Wedding Religious  ceremony {% endtrans %}</p>
+                {% trans %}Wedding Religious  ceremony {% endtrans %}</p>
             </div>
 
             <div>
                 <p>{% trans %}Wedding party{% endtrans %}</p>
             </div>
         </div>
-
+        <div>
+            <a><p>{% trans %}Make your gift & Donation{% endtrans %}</p></a>
+        </div>
         <div id="wedding-program-bottom">
-            <div>
-                <a><p>{% trans %}Make your gift & Donation{% endtrans %}</p></a>
-            </div>
-            <img src="{{ asset('front/images/flower-bottom.png') }}" alt="">
+            <img src="{{asset('front/images/flower-bottom.png')}}" alt="">
         </div>
 
     </section>
