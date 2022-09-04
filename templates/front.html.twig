@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} Home {% endblock %}</title>
     <link rel="stylesheet" href="{{ asset('front/css/jord.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/css/responsive.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Licorice">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Metal">
@@ -14,6 +15,55 @@
     <link href='https://fonts.googleapis.com/css?family=Lily Script One' rel='stylesheet'>
 </head>
 <body>
+
+<nav>
+    <div class="container menu">
+        <div class="menu-left">
+            <h4>#JoeFoundHis<br>Crystal</h4>
+            <p>
+                <a href="{{ path('app_home') }}" style="color: #fff">
+                    Home
+                </a>
+            </p>
+        </div>
+        <div class="menu-right">
+
+            <ul>
+                <li>
+                    <a href="{{ path('app_unique_invitation') }}">
+                        Invitation
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('app_gallery') }}">
+                        Gallery
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('app_demande_invitation') }}">
+                        Registration
+                    </a>
+                </li>
+                <li id="multilingue"><a href="#">Language Choice</a>
+                    <ul id="menu-langue">
+                        {% for locale in locales %}
+                            {% if locale != app.request.locale %}
+                                <li>
+                                    <a href="{{ path('translation', {'locale':locale}) }}">
+                                        {{ locale }}
+                                    </a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <img src="{{ asset('front/images/three-bars-icon-6.jpg') }}" alt="" id="menu-hamburger">
+    </div>
+</nav>
+
+
+    <!--
 <nav>
     <div class="container menu">
         <div class="menu-left">
@@ -58,6 +108,7 @@
 
     </div>
 </nav>
+-->
 {% block body %}{% endblock %}
 </body>
 
@@ -71,4 +122,6 @@
     </div>
 
 </footer>
+
+<script src="{{asset('front/js/script.js')}}"></script>
 </html>

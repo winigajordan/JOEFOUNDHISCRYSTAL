@@ -1,11 +1,14 @@
+
 *{
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 body{
     background-color: #f1baca;
-    width: 100%;
+    /* max-width: 1440px; */
+    margin: auto;
 }
 
 a{
@@ -24,7 +27,7 @@ a{
     justify-content: space-around;
     font-family: 'Lobster';
     position: relative;
-    z-index: 1;
+    z-index: 2;
     color: #fff;
 }
 
@@ -35,11 +38,9 @@ a{
     display: flex;
     flex-direction: row;
 }
-.menu-left > p
-{
+.menu-left > p{
     margin-left: 50px;
 }
-
 .menu-left > h4{
     font-size: 20px;
     font-weight: normal;
@@ -59,19 +60,47 @@ a{
     font-size: 20px;
 }
 
-.menu-right >ul >li >a{
+.menu-right ul li{
+    position: relative;
+    display: inline-block;
+}
+
+.menu-right ul ul {
+    position: absolute;
+    display: none;
+    list-style-type: none;
+    top: 30px;
+}
+.menu-right ul li a{
     color: #fff;
+    display: block;
+}
+/* .menu-right ul li:hover > ul{
+    display: block;
+    list-style-type: none;
+} */
+.menu-right ul ul li {
+    width: 150px;
+    float: none;
+    display: list-item;
+    position: relative;
+}
+#menu-hamburger{
+    position: absolute;
+    right: 0;
+    height: 35px;
+    width: 35px;
+    display: none;
 }
 /*-------------------------- END MENU---------------------------------*/
 
 /*-------------------------- HOME HEADER ---------------------------------*/
 .home-header{
-    z-index: 1;
-    height: 809px;
+    z-index: 3;
     flex-grow: 0;
     background-image: url("../images/ring.png");
-    background-repeat : no-repeat;
-    background-size : cover;
+    background-repeat: no-repeat;
+    background-size: cover;
     margin-top: -84px;
     background-color: pink;
     opacity: 0.9;
@@ -83,12 +112,20 @@ a{
     text-shadow: 15px 8px 5px rgba(0, 0, 0, 0.25);
     font-weight: bold;
     min-width: 100%;
+
+}
+
+.invitation-header{
+    height: 809px;
+    position: relative;
+    z-index: 1;
 }
 
 #home-header-top{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
     margin-top: 84px;
 }
 
@@ -97,14 +134,6 @@ a{
     margin-left: -100px;
 }
 
-#chris{
-    margin-right: 0px;
-    margin-top: 250px;
-}
-#joel{
-    margin-left: 0px;
-    margin-top: 250px;
-}
 
 #home-header-bottom{
     text-align: center;
@@ -122,6 +151,7 @@ a{
     display: flex;
     flex-direction: column;
     position: relative;
+    overflow: hidden;
 }
 
 #home-story-top{
@@ -217,7 +247,6 @@ a{
 
 /*-------------------------- COUNTDOWN ---------------------------------*/
 #countdown{
-    height: 559px;
     background-image: url('../images/countdown-background.png');
     display: flex;
     flex-direction: row;
@@ -225,6 +254,8 @@ a{
     align-items: center;
     text-align: center;
     font-family: 'Lily Script One';
+    gap: 25px;
+    padding: 100px 0px;
 }
 #countdown > div > a > p {
     font-size: 30px;
@@ -236,6 +267,7 @@ a{
 #countdown div div img{
     width: 73px;
     height: 73px;
+    margin-left: 25px;
 }
 #save-the-date-gif {
     width: 226px;
@@ -250,6 +282,7 @@ a{
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 41px;
 }
 #countdown-localisation p {
     font-size: 30px;
@@ -261,6 +294,20 @@ a{
     text-shadow: 15px 8px 5px rgba(0, 0, 0, 0.25);
 }
 
+#time-countdown{
+    display: flex;
+    flex-direction: row;
+    font-family: 'Libre Caslon Text';
+    font-size: 40px;
+    gap: 50px;
+    justify-content: center;
+}
+#time-item{
+    display: flex;
+    flex-direction: column;
+}
+
+
 /*--------------------------END COUNTDOWN ---------------------------------*/
 
 /*-------------------------- WEDDING PROGRAM ---------------------------------*/
@@ -269,17 +316,20 @@ a{
     font-family: 'Lily Script One';
     display: flex;
     flex-direction: column;
+    position: relative;
+    justify-content: center;
+    padding: 56px 0px 160px 0px;
 }
 
 #wedding-program-top{
-    display: flex;
-    flex-direction: row;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
-#wedding-program-top > h1{
+#wedding-program-home > h1{
     font-size: 55px;
     text-align: center;
     align-self: center;
-    margin-left: 200px;
     color: white;
 }
 #wedding-program-top > img{
@@ -288,10 +338,32 @@ a{
     align-self: flex-start;
 }
 
+#wedding-program-bottom{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+
+#wedding-program-bottom > img{
+    width: 263px;
+    height: 184px;
+    z-index: 1;
+    margin-top: -30px;
+    float: right;
+
+}
+#wedding-program-home > div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 #wedding-program-mid{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    gap: 209px;
     font-size: 30px;
     color: white;
     margin-top: 59px;
@@ -310,35 +382,16 @@ a{
 
 }
 
-#wedding-program-bottom{
-    margin-top: 79px;
-    font-size: 25px;
-}
-
-
-#wedding-program-bottom > img{
-    width: 263px;
-    height: 184px;
-    z-index: 1;
-    margin-top: -30px;
-    float: right;
-
-}
-#wedding-program-bottom > div{
-    display: flex;
-    flex-direction: row;
-}
-#wedding-program-bottom  div  p{
+#wedding-program-home  div  a  p{
     background-color: #fff;
-    width: 301px;
-    height: 79px;
+    margin-top: 82px;
+    padding: 25px 25px;
+    font-size: 25px;
     display: flex;
     justify-content: center;
-    padding: 15px;
     align-items: center;
     box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.25);
     border-radius: 8px;
-    margin-left: 520px;
     z-index: 2;
     color: #c48a32;
 }
@@ -359,10 +412,10 @@ a{
 /*---------------------------------- ALBUM HEADER -------------------------------*/
 
 #album-header{
-    margin-top: 154px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 154px auto 0px auto;
 
 }
 #album-header >h1{
@@ -374,9 +427,9 @@ a{
 }
 
 #acknowlegments{
-    width: 1150px;
-    height: 278px;
+    max-width: 1150px;
     margin-top: 45px;
+    padding-bottom: 50px;
     background-color: #6f9d86;
     border-radius: 27px;
     font-family: 'Licorice';
@@ -402,9 +455,8 @@ a{
 }
 #album-header-links >p{
     font-size: 25px;
+    padding: 20px 15px;
     font-family: 'Lily Script One';
-    width: 368px;
-    height: 79px;
     background-color: #fff;
     display: flex;
     align-items: center;
@@ -420,8 +472,7 @@ a{
     grid-template-columns: repeat(auto-fill, 417px);
     justify-content: center;
     gap: 25px;
-    margin-top: 56px;
-    margin-bottom: 500px;
+    margin: 56px auto 500px auto;
 }
 #pictures > img{
     width: 417px;
@@ -439,24 +490,21 @@ a{
     width: 1105.1px;
     height: 1635px;
     margin: auto;
-    background-image: url("../images/flower-cadre.png");
+    background-image: url("../images/flower-cadre-background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     justify-content: center;
     text-align: center;
     margin-top: 78px;
 
 }
-#wedding-program > div {
-    width: 870px;
-    height: 1346.1px;
-    background-image: url("../images/program-background.png");
+
+#inner-program{
     background-size: cover;
     margin-top: 190px;
     margin-right: 20px;
     padding-top: 49.5px;
-}
-
-#inner-program{
     display: flex;
     flex-direction: column;
 }
@@ -468,6 +516,7 @@ a{
     color: #c48a32;
 }
 .program-row{
+    font-family: 'Metal';
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -483,6 +532,7 @@ a{
     height: 174px;
     font-size: 20px;
     background-color: #6f9d86;
+    color: #fff;
     padding: 25px 10px;
     border-radius: 27px;
     display: flex;
@@ -532,6 +582,9 @@ a{
     background-color: #fff;
     margin-left: 610px;
     margin-top: -30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .thanks{
@@ -539,7 +592,7 @@ a{
     flex-direction: row;
     justify-content: space-around;
     font-family: 'Metal';
-    font-weight: 70px;
+    font-size: 70px;
     margin-bottom: 100px;
 }
 .thanks > img {
@@ -562,7 +615,6 @@ a{
 
 .registration-content{
     width: 1233px;
-    height: 855px;
     margin: auto;
     background-color: #fff;
     display: flex;
@@ -577,7 +629,8 @@ a{
     justify-content:space-between;
     align-items: center;
     text-align: center;
-    width: 617px;
+    gap: 80px;
+    width: 50%;
     background-image: linear-gradient(147deg, #ed6080 3%, #f5a1b1 94%);
 }
 .registration-title{
@@ -611,7 +664,7 @@ a{
 }
 
 .registration-form{
-    width: 616px;
+    width: 50%;
 }
 
 .registration-form > form{
@@ -625,7 +678,7 @@ a{
 }
 
 .registration-form > form > div{
-    width: 478px;
+    width: 85%;
 }
 
 .registration-form > form > p{
@@ -644,7 +697,7 @@ a{
 input[type=text],input[type=file],select{
     height: 49px;
     font-size: 25px;
-    border: solid 1px #000;
+    border: solid 1px black;
     width: 100%;
     border-radius: 8px;
     display: block;
@@ -697,6 +750,10 @@ input[type=radio]{
 
 /*######################################## INFORMATION ###########################################*/
 
+#my-information{
+    width: 994px;
+    margin: auto;
+}
 #my-information > h1{
     font-family: 'Lily Script One';
     font-size: 50px;
@@ -713,9 +770,7 @@ input[type=radio]{
 }
 
 #inner-information{
-    width: 994px;
-    height: 679px;
-    margin: auto;
+    width: 100%;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 40px;
     box-shadow: 10px 6px 5px 0 rgba(0, 0, 0, 0.25);
@@ -724,11 +779,10 @@ input[type=radio]{
     margin-bottom: 216px;
     margin-top: 85px;
     font-family: 'Milonga';
-
 }
 
 #qr-code-block{
-    width: 487px;
+    width: 49%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -745,11 +799,11 @@ input[type=radio]{
 
 
 #infos-form{
-    width: 507px;
+    width: 51%;
     border-radius: 40px;
     box-shadow: -8px 4px 4px 0 rgba(0, 0, 0, 0.25);
     background-color: #6f9d86;
-    padding-top: 40px;
+    padding: 40px 0px;
 }
 
 #infos-form > form{
@@ -770,7 +824,7 @@ input[type=radio]{
 }
 #information-page-bottom{
     background-color: rgba(218, 22, 108, 0.4);
-    height: 546px;
+    padding: 70px 0px;
     color: #eabe81;
     display: flex;
     flex-direction: row;
@@ -807,7 +861,7 @@ input[type=radio]{
     gap: 96px;
     font-family: 'Lily Script One';
     font-size: 25px;
-    height: 610px;
+    margin-bottom: 4em;
 }
 .opposite-hearts{
     margin-top: 153.2px;
@@ -879,6 +933,9 @@ input[type=radio]{
     padding: 10px 20px;
     border-radius: 8px;
 }
+#public-invitation-bottom > div > a{
+    margin: auto;
+}
 #public-invitation-bottom > div > p{
     font-family: 'Licorice';
     font-size: 55px;
@@ -911,9 +968,8 @@ input[type=radio]{
 
 /*-------------------------- FOOTER ---------------------------------*/
 footer{
-    height: 115px;
-    max-width: 1400px;
-    min-width: 100%;
+    min-height: 115px;
+    max-width: none;
     font-family: 'Lohit Bengali';
     display: flex;
     flex-direction: column;
@@ -938,5 +994,6 @@ footer{
     font-size: 13px;
     margin-right: 2px;
 }
+
 
 /*-------------------------- END FOOTER ---------------------------------*/

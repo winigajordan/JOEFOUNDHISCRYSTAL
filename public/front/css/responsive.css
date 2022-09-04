@@ -1,0 +1,912 @@
+/* RESPONSIVE START */
+    
+@media (max-width:1281px) {
+    /* hi-res laptops and desktops */
+
+    #album-header-links{
+        gap: 210px;
+    }
+    #acknowlegments > p {
+        font-size: 30px;
+    }
+    #acknowlegments >h1{
+        font-size: 50px;
+    }
+    #album-header >h1{
+        font-size: 45px;
+    }
+    #wedding-program-home  div  a  p{
+        font-size: 22px;
+    }
+
+    /*  INVITATION PAGE  */
+    #public-invitation-bottom{
+        gap: 50px;
+    }
+    .invitations-links-bottom{
+        gap: 300px;
+    }
+    .opposite-hearts{
+        gap: 700px;
+    }
+    #invitation-confirmation-form > form > input[type=submit]{
+        margin-left: auto;
+    }
+    #public-invitation-bottom > div > a > p{
+        font-size: 20px;
+    }
+
+    .marriage-invitation{
+        right: 250px;
+    }
+    /* END INVITATION PAGE */
+
+    /* REGISTRATION PAGES */
+    .registration-content{
+        width: 1000px;
+    }
+    .names {
+        grid-template-columns: repeat(1,224px);
+
+    }
+    input[type=submit]{
+        margin-left: 0px;
+    }
+    .next{
+        font-size: 25px;
+    }
+    /* END REGISTRATION PAGES */
+
+    /* PROGRAM */
+    #wedding-program{
+        width: 905.1px;
+        height: 1335px;     
+    }
+    #inner-program {
+        width: 870px;
+        height: 1346.1px;
+    }
+    .program-row > div > img{
+        width: 200.5px;
+        height: 200.5px;
+    }
+    .program-row > p{
+        font-size: 15px;
+        width: 300px;
+        height: 150px;
+    }
+    .see-location{
+        width: 150px;
+        height: 39px;
+        margin-top: -15px;
+    }
+    #program-bottom{
+        font-size: 20px;
+    }
+    #program-bottom > div > img{
+        width: 130px;
+        height: 120px;
+    }
+    .thanks > h1{
+        font-size: 60px;
+    }
+    .thanks > img {
+        width: 154px;
+        height: 151px;
+    }
+    /* END PROGRAM */
+
+}
+
+
+@media (max-width: 1025px) {
+    /* big landscape tablets, laptops, and desktops */
+    .flowers{
+        width: 120.8px;
+        height: 120.8px;
+    }
+    .hearts{
+        width: 78.3px;
+        height: 84px;
+    }
+
+    .menu-left, .menu-right > ul{
+        font-size: 15px;
+    }
+    #countdown{
+        flex-direction: column-reverse;
+        gap: 25px;
+    }
+    #countdown > div > a > p {
+        font-size: 25px;
+    }
+    #wedding-program-mid{
+        gap: 90px;
+    } 
+    #home-header-top > img{
+        height: 350px;
+        width: 350px;
+    }
+    #our-story > p, #home-story-bottom > p{
+        font-size: 25px;
+    }
+   
+    /*  INVITATION PAGE  */
+    .opposite-hearts{
+        gap: 550px;
+    }
+    #invitation-confirmation-form > form{
+        font-size: 18px;
+    }
+    #invitation-confirmation-form > form > p{
+        font-size: 25px;
+    }
+    #public-invitation-bottom > div > p{
+        font-size: 45px;
+    }
+    
+    .invitation-links{
+        font-size: 20px;
+    }
+    #public-invitation-bottom > img{
+        width: 500px;
+        height: 412px;
+    }
+
+    .opposite-hearts > img {
+        width: 120.3px;
+        height: 120.3px;
+    }
+
+    .marriage-invitation{
+        width: 620px;
+        height: 820px;
+        right: 220px;
+    }
+    .invitation-header{
+        height: 609px;
+    }
+    /*  END INVITATION PAGE  */
+
+    /* INFORMATION PAGE */
+    #infos-form > form > div{
+        width: 300px;
+    }
+    #infos-form > form{
+        font-size: 22px;
+    }
+    #infos-form > form input{
+        font-size: 22px;
+    }
+    #my-information > h1{
+        font-size: 45px;
+    }
+    #my-information{
+        width:794px;
+    }
+    #qr-code-block{
+        font-size: 22px;
+    }
+    .nb{
+        font-size: 18px;
+        text-align: center;
+    }
+    /* END INFORMATION PAGE */
+
+    /* REGISTRATION PAGES */
+    .registration-content{
+        width: 775px;
+    }
+    .names {
+    }
+    input[type=submit]{
+        
+    }
+    .next{
+        font-size: 20px;
+    }
+    .registration-links{
+        gap: 100px;
+    }
+    .registration-links > p{
+        font-size: 15px;
+    }
+    .registration-form > form{
+        font-size: 20px;
+    }
+    .registration-form > form > p{
+        font-size: 20px;
+    }
+    .registration-form > h1{
+        font-size: 30px;
+    }
+    
+    input[type=text],input[type=file],select{
+        height: 40px;
+        font-size: 20px;
+    }
+    /* END REGISTRATION PAGES */
+}
+
+@media (max-width:980px) {
+
+    #wedding-program-home  div  a  p{
+        font-size: 20px;
+    }
+    /* GALLERY PAGE*/
+    #album-header-links >p{
+        font-size: 20px;
+    }
+    #acknowlegments > p {
+        font-size: 25px;
+    }
+    /* END GALLERY PAGE*/
+
+    /* INVITATION PAGE */
+
+    /* END INVITATION PAGE */
+
+    /* PROGRAM */
+    #wedding-program{
+        width: 750.1px;
+        height: 1100px;     
+    }
+    #inner-program {
+        width: 870px;
+        height: 1346.1px;
+        margin-top: 100px;
+    }
+    #inner-program > h1{
+        font-size: 40px;
+    }
+    .program-row > div > img{
+        width: 150.5px;
+        height: 150.5px;
+    }
+    .program-row > div > h2{
+        font-size: 12px;
+        bottom: 45%;
+    }
+
+    .program-row{
+        padding: 0px 50px;
+    }
+    .program-row > p{
+        font-size: 12px;
+        width: 200px;
+        height: 100px;
+    }
+    .see-location{
+        font-size: 12px;
+        width: 150px;
+        height: 39px;
+        margin-top: -15px;
+        margin-left: 500px;
+        width: 100px;
+    }
+    #program-bottom{
+        font-size: 15px;
+        margin-top: 30px;
+    }
+    #program-bottom > div > img{
+        width: 100px;
+        height: 90px;
+    }
+
+    .thanks > h1{
+        font-size: 40px;
+    }
+    .thanks > img {
+        width: 104px;
+        height: 101px;
+    }
+    /* END PROGRAM */
+
+    
+}
+
+@media (max-width:801px) {
+    /* tablet, landscape iPad, lo-res laptops ands desktops */
+    
+    .home-header{
+        font-size: 30px;
+    }
+    /* INDEX PAGE*/
+    #our-story > p, #home-story-bottom > p{
+        font-size: 20px;
+    }
+    #wedding-program-mid{
+        gap: 50px;
+    } 
+    #wedding-program-home > h1{
+        margin-top: 25px;
+    }
+    /* END INDEX PAGE*/
+    
+    /* INVITATION PAGE */
+    .opposite-hearts{
+        gap: 400px;
+    }
+    .invitations-links-bottom{
+        gap: 200px;
+    }
+    #public-invitation-bottom > div > a > p{
+        font-size: 15px;
+    }
+    .invitation-links{
+        font-size: 15px;
+    }
+    .opposite-hearts > img {
+        width: 100.3px;
+        height: 100.3px;
+    }
+    /* END INVITATION PAGE */
+
+    /* INFORMATION PAGE */
+    #infos-form > form > div{
+        width: 250px;
+    }
+    #infos-form > form{
+        font-size: 20px;
+        gap: 15px;
+    }
+    #infos-form > form input{
+        font-size: 20px;
+    }
+    #my-information > h1{
+        font-size: 40px;
+    }
+    #my-information{
+        width:694px;
+    }
+    #qr-code-block{
+        font-size: 20px;
+    }
+    .nb{
+        font-size: 15px;
+    }
+    /* END INFORMATION PAGE */
+
+    /* REGISTRATION PAGES */
+    .registration-content{
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 80px;
+        width: 600px;
+        margin:  50px auto;
+    }
+    .registration-form, .registration-panel{
+        width: 100%;
+    }
+    /* END REGISTRATION PAGES */
+}
+
+@media (max-width:768px) {
+
+    .flowers{
+        width: 100.8px;
+        height: 100.8px;
+    }
+    .hearts{
+        width: 68.3px;
+        height: 74px;
+    }
+    .registration-title{
+        display: none;
+    }
+    .registration-links{
+        padding-top: 20px;
+    }
+    .registration-form{
+        margin-bottom: 20px;
+    }
+    #wedding-program-home > div{
+        flex-direction: column;
+        align-items: center;
+    }
+    #album-header-links >p{
+        font-size: 15px;
+    }
+    #album-header-links{
+        gap: 105px;
+    }
+    #acknowlegments > p {
+        font-size: 22px;
+    }
+    #pictures{
+        grid-template-columns: repeat(auto-fill, 300px);
+    }
+    #pictures > img{
+        width: 300px;
+        height: 290px;
+    }
+    #menu-hamburger{
+        display: block;
+        top: 10px;
+    }
+    .menu-left{
+        position: absolute;
+        left: 0;
+    }
+    .menu-right{
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        color: black;
+        top: -22px;
+        left: -100%;
+    }
+    #multilingue > a{
+        color: black;
+    }
+    #menu-langue a {
+        color: black;
+    }
+    .menu-right.mobile-menu{
+        left: 0;
+    }
+    .menu-right ul ul {
+        right: 320px;
+    }
+    .menu-right > ul {
+        padding-top: 50px;
+        flex-direction: column;
+        gap: 25px;
+        backdrop-filter: blur(7px);
+        padding-bottom: 75px;
+    }
+
+    /*INVITATION */
+
+    #public-invitation-bottom{
+        flex-direction: column;
+        padding-bottom: 25px;
+    }
+
+    .marriage-invitation{
+        width: 420px;
+        height: 580px;
+        right: 200px;
+    }
+
+    .invitation-header{
+        height: 409px;
+    }
+    /* END INVITATION */
+
+}
+
+@media (max-width:700px ){
+
+    /* INDEX PAGE */
+    #countdown-localisation h4{
+        font-size: 40px;
+    }
+    #countdown-localisation p{
+        font-size: 20px;
+    }
+    #time-countdown{
+        font-size: 35px;
+    }
+    #wedding-program-mid{
+        flex-direction: column;
+    }
+    /* END INDEX PAGE */
+
+    /* INFORMATION PAGE*/
+    #my-information{
+        width:494px;
+        
+    }
+    #qr-code-block, #infos-form{
+        width: 90%;
+        margin: auto;
+    }
+    #information-page-bottom{
+        flex-direction: column;
+        font-size: 25px;
+        gap: 40px;
+    }
+
+    #inner-information{
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        padding: 25px 0px;
+    }
+    /* END INFORMATION PAGE*/
+    
+
+    /* PROGRAM */
+    .program-row{
+       flex-direction: column;
+       margin: auto;
+    }
+    #wedding-program{
+        width: 400px;
+        height: fit-content;     
+        background-image: url(../images/program-background.png);
+        background-size: cover;
+    }
+    #inner-program{
+        padding-top: 0px;
+    }
+    #program-bottom{
+        flex-direction: column;
+    }
+    .see-location{
+
+        margin: -15px auto 0px auto;
+        width: 100px;
+    }
+    .thanks{
+        flex-direction: column;
+        align-items: center;
+    }
+    /* 
+    
+    #inner-program > h1{
+        font-size: 40px;
+    }
+    .program-row > div > img{
+        width: 150.5px;
+        height: 150.5px;
+    }
+    .program-row > div > h2{
+        font-size: 12px;
+        bottom: 45%;
+    }
+
+    
+    .program-row > p{
+        font-size: 12px;
+        width: 200px;
+        height: 100px;
+    }
+    
+    
+    #program-bottom > div > img{
+        width: 100px;
+        height: 90px;
+    }
+
+    .thanks > h1{
+        font-size: 40px;
+    }
+    .thanks > img {
+        width: 104px;
+        height: 101px;
+    } */
+    /* END PROGRAM */
+    
+}
+
+@media (max-width:600px) {
+    /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+
+    /* INDEX PAGE */
+    #home-header-top > img{
+        height: 300px;
+        width: 300px;
+    }
+    #home-story-top > div > img{
+        height: 300px;
+        width: 300px;
+    }
+
+    #wedding-program-home  div  a  p{
+        font-size: 18px;
+    }
+    #our-story-image{
+        float: none;
+    }
+
+    #wedding-program-home > h1{
+        font-size: 45px;
+    }
+    #countdown > div > a > p {
+        font-size: 20px;
+    }
+    #countdown-localisation h4{
+        font-size: 30px;
+    }
+    #countdown-localisation p{
+        font-size: 18px;
+    }
+    #time-countdown{
+        font-size: 30px;
+    }
+    /* END INDEX PAGE */
+
+    #acknowlegments{
+        margin: 0px 10px;
+    }
+
+    #album-header-links{
+        padding: 0px 10px;
+    }
+    #album-header-links >p{
+        font-size: 12px;
+    }
+
+    /* INIVITATION */
+    .invitations-links-bottom{
+        flex-direction: column;
+        margin: auto;
+        gap: 50px;
+    }
+    .opposite-hearts{
+        gap: 50px;
+    }
+    /* END INVITATION */
+
+    /* REGISTRATION PAGES */
+    .registration-content{
+        width: 400px;
+    }
+    #for-single-pic{
+        width: 367.5px;
+        height: 300px;
+    }
+    .registration-form > form{
+        margin-left: 0px;
+        padding-left: 70px;
+    }
+    /* END REGISTRATION PAGES */
+}
+
+
+
+@media (max-width:500px) {
+    /* smartphones, Android phones, landscape iPhone */
+
+
+    /* INDEX PAGE */
+
+    .flowers{
+        width: 80.8px;
+        height: 80.8px;
+    }
+    .hearts{
+        width: 58.3px;
+        height: 64px;
+    }
+
+    #home-header-top{
+        margin-top: 150px;
+        margin-bottom: 50px;
+        flex-direction: column;
+    }
+    #home-header-top > img{
+        margin-left: 10px;
+    }
+    #our-story > p, #home-story-bottom > p{
+        font-size: 15px;
+        padding: 0px 10px;
+    }
+    #wedding-program-home  div  a  p{
+        font-size: 15px;
+    }
+    #wedding-program-home > h1{
+        margin-top: 75px;
+    }
+    .menu-right ul ul {
+        right: 130px;
+    }
+    /* END INDEX PAGE */
+
+    /* INVITATION */
+    #public-invitation-bottom > img{
+        width: 300px;
+        height: 212px;
+    }
+    .marriage-invitation{
+        width: 320px;
+        height: 420px;
+        right: 50px;
+        top: 100px;
+    }
+
+    .invitation-header{
+        height: 209px;
+    }
+    #public-invitation-bottom > div > p{
+        font-size: 40px;
+    }
+    #invitation-confirmation-form > form{
+        font-size: 15px;
+    }
+    #invitation-confirmation-form > form > p{
+        font-size: 20px;
+    }
+    /* END INVITATION */
+
+    /* INFORMATION */
+    #infos-form > form > div{
+        width: 200px;
+    }
+    #infos-form > form{
+        font-size: 15px;
+        gap: 8px;
+    }
+    #infos-form > form input{
+        font-size: 15px;
+    }
+    #my-information > h1{
+        font-size: 25px;
+    }
+    #my-information{
+        width:350px;
+    }
+    #qr-code-block{
+        font-size: 15px;
+    }
+    .nb{
+        font-size: 15px;
+    }
+    #information-page-bottom > img{
+        width: 265px;
+        height: 265px;
+    }
+    /* END INFORMATION */
+
+    /* REGISTRATION PAGES */
+    .registration-form > form{
+        padding-left: 10px;
+    }
+    .registration-links{
+        flex-direction: column-reverse;
+        gap: 25px;
+    }
+    .radios{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    /* END REGISTRATION PAGES */
+}
+
+@media (max-width:400px){
+
+    /* INDEX PAGE */
+    #wedding-program-home > h1{
+        font-size: 40px;
+    }
+    #countdown > div > a > p {
+        font-size: 20px;
+    }
+    #countdown-localisation h4{
+        font-size: 20px;
+    }
+    #countdown-localisation p{
+        font-size: 15px;
+    }
+    #time-countdown{
+        font-size: 20px;
+    }
+    .menu-right ul ul {
+        right: 110px;
+    }
+    /* END INDEX PAGE */
+
+    /* PROGRAM */
+    #inner-program > h1{
+        font-size: 30px;
+    }
+
+    .program-row{
+        flex-direction: column;
+        margin: auto;
+    }
+     #wedding-program{
+        width: 310px;
+        height: fit-content;     
+        background-image: url(../images/program-background.png);
+        background-size: cover;
+    }
+     #program-bottom{
+        flex-direction: column;
+    }
+     .see-location{
+        width: 100px;
+    }
+     .thanks{
+        flex-direction: column;
+        align-items: center;
+    }
+    /* END PROGRAM */
+}
+
+@media (max-width:375px){
+
+    /* REGISTRATION PAGES */
+    .registration-content{
+        width: 375px;
+    }
+    #for-single-pic{
+        width: 300px;
+    }
+    .registration-form > form{
+    }
+    #invitation-confirmation-form > form{
+        margin-left: 15px;
+    }
+    /* END REGISTRATION PAGES */
+}
+
+@media (max-width:320px) {
+    /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+
+    .menu-right ul ul {
+        right: 90px;
+    }
+    .flowers{
+        width: 60.8px;
+        height: 60.8px;
+    }
+    .hearts{
+        width: 48.3px;
+        height: 54px;
+    }
+    .registration-content{
+        width: 300px;
+    }
+    #time-countdown{
+        font-size: 15px;
+    }
+    #countdown-localisation > div{
+        gap: 31px;
+    }
+    /* INVITATION */
+    .marriage-invitation{
+        /* width: 320px;
+        height: 420px; */
+        right: 0px;
+        top: 100px;
+    }
+    #public-invitation-bottom > div > p{
+        font-size: 35px;
+    }
+    #invitation-confirmation-form > form{
+        font-size: 13px;
+    }
+    #invitation-confirmation-form > form > p{
+        font-size: 17px;
+    }
+    /* #invitation-confirmation-form > form > input[type=submit]{
+        font-size: 20px;
+        padding: 10px 10px;    
+    } */
+    /* END INVITATION */
+
+    /* INFORMATION */
+    #infos-form > form > div{
+        width: 175px;
+    }
+    #infos-form > form{
+        font-size: 15px;
+        gap: 8px;
+    }
+    #infos-form > form input{
+        font-size: 15px;
+    }
+    #my-information > h1{
+        font-size: 25px;
+    }
+    #my-information{
+        width:300px;
+    }
+    #qr-code-block{
+        font-size: 12px;
+    }
+    .nb{
+        font-size: 12px;
+    }
+    #information-page-bottom > img{
+        width: 265px;
+        height: 265px;
+    }
+    /* END INFORMATION */
+
+}
+/* RESPONSIVE END */
