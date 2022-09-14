@@ -4,6 +4,8 @@
 
 {% block body %}
 
+
+
     <section class="home-header">
         <div id="home-header-top">
             <p id="chris">Christabel</p>
@@ -29,7 +31,7 @@
         <img src="{{asset('front/images/—Pngtree—flower continuous one line art_4011135 1.png')}}" alt="" class="home-story-back-pic flowers" id="flower-3">
         <div id="home-story-top">
             <div id="our-story-image">
-               <img src="{{asset('front/images/story.png')}}" alt=""> 
+               <img src="{{asset('front/images/story.png')}}" alt="">
             </div>
             <div id="our-story">
                 <h1>{% trans %}
@@ -48,7 +50,7 @@
             <p>
                 {% trans %}
                 My next visit to Nigeria was on the 28th of November 2019 for business. I gave her a surprise visit to the kingdom hall of  Jehovah’s witnesses. when she turned around during the song, she was so shocked to see me. she could not stand on her feet, lol. From there we discussed more business. Most of our discussion was centered around real estate for more than one year.
-                {% endtrans %}                
+                {% endtrans %}
             </p>
             <p>
                 {% trans %}
@@ -70,7 +72,7 @@
                 It wasn’t all smooth but patience & Jah’s grace carried us through.
                 I waited another year which means March 2022 to prove my seriousness and commitment.
                 On the 29th of March 2022 at Radisson blu VI  Lagos at 9:20 pm, I planned the proposal WITH MOM AND I SPA, Klala films and photo, Radisson blue management and here we are today. I am the happiest man on earth.
-                {% endtrans %}    
+                {% endtrans %}
             </p>
             <p>
                 {% trans %}
@@ -83,7 +85,7 @@
 
     <section id="countdown">
         <div>
-            <a><p>{% trans %}Registration for {% endtrans %}
+            <a href="{{ path('app_demande_invitation') }}"><p>{% trans %}Registration for {% endtrans %}
                     <br>
                     {% trans %}E-Invitation {% endtrans %}
                 </p></a>
@@ -141,8 +143,9 @@
                 <p>{% trans %}Wedding party{% endtrans %}</p>
             </div>
         </div>
-        <div>
-            <a><p>{% trans %}Make your gift & Donation{% endtrans %}</p></a>
+        <div id="wedding-program-home-links">
+            <a href="{{ path('app_about') }}"><p>{% trans %}Make your gift & Donation{% endtrans %}</p></a>
+            <a href="{{ path(('app_about')) }}"><p>{% trans %}Booking hotel{% endtrans %}</p></a>
         </div>
         <div id="wedding-program-bottom">
             <img src="{{asset('front/images/flower-bottom.png')}}" alt="">
