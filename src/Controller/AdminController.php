@@ -142,7 +142,7 @@ class AdminController extends AbstractController
         $invite->setNom($data->get('nom'));
         $invite->setPrenom($data->get('prenom'));
         $invite->setEmail('');
-        $invite->setAdresse($data->get('adresse'));
+        $invite->setAdresse('--');
         $invite->setTelephone(str_replace(' ', '', $data->get('telephone')));
         $invite->setSituation($data->get('situation'));
         $invite->setValide(false);

@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lohit Bengali">
     <link href='https://fonts.googleapis.com/css?family=Lily Script One' rel='stylesheet'>
 </head>
-<body>
+{% block bd %} <body> {% endblock %}
+
 
 <nav>
     <div class="container menu">
@@ -22,7 +23,9 @@
             <h4>#JoeFoundHis<br>Crystal</h4>
             <p>
                 <a href="{{ path('app_home') }}" style="color: #fff">
+                    {% trans %}
                     Home
+                    {% endtrans %}
                 </a>
             </p>
         </div>
@@ -36,15 +39,26 @@
                 </li>
                 <li>
                     <a href="{{ path('app_gallery') }}">
+                        {% trans %}
                         Gallery
+                        {% endtrans %}
                     </a>
                 </li>
                 <li>
                     <a href="{{ path('app_demande_invitation') }}">
+                        {% trans %}
                         Registration
+                        {% endtrans %}
                     </a>
                 </li>
-                <li id="multilingue"><a href="#">Language Choice</a>
+                <li>
+                    <a href="{{ path('app_about') }}">
+                        {% trans %}
+                        About Wedding
+                        {% endtrans %}
+                    </a>
+                </li>
+                <li id="multilingue"><a href="#">{% trans %}Language Choice{% endtrans %}</a>
                     <ul id="menu-langue">
                         {% for locale in locales %}
                             {% if locale != app.request.locale %}
@@ -62,66 +76,26 @@
     </div>
 </nav>
 
+<img src="{{ asset('front/images/play.png') }}" alt="" id="music-control">
 
-    <!--
-<nav>
-    <div class="container menu">
-        <div class="menu-left">
-            <p>
-                <a href="{{ path('app_home') }}" style="color: #fff;">
-                    JoeFoundHis<br>Crystal
-                </a>
-            </p>
-        </div>
-        <div class="menu-right">
-            <ul>
-                <li>
-                    <a href="{{ path('app_unique_invitation') }}">
-                        Invitation
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('app_programme') }}">
-                        Program
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('app_gallery') }}">
-                        Gallery
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('app_demande_invitation') }}">
-                        Registration
-                    </a>
-                </li>
-                {% for locale in locales %}
-                    {% if locale != app.request.locale %}
-                    <li>
-                        <a href="{{ path('translation', {'locale':locale}) }}">
-                            {{ locale }}
-                        </a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
+<audio id="soundtrack">
+    <source src="{{ asset('front/media/soundtrack.mpeg') }}" type="audio/mpeg">
+</audio>
 
-    </div>
-</nav>
--->
 {% block body %}{% endblock %}
 </body>
 
 <footer>
     <div class="contact">
-        <p>Contact Us : <br> +24 1 784820396 / +234 112 202 49 33</p>
+        <p>{% trans %}Contact Us{% endtrans%} : <br> +24 1 784820396 / +234 112 202 49 33</p>
     </div>
     <div class="copyright">
         <h1>2022 </h1>
-        <p>JoeFoundHisCrystal. AllRights Reserved</p>
+        <p>{% trans %}JoeFoundHisCrystal. AllRights Reserved {% endtrans %}</p>
     </div>
 
 </footer>
 
 <script src="{{asset('front/js/script.js')}}"></script>
+
 </html>

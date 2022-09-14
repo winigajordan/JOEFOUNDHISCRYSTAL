@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\InvitationsEnvoyeRepository;
 use App\Repository\InviteRepository;
+use App\Service\MessageSender\WhatsAppApi;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,10 +30,16 @@ class InvitationController extends AbstractController
     }
 
     #[Route('/update/validation', name: 'invitation_validation')]
-    public function update(Request $request, EntityManagerInterface $em, InviteRepository $invitRipo, InvitationsEnvoyeRepository $sentRipo){
+    public function update(Request $request,
+                           EntityManagerInterface $em,
+                           InviteRepository $invitRipo,
+                           InvitationsEnvoyeRepository $sentRipo,
+                            WhatsAppApi $api
+    ){
         $data = $request->request;
         $invite = $invitRipo->findOneBy(['slug'=>$data->get('slug')]);
         $invite->setValide(true);
+        //dd($data);
         if ($data->get('validation')=='no'){
             $invite->setPlace(null);
             $invite->setType("VIRTUEL");
@@ -44,16 +51,22 @@ class InvitationController extends AbstractController
                 $em->remove($invite->getHerPlace());
                 
             }
-        
-            
             $em->flush();
             return $this->redirectToRoute('app_home');
         }
-            else
-        {
-            $em->flush();
-            return $this->redirectToRoute('app_informations', ['slug'=>$data->get('slug')]);
-        }
+        $em->flush();
+        $api->img($invite->getTelephone(),
+            link: 'https://www.qrcode-monkey.com/img/qrcode-logo.png',
+            message: $this->messageText('Ce code QR vous redirigera vers la page de vos informations')
+        );
+        return $this->redirectToRoute('app_informations', ['slug'=>$data->get('slug')]);
+
         
+    }
+
+    public function messageText($text){
+        $msg = str_replace(' ', '%20', $text);
+        $msg = str_replace('/', '%2F',$msg);
+        return $msg;
     }
 }
