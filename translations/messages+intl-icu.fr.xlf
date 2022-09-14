@@ -203,7 +203,7 @@
       </trans-unit>
       <trans-unit id="40s7e5l" resname="Make a gift donation">
         <source>Make a gift donation</source>
-        <target>Fair un don en cadeau</target>
+        <target>Faire un don en cadeau</target>
       </trans-unit>
       <trans-unit id="_62SSgD" resname="Your information">
         <source>Your information</source>
@@ -264,6 +264,91 @@
       <trans-unit id="1PIdGbo" resname="Take a picture together">
         <source>Take a picture together</source>
         <target>Prenez une photo ensemble</target>
+      </trans-unit>
+      <trans-unit id=".Gw8TDp" resname="Booking hotel">
+        <source>Booking hotel</source>
+        <target>Réservation d'hôtel</target>
+      </trans-unit>
+      <trans-unit id="OnhpU4i" resname="Home">
+        <source>Home</source>
+        <target>Accueil</target>
+      </trans-unit>
+      <trans-unit id="NSz8dJ5" resname="Gallery">
+        <source>Gallery</source>
+        <target>Galerie</target>
+      </trans-unit>
+      <trans-unit id="x5Pg2aH" resname="Registration">
+        <source>Registration</source>
+        <target>Inscription</target>
+      </trans-unit>
+      <trans-unit id="BjYeFvO" resname="About Wedding">
+        <source>About Wedding</source>
+        <target>A propos</target>
+      </trans-unit>
+      <trans-unit id="mLZwY8_" resname="Contact Us">
+        <source>Contact Us</source>
+        <target>Contactez-nous</target>
+      </trans-unit>
+      <trans-unit id="sMc_M45" resname="JoeFoundHisCrystal. AllRights Reserved">
+        <source>JoeFoundHisCrystal. AllRights Reserved</source>
+        <target>JoeFoundHisCrystal. Tous droits réservés</target>
+      </trans-unit>
+      <trans-unit id="Xxj17UW" resname="Hotel Reservation">
+        <source>Hotel Reservation</source>
+        <target>Réservation d'un hôtel</target>
+      </trans-unit>
+      <trans-unit id="amm4HtX" resname="A discount is available at the BLU RADISSON hotel for&lt;br&gt;&#10;                    people coming from outside the hotel and who want to&lt;br&gt;&#10;                    attend the wedding in person. In order to benefit from this&lt;br&gt;&#10;                    discount, you will need to present your invitation&lt;br&gt;&#10;                    information to the wedding.">
+        <source>A discount is available at the BLU RADISSON hotel for&lt;br&gt;
+                    people coming from outside the hotel and who want to&lt;br&gt;
+                    attend the wedding in person. In order to benefit from this&lt;br&gt;
+                    discount, you will need to present your invitation&lt;br&gt;
+                    information to the wedding.</source>
+        <target><![CDATA[Une réduction est disponible à l'hôtel BLU RADISSON pour
+                         les personnes <br> venant de l'extérieur de l'hôtel et qui veulent
+                         assister au mariage <br> en personne. Afin de bénéficier de cette
+                         réduction,<br> vous devrez présenter votre invitation
+                         au mariage.
+                         ]]></target>
+      </trans-unit>
+      <trans-unit id="kbbKX3k" resname="Contacts  for Reservation (Blu Radisson Hotel)">
+        <source>Contacts  for Reservation (Blu Radisson Hotel)</source>
+        <target>Contacts pour les réservations (Blu Radisson Hotel)</target>
+      </trans-unit>
+      <trans-unit id="iCahT1c" resname="Donation">
+        <source>Donation</source>
+        <target>Dons</target>
+      </trans-unit>
+      <trans-unit id="U65kgcY" resname="Number for mobile money donation">
+        <source>Number for mobile money donation</source>
+        <target>Numéro pour les dons d'argent</target>
+      </trans-unit>
+      <trans-unit id="3NHVIj9" resname="Name">
+        <source>Name</source>
+        <target>Nom </target>
+      </trans-unit>
+      <trans-unit id="DhKjDNi" resname="Number Bank account Nigeria">
+        <source>Number Bank account Nigeria</source>
+        <target> Compte bancaire au Nigeria </target>
+      </trans-unit>
+      <trans-unit id="zbb6FvJ" resname="Language Choice">
+        <source>Language Choice</source>
+        <target>Choix de langue</target>
+      </trans-unit>
+      <trans-unit id="CfoZ_iR" resname="Number bank account Gabon">
+        <source>Number bank account Gabon</source>
+        <target>Compte bancaire au Gabon </target>
+      </trans-unit>
+      <trans-unit id="OiYjXjr" resname="Download RIB">
+        <source>Download RIB</source>
+        <target>Télécharger le RIB</target>
+      </trans-unit>
+      <trans-unit id="pDhbMZ8" resname="Donation with PayPal">
+        <source>Donation with PayPal</source>
+        <target>Dons avec PayPal</target>
+      </trans-unit>
+      <trans-unit id="YtygB6C" resname="Click here">
+        <source>Click here</source>
+        <target>Cliquez ici</target>
       </trans-unit>
     </body>
   </file>

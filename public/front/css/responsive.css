@@ -1,5 +1,5 @@
 /* RESPONSIVE START */
-    
+
 @media (max-width:1281px) {
     /* hi-res laptops and desktops */
 
@@ -60,7 +60,7 @@
     /* PROGRAM */
     #wedding-program{
         width: 905.1px;
-        height: 1335px;     
+        height: 1335px;
     }
     #inner-program {
         width: 870px;
@@ -96,6 +96,12 @@
     }
     /* END PROGRAM */
 
+    /* ABOUT US */
+    #donation-items{
+        gap: 100px;
+    }
+    /* END ABOUT US */
+
 }
 
 
@@ -122,7 +128,7 @@
     }
     #wedding-program-mid{
         gap: 90px;
-    } 
+    }
     #home-header-top > img{
         height: 350px;
         width: 350px;
@@ -130,7 +136,7 @@
     #our-story > p, #home-story-bottom > p{
         font-size: 25px;
     }
-   
+
     /*  INVITATION PAGE  */
     .opposite-hearts{
         gap: 550px;
@@ -144,7 +150,7 @@
     #public-invitation-bottom > div > p{
         font-size: 45px;
     }
-    
+
     .invitation-links{
         font-size: 20px;
     }
@@ -153,7 +159,7 @@
         height: 412px;
     }
 
-    .opposite-hearts > img {
+    .opposite-hearts > img , #album-header-links > img {
         width: 120.3px;
         height: 120.3px;
     }
@@ -200,7 +206,7 @@
     .names {
     }
     input[type=submit]{
-        
+
     }
     .next{
         font-size: 20px;
@@ -220,7 +226,7 @@
     .registration-form > h1{
         font-size: 30px;
     }
-    
+
     input[type=text],input[type=file],select{
         height: 40px;
         font-size: 20px;
@@ -249,7 +255,7 @@
     /* PROGRAM */
     #wedding-program{
         width: 750.1px;
-        height: 1100px;     
+        height: 1100px;
     }
     #inner-program {
         width: 870px;
@@ -302,12 +308,27 @@
     }
     /* END PROGRAM */
 
-    
+    /* ABOUT US */
+    #hotel-reservation-content > img{
+        width: 467px;
+        height: 454.7px;
+        float: none;
+    }
+    #hotel-right{
+        margin-top: 0px;
+    }
+    #hotel-reservation{
+        margin-bottom: 100px;
+    }
+
+    /* END ABOUT US*/
+
+
 }
 
 @media (max-width:801px) {
     /* tablet, landscape iPad, lo-res laptops ands desktops */
-    
+
     .home-header{
         font-size: 30px;
     }
@@ -317,12 +338,12 @@
     }
     #wedding-program-mid{
         gap: 50px;
-    } 
+    }
     #wedding-program-home > h1{
         margin-top: 25px;
     }
     /* END INDEX PAGE*/
-    
+
     /* INVITATION PAGE */
     .opposite-hearts{
         gap: 400px;
@@ -336,7 +357,7 @@
     .invitation-links{
         font-size: 15px;
     }
-    .opposite-hearts > img {
+    .opposite-hearts > img , #album-header-links > img {
         width: 100.3px;
         height: 100.3px;
     }
@@ -404,6 +425,8 @@
         flex-direction: column;
         align-items: center;
     }
+
+    /* GALLERY*/
     #album-header-links >p{
         font-size: 15px;
     }
@@ -415,11 +438,16 @@
     }
     #pictures{
         grid-template-columns: repeat(auto-fill, 300px);
+        margin: 56px 30px 250px 30px;
     }
     #pictures > img{
         width: 300px;
         height: 290px;
     }
+
+    /*END GALLERY*/
+
+    /* MENU */
     #menu-hamburger{
         display: block;
         top: 10px;
@@ -455,6 +483,7 @@
         backdrop-filter: blur(7px);
         padding-bottom: 75px;
     }
+    /* END MENU */
 
     /*INVITATION */
 
@@ -496,7 +525,7 @@
     /* INFORMATION PAGE*/
     #my-information{
         width:494px;
-        
+
     }
     #qr-code-block, #infos-form{
         width: 90%;
@@ -515,16 +544,16 @@
         padding: 25px 0px;
     }
     /* END INFORMATION PAGE*/
-    
+
 
     /* PROGRAM */
     .program-row{
-       flex-direction: column;
-       margin: auto;
+        flex-direction: column;
+        margin: auto;
     }
     #wedding-program{
         width: 400px;
-        height: fit-content;     
+        height: fit-content;
         background-image: url(../images/program-background.png);
         background-size: cover;
     }
@@ -543,8 +572,13 @@
         flex-direction: column;
         align-items: center;
     }
-    /* 
-    
+
+    /*INVITATION*/
+    #pictures{
+        margin: 56px 15px 250px 15px;
+    }
+    /*
+
     #inner-program > h1{
         font-size: 40px;
     }
@@ -557,14 +591,14 @@
         bottom: 45%;
     }
 
-    
+
     .program-row > p{
         font-size: 12px;
         width: 200px;
         height: 100px;
     }
-    
-    
+
+
     #program-bottom > div > img{
         width: 100px;
         height: 90px;
@@ -578,7 +612,7 @@
         height: 101px;
     } */
     /* END PROGRAM */
-    
+
 }
 
 @media (max-width:600px) {
@@ -764,6 +798,69 @@
         gap: 15px;
     }
     /* END REGISTRATION PAGES */
+
+    /* ABOUT US */
+    #hotel-reservation-content > img{
+        width: 367px;
+        height: 354.7px;
+    }
+    #hotel-right{
+        margin-top: 0px;
+    }
+    #hotel-reservation{
+        margin-bottom: 100px;
+    }
+    #hotel-reservation >h1{
+        font-size: 40px;
+    }
+    #hotel-right > p{
+        font-size: 20px;
+    }
+    .hotel-reservation-location{
+        font-size: 15px;
+    }
+    /**************************************/
+    #money-donation{
+
+    }
+    #money-donation > h1{
+        font-size: 40px;
+    }
+
+    #donation-items{
+
+    }
+    .donation-item{
+        width: 388px;
+        height: 278px;
+        gap: 30px;
+        font-size: 20px;
+    }
+    .donation-item-title{
+        gap: 10px;
+        font-size: 25px;
+    }
+    .donation-item-title img{
+        width: 33px;
+        height: 33px;
+    }
+    .donation-item-name{
+        color: #fff;
+    }
+    .donation-item-info{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        border-radius: 10px;
+        background-color: #fff;
+        padding: 0px 15px;
+    }
+    .donation-item-info img{
+        width: 77px;
+        height: 41px;
+    }
+    /* END ABOUT US */
 }
 
 @media (max-width:400px){
@@ -798,23 +895,59 @@
         flex-direction: column;
         margin: auto;
     }
-     #wedding-program{
+    #wedding-program{
         width: 310px;
-        height: fit-content;     
+        height: fit-content;
         background-image: url(../images/program-background.png);
         background-size: cover;
     }
-     #program-bottom{
+    #program-bottom{
         flex-direction: column;
     }
-     .see-location{
+    .see-location{
         width: 100px;
     }
-     .thanks{
+    .thanks{
         flex-direction: column;
         align-items: center;
     }
     /* END PROGRAM */
+
+    /* ABOUT US */
+
+    #hotel-reservation-content > img{
+        width: 267px;
+        height: 254.7px;
+    }
+    #money-donation > h1{
+        font-size: 35px;
+    }
+    .donation-item{
+        width: 300px;
+        height: 278px;
+        gap: 30px;
+        font-size: 15px;
+    }
+    .donation-item-title{
+        gap: 10px;
+        font-size: 20px;
+    }
+    .donation-item-title img{
+        width: 22px;
+        height: 22px;
+    }
+    .donation-item-name{
+        color: #fff;
+    }
+    .donation-item-info{
+        gap: 10px;
+    }
+    .donation-item-info img{
+        width: 77px;
+        height: 41px;
+    }
+
+    /* END ABOUT US */
 }
 
 @media (max-width:375px){
@@ -875,7 +1008,7 @@
     }
     /* #invitation-confirmation-form > form > input[type=submit]{
         font-size: 20px;
-        padding: 10px 10px;    
+        padding: 10px 10px;
     } */
     /* END INVITATION */
 
@@ -907,6 +1040,12 @@
         height: 265px;
     }
     /* END INFORMATION */
+
+    /*GALLERY*/
+    #pictures{
+        margin: 56px 0px 250px 0px;
+    }
+    /*END GALLERY*/
 
 }
 /* RESPONSIVE END */

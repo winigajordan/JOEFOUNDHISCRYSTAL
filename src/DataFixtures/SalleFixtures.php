@@ -11,7 +11,7 @@ class SalleFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
        $salle = new Salle();
-       $salle->setNom('Sale');
+       $salle->setNom('Radison blue');
         $manager->persist($salle);
         $manager->flush();
     }

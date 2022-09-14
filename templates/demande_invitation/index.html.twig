@@ -63,7 +63,11 @@
                         <img src="{{ asset('front/images/next-right.png') }}" alt="">
                         <p>{% trans %}For Couple{% endtrans %}</p>
                     </a>
-                    <p>{% trans %}Make a gift donation{% endtrans %}</p>
+                    <p>
+                        <a href="{{ path('app_about') }}">
+                            {% trans %}Make a gift donation{% endtrans %}
+                        </a>
+                    </p>
                 </div>
             </div>
         </section>
@@ -75,7 +79,11 @@
                     <p>{% trans %}For Couple {% endtrans %}</p>
                 </div>
                 <div class="registration-links">
-                    <p>{% trans %}Make a gift donation{% endtrans %}</p>
+                    <p>
+                        <a href="{{ path('app_about') }}">
+                            {% trans %}Make a gift donation{% endtrans %}
+                        </a>
+                    </p>
                     <a href="{{ path('app_demande_invitation') }}" class="next">
                         <p>{% trans %}For Single{% endtrans %}</p>
                         <img src="{{ asset('front/images/next-left.png') }}" alt="">

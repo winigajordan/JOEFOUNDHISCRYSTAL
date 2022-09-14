@@ -38,3 +38,18 @@ const menuLangues = document.getElementById("menu-langue");
 langues.addEventListener('click',()=>{
     menuLangues.style.display = menuLangues.style.display=='block' ?'':'block'
 })
+
+/************************************* MUSIC ************************/
+const mysong = document.getElementById('soundtrack');
+const musicIcon = document.getElementById('music-control');
+musicIcon.onclick = function(){
+    if(mysong.paused){
+        mysong.play();
+        musicIcon.style.backgroundColor = "white";
+    }else{
+        mysong.pause();
+        musicIcon.style.backgroundColor = "";
+    }
+}
+
+
