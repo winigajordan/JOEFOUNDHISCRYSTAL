@@ -3,6 +3,9 @@
 @media (max-width:1281px) {
     /* hi-res laptops and desktops */
 
+    .menu-right > ul {
+        backdrop-filter: blur(7px);
+    }
     #album-header-links{
         gap: 210px;
     }
@@ -203,11 +206,6 @@
     .registration-content{
         width: 775px;
     }
-    .names {
-    }
-    input[type=submit]{
-
-    }
     .next{
         font-size: 20px;
     }
@@ -232,6 +230,25 @@
         font-size: 20px;
     }
     /* END REGISTRATION PAGES */
+
+    /* ABOUT US */
+    .hotel-reservation-content{
+        flex-direction: column;
+        align-items: center;
+        gap: 0px;
+
+    }
+    #hotel-reservation{
+        gap: 100px;
+    }
+    .hotel-reservation-content > img{
+        margin-bottom: -150px;
+    }
+    .reservation-contact{
+        margin-top: 60px;
+        gap: 15px;
+    }
+    /* END ABOUT US */
 }
 
 @media (max-width:980px) {
@@ -309,7 +326,7 @@
     /* END PROGRAM */
 
     /* ABOUT US */
-    #hotel-reservation-content > img{
+    .hotel-reservation-content > img{
         width: 467px;
         height: 454.7px;
         float: none;
@@ -425,6 +442,10 @@
         flex-direction: column;
         align-items: center;
     }
+    #wedding-program-home-links{
+        flex-direction: column;
+        gap: 20px;
+    }
 
     /* GALLERY*/
     #album-header-links >p{
@@ -480,8 +501,11 @@
         padding-top: 50px;
         flex-direction: column;
         gap: 25px;
-        backdrop-filter: blur(7px);
+        opacity: 0.9;
         padding-bottom: 75px;
+    }
+    .menu-right a{
+        color: #000!important;
     }
     /* END MENU */
 
@@ -502,6 +526,22 @@
         height: 409px;
     }
     /* END INVITATION */
+
+    /* ABOUT US */
+    #hotel-reservation >p{
+        font-size: 20px;
+        padding: 20px 35px;
+    }
+    .hotel > h1{
+        font-size: 35px;
+    }
+    .reservation-contact > h3{
+        font-size: 20px;
+    }
+    .reservation-prices{
+        font-size: 25px;
+    }
+    /* END ABOUT US */
 
 }
 
@@ -612,6 +652,12 @@
         height: 101px;
     } */
     /* END PROGRAM */
+
+    /* ABOUT US */
+    #hotel-reservation > p{
+        margin: 0px 10px;
+    }
+    /* END ABOUT US */
 
 }
 
@@ -800,7 +846,7 @@
     /* END REGISTRATION PAGES */
 
     /* ABOUT US */
-    #hotel-reservation-content > img{
+    .hotel-reservation-content > img{
         width: 367px;
         height: 354.7px;
     }
@@ -820,15 +866,9 @@
         font-size: 15px;
     }
     /**************************************/
-    #money-donation{
 
-    }
     #money-donation > h1{
         font-size: 40px;
-    }
-
-    #donation-items{
-
     }
     .donation-item{
         width: 388px;
@@ -915,7 +955,7 @@
 
     /* ABOUT US */
 
-    #hotel-reservation-content > img{
+    .hotel-reservation-content > img{
         width: 267px;
         height: 254.7px;
     }
@@ -959,12 +999,16 @@
     #for-single-pic{
         width: 300px;
     }
-    .registration-form > form{
-    }
     #invitation-confirmation-form > form{
         margin-left: 15px;
     }
     /* END REGISTRATION PAGES */
+
+    /* ABOUT US */
+    .reservation-contact{
+        margin-top: 20px;
+    }
+    /* END ABOUT US */
 }
 
 @media (max-width:320px) {
