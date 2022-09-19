@@ -3,9 +3,6 @@
 @media (max-width:1281px) {
     /* hi-res laptops and desktops */
 
-    .menu-right > ul {
-        backdrop-filter: blur(7px);
-    }
     #album-header-links{
         gap: 210px;
     }
@@ -501,7 +498,8 @@
         padding-top: 50px;
         flex-direction: column;
         gap: 25px;
-        opacity: 0.9;
+        opacity: 0.7;
+        background-color: #f1baca;
         padding-bottom: 75px;
     }
     .menu-right a{
@@ -631,7 +629,6 @@
         bottom: 45%;
     }
 
-
     .program-row > p{
         font-size: 12px;
         width: 200px;
@@ -643,7 +640,6 @@
         width: 100px;
         height: 90px;
     }
-
     .thanks > h1{
         font-size: 40px;
     }
@@ -658,6 +654,11 @@
         margin: 0px 10px;
     }
     /* END ABOUT US */
+    .marriage-invitation{
+        /* width: 320px;
+        height: 420px; */
+        right: 150px;
+    }
 
 }
 
@@ -733,6 +734,11 @@
         padding-left: 70px;
     }
     /* END REGISTRATION PAGES */
+    .marriage-invitation{
+        /* width: 320px;
+        height: 420px; */
+        right: 100px;
+    }
 }
 
 
@@ -783,7 +789,7 @@
     .marriage-invitation{
         width: 320px;
         height: 420px;
-        right: 50px;
+        right: 100px;
         top: 100px;
     }
 
@@ -902,7 +908,13 @@
     }
     /* END ABOUT US */
 }
-
+@media (max-width:425px){
+    .marriage-invitation{
+        /* width: 320px;
+        height: 420px; */
+        right: 50px;
+    }
+}
 @media (max-width:400px){
 
     /* INDEX PAGE */
@@ -988,6 +1000,11 @@
     }
 
     /* END ABOUT US */
+    .marriage-invitation{
+        /* width: 320px;
+        height: 420px; */
+        right: 30px;
+    }
 }
 
 @media (max-width:375px){
@@ -1003,6 +1020,12 @@
         margin-left: 15px;
     }
     /* END REGISTRATION PAGES */
+
+    .marriage-invitation{
+        /* width: 320px;
+        height: 420px; */
+        right: 25px;
+    }
 
     /* ABOUT US */
     .reservation-contact{
@@ -1093,3 +1116,4 @@
 
 }
 /* RESPONSIVE END */
+
