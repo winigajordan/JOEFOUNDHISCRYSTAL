@@ -1,0 +1,172 @@
+{% extends 'front.html.twig' %}
+
+{% block title %} About {% endblock %}
+{% block bd %} <body id="about-body" style="background-image: url({{ asset('front/images/about.png') }}); background-size: cover; background-repeat: no-repeat"> {% endblock %}
+{% block body %}
+
+
+<section id="hotel-reservation">
+    <h1>{% trans %}Hotel Reservation{% endtrans %}</h1>
+    <p>{% trans %}
+        Hotels are available for those who would like to attend the wedding in person.
+        {% endtrans %}
+    </p>
+    <div class="hotel">
+        <h1>RADISSON BLU ANCHORAGE</h1>
+        <div class="hotel-reservation-content">
+            <img src="{{ asset('front/images/hotel-reservation.png') }}" alt="">
+            <div class="reservation-prices">
+                <p>{% trans %}Reservation prices{% endtrans %}</p>
+                <p>TBA</p>
+                <p>TBA</p>
+            </div>
+            <div class="reservation-contact">
+                <h3>{% trans %}Contacts for Reservation{% endtrans%} :<br>
+                    +234 1 448 9444</h3>
+                <div class="hotel-reservation-location">
+                    <a href="https://goo.gl/maps/hwQuTpyAPLDpGeBn6" target="_blank">
+                    <p> {% trans %}See the location{% endtrans %}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hotel">
+        <h1>PARK INN BY RADISSON SERVICED APARTMENTS</h1>
+        <div class="hotel-reservation-content">
+            <img src="{{ asset('front/images/hotel-reservation-2.png') }}" alt="">
+            <div class="reservation-prices">
+                <p>{% trans %}Reservation prices{% endtrans %}</p>
+                <p>TBA</p>
+                <p>TBA</p>
+            </div>
+            <div class="reservation-contact">
+                <h3>{% trans %}Contacts for Reservation{% endtrans%} :<br>
+                    +234 1 280 2070</h3>
+                <div class="hotel-reservation-location">
+                    <a href="https://goo.gl/maps/LEohf3rKkEHkFAc46" target="_blank">
+                        <p> {% trans %}See the location{% endtrans %}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hotel">
+        <h1>LAGOS ORIENTAL HOTEL</h1>
+        <div class="hotel-reservation-content">
+            <img src="{{ asset('front/images/hotel-reservation-3.png') }}" alt="">
+            <div class="reservation-prices">
+                <p>{% trans %}Reservation prices{% endtrans %}</p>
+                <p>TBA</p>
+                <p>TBA</p>
+            </div>
+            <div class="reservation-contact">
+                <h3>{% trans %}Contacts for Reservation{% endtrans%} :<br>
+                    +234 1 280 6600</h3>
+                <div class="hotel-reservation-location">
+                    <a href="https://g.page/lagos-oriental-hotel?share" target="_blank">
+                        <p> {% trans %}See the location{% endtrans %}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hotel">
+        <h1>FOUR POINTS BY SHERATON LAGOS</h1>
+        <div class="hotel-reservation-content">
+            <img src="{{ asset('front/images/hotel-reservation-4.png') }}" alt="">
+            <div class="reservation-prices">
+                <p>{% trans %}Reservation prices{% endtrans %}</p>
+                <p>TBA</p>
+                <p>TBA</p>
+            </div>
+            <div class="reservation-contact">
+                <h3>{% trans %}Contacts for Reservation{% endtrans%} :<br>+234 706 352 3721 / +234 802 313 9431</h3>
+                <div class="hotel-reservation-location">
+                    <a href="https://goo.gl/maps/Q3geX91oBuXXpMRN7" target="_blank">
+                        <p> {% trans %}See the location{% endtrans %}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section id="money-donation">
+    <h1>Donation</h1>
+    <div id="donation-items">
+
+        <div class="donation-item">
+            <div class="donation-item-title">
+                <p>{% trans %}Number for mobile money donation{% endtrans %}</p>
+            </div>
+            <div class="donation-item-name">
+                <p>{% trans %}Name{% endtrans %}: ORIAKU Chimezie Joel</p>
+            </div>
+            <div class="donation-item-info">
+                <img src="{{ asset('front/images/airtel.png') }}" alt="">
+                <p>+ 241 077 62 67 58</p>
+            </div>
+            <div class="donation-item-info">
+                <img src="{{ asset('front/images/moov-money.png') }}" alt="">
+                <p>+ 241 066 90 65 27</p>
+            </div>
+        </div>
+
+        <div class="donation-item">
+            <div class="donation-item-title">
+                <p>{% trans %}Number bank account Gabon{% endtrans %}</p>
+                <img src="{{ asset('front/images/flag-1.png') }}" alt="">
+            </div>
+            <div class="donation-item-name">
+                <p>{% trans %}Name{% endtrans %}: ORIAKU Chimezie Joel</p>
+            </div>
+            <div class="donation-item-info">
+                <img src="{{ asset('front/images/UGB_logo 1.png') }}" alt="">
+                <p>9 0 0 0 0 0 7 3 3 6 4</p>
+            </div>
+            <div class="donation-item-info">
+                <p><a href="{{ asset('front/docs/RIB.pdf') }}" download>{% trans %}Download RIB{% endtrans %}</a></p>
+            </div>
+        </div>
+
+        <div class="donation-item">
+            <div class="donation-item-title">
+                <p>{% trans %}Number Bank account Nigeria{% endtrans %}</p>
+                <img src="{{ asset('front/images/flag-2.png') }}" alt="">
+            </div>
+            <div class="donation-item-name">
+                <p>{% trans %}Name{% endtrans %}: ORIAKU Chimezie Joel</p>
+            </div>
+            <div class="donation-item-info">
+                <img src="{{ asset('front/images/uba.png') }}" alt="">
+                <p>2 1 1 1 7 7 4 2 8 1</p>
+            </div>
+            <div class="donation-item-info">
+                <img src="{{ asset('front/images/wema-bank.png') }}" alt="">
+                <p>0 2 3 9 7 6 3 6 1 3</p>
+            </div>
+        </div>
+
+        <div class="donation-item">
+            <div class="donation-item-title">
+                <p>{% trans %}Donation for Paypal{% endtrans %}</p>
+                <img src="{{ asset('front/images/paypal.png') }}" alt="">
+            </div>
+            <div class="donation-item-name">
+                <p>{% trans %}Name{% endtrans %}: ORIAKU Chimezie Joel</p>
+            </div>
+            <div class="donation-item-info">
+                <p><a>{% trans %}Click here{% endtrans %}</a></p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    </body>
+{% endblock %}
