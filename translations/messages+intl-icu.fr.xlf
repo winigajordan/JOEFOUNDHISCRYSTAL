@@ -235,11 +235,11 @@
       </trans-unit>
       <trans-unit id="g2rjgeu" resname="Yes, I Will">
         <source>Yes, I Will</source>
-        <target>Oui, je serai présent</target>
+        <target>Oui, je serai présent (à Lagos)</target>
       </trans-unit>
       <trans-unit id="sHzywTw" resname="No, I can't (Virtual Attendance)">
         <source>No, I can't (Virtual Attendance)</source>
-        <target>Non, je la suivrai en ligne </target>
+        <target>Non, je la suivrai en ligne (Via Zoom) </target>
       </trans-unit>
       <trans-unit id="9vRoj.I" resname="Send">
         <source>Send</source>
@@ -405,6 +405,15 @@
       <trans-unit id="C4p3iFS" resname="Hotel Booking">
         <source>Hotel Booking</source>
         <target>Réservation d'hôtel</target>
+      </trans-unit>
+      <trans-unit id="DUjIQgB" resname="Event planner">
+        <source>Event planner</source>
+        <target>Coordinatrice du marriage</target>
+      </trans-unit>
+      <trans-unit id="3S8m5HR" resname="For your reservation for rooms outside hotels mentioned above please contact &lt;br&gt;&#10;        Mme Runke our wedding Event coordinator for more options via">
+        <source>For your reservation for rooms outside hotels mentioned above please contact &lt;br&gt;
+        Mme Runke our wedding Event coordinator for more options via</source>
+        <target><![CDATA[Pour des reservations de chambres hors hotel vous pouvez contacter Mme Runke (Coordinatrice du marriage) via]]></target>
       </trans-unit>
     </body>
   </file>

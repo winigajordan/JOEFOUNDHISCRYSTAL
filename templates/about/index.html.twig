@@ -16,9 +16,7 @@
         <div class="hotel-reservation-content">
             <img src="{{ asset('front/images/hotel-reservation.png') }}" alt="">
             <div class="reservation-prices">
-                <p>{% trans %}Reservation prices{% endtrans %}</p>
-                <p>TBA</p>
-                <p>TBA</p>
+
             </div>
             <div class="reservation-contact">
                 <h3>{% trans %}Contacts for Reservation{% endtrans%} :<br>
@@ -37,9 +35,7 @@
         <div class="hotel-reservation-content">
             <img src="{{ asset('front/images/hotel-reservation-2.png') }}" alt="">
             <div class="reservation-prices">
-                <p>{% trans %}Reservation prices{% endtrans %}</p>
-                <p>TBA</p>
-                <p>TBA</p>
+
             </div>
             <div class="reservation-contact">
                 <h3>{% trans %}Contacts for Reservation{% endtrans%} :<br>
@@ -54,34 +50,11 @@
     </div>
 
     <div class="hotel">
-        <h1>LAGOS ORIENTAL HOTEL</h1>
-        <div class="hotel-reservation-content">
-            <img src="{{ asset('front/images/hotel-reservation-3.png') }}" alt="">
-            <div class="reservation-prices">
-                <p>{% trans %}Reservation prices{% endtrans %}</p>
-                <p>TBA</p>
-                <p>TBA</p>
-            </div>
-            <div class="reservation-contact">
-                <h3>{% trans %}Contacts for Reservation{% endtrans%} :<br>
-                    +234 1 280 6600</h3>
-                <div class="hotel-reservation-location">
-                    <a href="https://g.page/lagos-oriental-hotel?share" target="_blank">
-                        <p> {% trans %}See the location{% endtrans %}</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="hotel">
         <h1>FOUR POINTS BY SHERATON LAGOS</h1>
         <div class="hotel-reservation-content">
             <img src="{{ asset('front/images/hotel-reservation-4.png') }}" alt="">
             <div class="reservation-prices">
-                <p>{% trans %}Reservation prices{% endtrans %}</p>
-                <p>TBA</p>
-                <p>TBA</p>
+
             </div>
             <div class="reservation-contact">
                 <h3>{% trans %}Contacts for Reservation{% endtrans%} :<br>+234 706 352 3721 / +234 802 313 9431</h3>
@@ -94,7 +67,17 @@
         </div>
     </div>
 
+    <p>
+        {% trans %}
+        For your reservation for rooms outside hotels mentioned above please contact <br>
+        Mme Runke our wedding Event coordinator for more options via {% endtrans%} <br>
+        whatssap : +234 809 944 2398
+    </p>
+
+
 </section>
+
+
 
 <section id="money-donation">
     <h1>Donation</h1>
@@ -103,6 +86,7 @@
         <div class="donation-item">
             <div class="donation-item-title">
                 <p>{% trans %}Number for mobile money donation{% endtrans %}</p>
+                <img src="{{ asset('front/images/flag-1.png') }}" alt="">
             </div>
             <div class="donation-item-name">
                 <p>{% trans %}Name{% endtrans %}: ORIAKU Chimezie Joel</p>

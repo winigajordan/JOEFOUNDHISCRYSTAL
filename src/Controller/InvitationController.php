@@ -56,7 +56,7 @@ class InvitationController extends AbstractController
         }
         $em->flush();
         $api->img($invite->getTelephone(),
-            link: 'https://www.qrcode-monkey.com/img/qrcode-logo.png',
+            link: 'https://joefoundhiscrystal2022.com/Files/qrcode/'.$invite->getSlug().'.png',
             message: $this->messageText('Ce code QR vous redirigera vers la page de vos informations')
         );
         return $this->redirectToRoute('app_informations', ['slug'=>$data->get('slug')]);
