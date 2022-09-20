@@ -43,7 +43,7 @@
       </trans-unit>
       <trans-unit id="jGeOgXv" resname="Baby, I  LOVE  YOU  AND  WILL  CONTINUE  TO  LOVE  YOU">
         <source>Baby, I  LOVE  YOU  AND  WILL  CONTINUE  TO  LOVE  YOU</source>
-        <target>JE T'AIME ET CONTINUERAI À T'AIMER</target>
+        <target>JE  T'AIME ET CONTINUERAI À T'AIMER</target>
       </trans-unit>
       <trans-unit id="SvTP8oO" resname="Registration for">
         <source>Registration for</source>
@@ -51,7 +51,7 @@
       </trans-unit>
       <trans-unit id="wjT8mLC" resname="E-Invitation">
         <source>E-Invitation</source>
-        <target>invitations</target>
+        <target>invitation</target>
       </trans-unit>
       <trans-unit id="A0cezM." resname="Saturday October 22nd 2022">
         <source>Saturday October 22nd 2022</source>
@@ -87,7 +87,7 @@
       </trans-unit>
       <trans-unit id="_AY8V2_" resname="Wedding party">
         <source>Wedding party</source>
-        <target>Reception</target>
+        <target>Réception</target>
       </trans-unit>
       <trans-unit id="dXW1RdW" resname="Our Pictures">
         <source>Our Pictures</source>
@@ -99,7 +99,7 @@
       </trans-unit>
       <trans-unit id="FKHpUcX" resname="Registration for E-Invitation">
         <source>Registration for E-Invitation</source>
-        <target>Inscription pour invitations</target>
+        <target>Inscription pour invitation</target>
       </trans-unit>
       <trans-unit id="dT5emaG" resname="Make your Gift &amp; Donation">
         <source>Make your Gift &amp; Donation</source>
@@ -352,7 +352,7 @@
       </trans-unit>
       <trans-unit id="am4VGbK" resname="Hotels are available for those who would like to attend the wedding in person.">
         <source>Hotels are available for those who would like to attend the wedding in person.</source>
-        <target>Des hôtels sont disponibles pour ceux qui souhaitent assister au mariage en personne.</target>
+        <target>Des hôtels sont disponibles pour ceux qui souhaitent assister au mariage en présentiel.</target>
       </trans-unit>
       <trans-unit id="gvZsj4J" resname="Reservation prices">
         <source>Reservation prices</source>
@@ -397,6 +397,14 @@
       <trans-unit id="y.zMc11" resname="Groom's guest">
         <source>Groom's guest</source>
         <target>Invité du marié</target>
+      </trans-unit>
+      <trans-unit id="58CPC8c" resname="Your gift &amp; Donation">
+        <source>Your gift &amp; Donation</source>
+        <target>Vos dons et cadeaux</target>
+      </trans-unit>
+      <trans-unit id="C4p3iFS" resname="Hotel Booking">
+        <source>Hotel Booking</source>
+        <target>Réservation d'hôtel</target>
       </trans-unit>
     </body>
   </file>

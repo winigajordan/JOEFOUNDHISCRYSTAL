@@ -1,3 +1,4 @@
+
 *{
     margin: 0;
     padding: 0;
@@ -457,6 +458,7 @@ a{
     flex-direction: column;
     align-items: center;
     text-align: center;
+    box-shadow: 10px 5px 5px 0 rgba(0, 0, 0, 0.4);
 }
 #acknowlegments >h1{
     font-size: 60px;
@@ -493,6 +495,9 @@ a{
     align-items: center;
     justify-content: center;
     border-radius: 8px;
+}
+#album-header-links >p >a{
+    color: #c48a32!important;
 }
 
 /*---------------------------------- END ALBUM HEADER ----------------------------*/
@@ -738,7 +743,7 @@ input[type=text],input[type=file],select{
     display: block;
     color: #c48a32;
 }
-.buttonSend, input[type=submit]{
+input[type=submit]{
     color: #fff;
     width: 168px;
     height: 43px;
@@ -748,6 +753,7 @@ input[type=text],input[type=file],select{
     margin-left: 350px;
     font-size: 25px;
     font-family: 'Metal';
+    margin-bottom: 10px;
 }
 
 .radios{
@@ -1201,4 +1207,3 @@ footer{
 
 
 /*-------------------------- END FOOTER ---------------------------------*/
-
