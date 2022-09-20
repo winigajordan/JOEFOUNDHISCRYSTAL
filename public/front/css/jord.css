@@ -1137,6 +1137,7 @@ input[type=radio]{
     box-shadow: 6px -6px 5px 0 rgba(0, 0, 0, 0.3);
     background-color: #f1baca;
     padding: 20px 0px;
+    padding-bottom: 15px;
 }
 .donation-item-title{
     display: flex;
