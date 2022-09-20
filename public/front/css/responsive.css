@@ -629,6 +629,7 @@
         bottom: 45%;
     }
 
+
     .program-row > p{
         font-size: 12px;
         width: 200px;
@@ -640,6 +641,7 @@
         width: 100px;
         height: 90px;
     }
+
     .thanks > h1{
         font-size: 40px;
     }
@@ -1116,4 +1118,3 @@
 
 }
 /* RESPONSIVE END */
-

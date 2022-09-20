@@ -4,7 +4,7 @@
 
 {% block body %}
     <section class="home-header invitation-header">
-        <section class="marriage-invitation" id="public-invitation">
+        <section class="marriage-invitation" id="public-invitation" >
 
         </section>
     </section>
@@ -15,14 +15,14 @@
             <img src="{{ asset('front/images/Drawings-Of-Hearts-PNG-Photo-Image 2.png') }}" alt="">
         </div>
         <div class="invitations-links-bottom">
-            <!--
+
             {% if app.request.locale == "en" %}
-                <a href="{{ path('app_about') }}"><p> en button</p></a>
+                <a href="{{ asset('front/docs/invitation.pdf') }}" download><p>{% trans %}Download the invitation card{% endtrans %}</p></a>
             {% else %}
-                <a href="{{ path('app_about') }}"><p>fr button</p></a>
+                <a href="{{ asset('front/docs/invit-fr.pdf') }}" download><p>{% trans %}Download the invitation card{% endtrans %}</p></a>
             {% endif %}
-            -->
-            <a href="{{ asset('front/images/invitation-public.png') }}" download><p>{% trans %}Download the invitation card{% endtrans %}</p></a>
+
+
             <a href="{{ path('app_about') }}"><p>{% trans %}Your gift and donation {% endtrans %}</p></a>
 
         </div>
