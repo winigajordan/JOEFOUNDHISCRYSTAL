@@ -1016,7 +1016,7 @@ input[type=radio]{
 }
 .hotel-reservation-content{
     margin: auto;
-    margin-top: 60px;
+    margin-top: 30px;
     display: flex;
     gap: 50px;
 }

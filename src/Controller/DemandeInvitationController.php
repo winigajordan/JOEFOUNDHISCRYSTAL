@@ -7,6 +7,7 @@ use App\Entity\HerPlace;
 use App\Entity\Invite;
 use App\Repository\DemandeRepository;
 use App\Repository\TableRepository;
+use App\Service\MessageSender\WhatsAppApi;
 use Doctrine\ORM\EntityManagerInterface;
 use Endroid\QrCode\Color\Color;
 use Endroid\QrCode\Encoding\Encoding;
@@ -30,11 +31,12 @@ class DemandeInvitationController extends AbstractController
     }
 
     #[Route('/add', name: 'demande_invitation')]
-    public function demandeAdd(Request $request, EntityManagerInterface $em): Response
+    public function demandeAdd(Request $request, EntityManagerInterface $em, WhatsAppApi $api): Response
     {
         $demande = $this->generateDemande($request);
         $em->persist($demande);
         $em->flush();
+        $api->text($demande->getTelephone(), $this->messageText('Votre deande a bien été envoyé. Vous recevrez un lien très prochainement pour confirmer votre présence'));
         return $this->redirectToRoute('app_demande_invitation');
     }
 
@@ -125,5 +127,11 @@ class DemandeInvitationController extends AbstractController
         $img->move($this->getParameter("profile"), $imageName);
         $demande->setImage($imageName);
         return $demande;
+    }
+
+    public function messageText($text){
+        $msg = str_replace(' ', '%20', $text);
+        $msg = str_replace('/', '%2F',$msg);
+        return $msg;
     }
 }
