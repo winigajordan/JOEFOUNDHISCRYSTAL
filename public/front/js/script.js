@@ -6,7 +6,7 @@ const minutes = document.querySelectorAll('minutes');
 const seconds = document.querySelectorAll('seconds');
 
 
-const newYearTime =  new Date('October 22,2022 10:00:00');
+const newYearTime =  new Date('October 22,2022 10:30:00');
 
 function updateCountDownTime(){
     const currentTime = new Date();
@@ -32,12 +32,6 @@ const navLinks = document.querySelector(".menu-right");
 menuHamburger.addEventListener('click',()=>{
         navLinks.classList.toggle('mobile-menu')
         });
-
-const langues = document.querySelector("#multilingue");
-const menuLangues = document.getElementById("menu-langue");
-langues.addEventListener('click',()=>{
-    menuLangues.style.display = menuLangues.style.display=='block' ?'':'block'
-})
 
 /************************************* MUSIC ************************/
 const mysong = document.getElementById('soundtrack');

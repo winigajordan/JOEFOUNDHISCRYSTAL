@@ -28,6 +28,18 @@
                     {% endtrans %}
                 </a>
             </p>
+            <p>
+            {% if app.request.locale == "en" %}
+                <a href="{{ path('translation', {'locale':'fr'}) }}" style="margin-left: 5px">
+                    <img src="https://flagcdn.com/120x90/fr.png" width="36" height="27">
+                </a>
+            {% else %}
+                <a href="{{ path('translation', {'locale':'en'}) }}" style="margin-left: 5px">
+                    <img src="https://flagcdn.com/120x90/gb.png" width="36" height="27">
+                </a>
+            {% endif %}
+            </p>
+
         </div>
         <div class="menu-right">
 
@@ -54,10 +66,11 @@
                 <li>
                     <a href="{{ path('app_about') }}">
                         {% trans %}
-                        About Wedding
+                        Hotel reservation & gift
                         {% endtrans %}
                     </a>
                 </li>
+                <!--
                 <li id="multilingue"><a href="#">{% trans %}Language Choice{% endtrans %}</a>
                     <ul id="menu-langue">
                         {% for locale in locales %}
@@ -70,6 +83,8 @@
                         {% endfor %}
                     </ul>
                 </li>
+                -->
+
             </ul>
         </div>
         <img src="{{ asset('front/images/three-bars-icon-6.jpg') }}" alt="" id="menu-hamburger">
@@ -79,7 +94,7 @@
 <img src="{{ asset('front/images/play.png') }}" alt="" id="music-control">
 
 <audio id="soundtrack">
-    <source src="{{ asset('front/media/soundtrack.mpeg') }}" type="audio/mpeg">
+    <source src="{{ asset('front/media/zik.mp3') }}" type="audio/mpeg">
 </audio>
 
 {% block body %}{% endblock %}
@@ -90,7 +105,7 @@
         <p>{% trans %} Contact Us {% endtrans %} : <br> +241 07 62 67 58 / +234 703 787 4825</p>
         <p>
             <a href="https://wa.me/2348099442398">
-                Mme Runke ({% trans %}Event planner{% endtrans %}): <br> +234 809 944 2398
+                Mme Ronke ({% trans %}Event planner{% endtrans %}): <br> +234 809 944 2398
             </a>
         </p>
     </div>

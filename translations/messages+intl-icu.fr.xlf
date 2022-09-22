@@ -22,8 +22,8 @@
         <source>My next visit to Nigeria was on the 28th of November 2019 for business. I gave her a surprise visit to the kingdom hall of  Jehovah’s witnesses. when she turned around during the song, she was so shocked to see me. she could not stand on her feet, lol. From there we discussed more business. Most of our discussion was centered around real estate for more than one year.</source>
         <target>Ma prochaine visite au Nigéria a eu lieu le 28 novembre 2019 pour affaires. Je lui ai rendu une visite surprise à la salle du royaume des témoins de Jéhovah. Quand elle s'est retournée pendant la chanson, elle était tellement choquée, mais aussi et certainement surprise de me voir. Elle ne pouvait pas tenir debout, lol. De là, nous avons discuté encore d'affaires. La majeure partie de notre discussion a été centrée sur l'immobilier pendant plus d'un an.</target>
       </trans-unit>
-      <trans-unit id="9Q_pZAD" resname="But I started loving her calm attitude and kindness toward her work and general lifestyle. I ask her why a beautiful lady like her was still single. She laughed and she told me she’s still waiting for a kindhearted man.">
-        <source>But I started loving her calm attitude and kindness toward her work and general lifestyle. I ask her why a beautiful lady like her was still single. She laughed and she told me she’s still waiting for a kindhearted man.</source>
+      <trans-unit id="ei_7u0h" resname="But I started loving her calm attitude and kindness toward her work and general lifestyle. I asked her why a beautiful lady like her was still single. She laughed and she told me she’s still waiting for a kindhearted man.">
+        <source>But I started loving her calm attitude and kindness toward her work and general lifestyle. I asked her why a beautiful lady like her was still single. She laughed and she told me she’s still waiting for a kindhearted man.</source>
         <target>Mais j'ai commencé à aimer son attitude calme et sa gentillesse envers son travail et son style de vie en général. Je lui ai demandé pourquoi une belle dame comme elle était toujours célibataire. Elle a ri et m'a dit qu'elle attendait toujours un homme au bon cœur.</target>
       </trans-unit>
       <trans-unit id="A7LtLWm" resname="I jumped on the opportunity, showing her my kind heart and as a french guy,I had to quickly mark my territory lol Since no one was doing so … hahaha. She was a bit confused, but we gradually built trust in each other.">
@@ -65,9 +65,9 @@
         <source>Witnesses (Lekki Lagos ELF Bus-Stop)</source>
         <target>de Jéhovah (arrêt de bus Lekki Lagos ELF) </target>
       </trans-unit>
-      <trans-unit id="zIl_jEX" resname="at 10:00 am">
-        <source>at 10:00 am</source>
-        <target>à 10h00</target>
+      <trans-unit id="erUc.c3" resname="at 10:30 am">
+        <source>at 10:30 am</source>
+        <target>à 10h30</target>
       </trans-unit>
       <trans-unit id="DyI4cH5" resname="Wedding Program">
         <source>Wedding Program</source>
@@ -119,7 +119,7 @@
       </trans-unit>
       <trans-unit id="KEkVw_0" resname="Link to wedding registration">
         <source>Link to wedding registration</source>
-        <target>Aller à l'enregistrement au mariage</target>
+        <target>Aller à l'enregistrement du mariage</target>
       </trans-unit>
       <trans-unit id="PrRzfOD" resname="Civil Registration&lt;br&gt;Wedding">
         <source>Civil Registration&lt;br&gt;Wedding</source>
@@ -157,8 +157,8 @@
         <source>Thank You !!!</source>
         <target>Merci !!!</target>
       </trans-unit>
-      <trans-unit id="_5B9k8I" resname="Guest Wedding Registration">
-        <source>Guest Wedding Registration</source>
+      <trans-unit id="k2q1zrm" resname="Wedding Guest Registration">
+        <source>Wedding Guest Registration</source>
         <target>Invitation au mariage</target>
       </trans-unit>
       <trans-unit id="eCDxtv0" resname="Mr">
@@ -418,6 +418,44 @@
       <trans-unit id="c2KCyl_" resname="We thank you all our highly esteemed guests ( family, friends, organizations) for making this day memorable for us. We appreciate your kind gestures,prayers, advice , encouragements and overall efforts in making this occasion successful. Greatest thanks goes to our heavenly father Jehovah">
         <source>We thank you all our highly esteemed guests ( family, friends, organizations) for making this day memorable for us. We appreciate your kind gestures,prayers, advice , encouragements and overall efforts in making this occasion successful. Greatest thanks goes to our heavenly father Jehovah</source>
         <target>Nous remercions nos très estimés invités (famille, amis, organisations) pour ce jour aussi mémorable pour nous. Nous apprécions vos gentils gestes, prières, conseils pour le bon succès de cette occasion. Les plus grands remerciements vont à notre père céleste Jéhovah.</target>
+      </trans-unit>
+      <trans-unit id="GN5wEQO" resname="Hotel reservation &amp; gift">
+        <source>Hotel reservation &amp; gift</source>
+        <target><![CDATA[Hôtels & dons]]></target>
+      </trans-unit>
+      <trans-unit id="abO7K58" resname="For your reservation for rooms outside hotels mentioned above please contact Mme Runke&#10;            our wedding Event coordinator for more options via">
+        <source>For your reservation for rooms outside hotels mentioned above please contact Mme Runke
+            our wedding Event coordinator for more options via</source>
+        <target>Pour des reservations de chambres hors hotel vous pouvez contacter Mme Runke Coordinatrice du Marriage via</target>
+      </trans-unit>
+      <trans-unit id="shR3sLt" resname="For your reservation for rooms outside hotels mentioned &lt;br&gt; above please contact Mme Runke&#10;            our wedding Event coordinator for more options via">
+        <source>For your reservation for rooms outside hotels mentioned &lt;br&gt; above please contact Mme Runke
+            our wedding Event coordinator for more options via</source>
+        <target><![CDATA[Pour votre réservation pour des chambres dans des appart hotels avec des prix abordables, veuillez s'il vous plait contacter <br> notre coordinatrice de marriage Mme Runke via]]></target>
+      </trans-unit>
+      <trans-unit id="eWsBLCI" resname="Account Number in  Nigeria">
+        <source>Account Number in  Nigeria</source>
+        <target>Numéro de Compte au Nigeria</target>
+      </trans-unit>
+      <trans-unit id="DcdkgPl" resname="Account number in Gabon">
+        <source>Account number in Gabon</source>
+        <target>Compte Bancaire au GABON</target>
+      </trans-unit>
+      <trans-unit id="rtABMqT" resname="Mobile money transfer in Gabon">
+        <source>Mobile money transfer in Gabon</source>
+        <target>Transfer d'argent Mobile au Gabon </target>
+      </trans-unit>
+      <trans-unit id="rWNhd7C" resname="Donation Via Paypal">
+        <source>Donation Via Paypal</source>
+        <target>Donation Via Paypal</target>
+      </trans-unit>
+      <trans-unit id="e8q_2Jj" resname="Hotels are available to those attending the wedding in person. Below are their contacts &lt;br&gt;">
+        <source>Hotels are available to those attending the wedding in person. Below are their contacts &lt;br&gt;</source>
+        <target>Des hôtels sont disponibles pour ceux qui assistent au mariage en présentiel. Ci-dessous leurs contact</target>
+      </trans-unit>
+      <trans-unit id="6AlUM7x" resname="Donation &amp; Your Gifts">
+        <source>Donation &amp; Your Gifts</source>
+        <target><![CDATA[Faire-Part & Cadeaux]]></target>
       </trans-unit>
     </body>
   </file>
