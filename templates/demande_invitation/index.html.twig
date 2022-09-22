@@ -7,7 +7,7 @@
     {% if etat == 'single' %}
         <section class="registration-content">
             <div class="registration-form">
-                <h1>{% trans %}Guest Wedding Registration {% endtrans %}</h1>
+                <h1>{% trans %}Wedding Guest Registration {% endtrans %}</h1>
                 <form method="post" action="{{ path('demande_invitation') }}" enctype="multipart/form-data">
 
                     <div class="radios">
@@ -66,9 +66,10 @@
                         <p>{% trans %}For Couple{% endtrans %}</p>
                     </a>
                     <p>
-                        <a href="{{ path('app_about') }}">
+                        <a href="{{ path('app_about') }}" >
                             {% trans %}Make a gift donation{% endtrans %}
                         </a>
+                        <img src="{{ asset('front/images/next-left.png') }}" alt="">
                     </p>
                 </div>
             </div>
@@ -82,9 +83,11 @@
                 </div>
                 <div class="registration-links">
                     <p>
+                        <img src="{{ asset('front/images/next-right.png') }}" alt="">
                         <a href="{{ path('app_about') }}">
                             {% trans %}Make a gift donation{% endtrans %}
                         </a>
+
                     </p>
                     <a href="{{ path('app_demande_invitation') }}" class="next">
                         <p>{% trans %}For Single{% endtrans %}</p>
@@ -93,7 +96,7 @@
                 </div>
             </div>
             <div class="registration-form">
-                <h1>{% trans %}Guest Wedding Registration{% endtrans %}</h1>
+                <h1>{% trans %}Wedding Guest Registration{% endtrans %}</h1>
                 <form method="post" action="{{ path('couple_invitation') }}" enctype="multipart/form-data">
                     <input type="text" name="civilite" value="homme" style="display: none" >
                     <div>

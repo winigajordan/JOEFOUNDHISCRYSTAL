@@ -7,8 +7,14 @@
 
 <section id="hotel-reservation">
     <h1>{% trans %}Hotel Reservation{% endtrans %}</h1>
+    <p>
+        {% trans %}
+            For your reservation for rooms outside hotels mentioned <br> above please contact Mme Runke
+            our wedding Event coordinator for more options via  {% endtrans%} <br>
+        whatssap : +234 809 944 2398
+    </p>
     <p>{% trans %}
-        Hotels are available for those who would like to attend the wedding in person.
+            Hotels are available to those attending the wedding in person. Below are their contacts <br>
         {% endtrans %}
     </p>
     <div class="hotel">
@@ -67,12 +73,6 @@
         </div>
     </div>
 
-    <p>
-        {% trans %}
-        For your reservation for rooms outside hotels mentioned above please contact <br>
-        Mme Runke our wedding Event coordinator for more options via {% endtrans%} <br>
-        whatssap : +234 809 944 2398
-    </p>
 
 
 </section>
@@ -80,12 +80,12 @@
 
 
 <section id="money-donation">
-    <h1>Donation</h1>
+    <h1>{% trans %} Donation & Your Gifts {% endtrans %}</h1>
     <div id="donation-items">
 
         <div class="donation-item">
             <div class="donation-item-title">
-                <p>{% trans %}Number for mobile money donation{% endtrans %}</p>
+                <p>{% trans %}Mobile money transfer in Gabon{% endtrans %}</p>
                 <img src="{{ asset('front/images/flag-1.png') }}" alt="">
             </div>
             <div class="donation-item-name">
@@ -103,7 +103,7 @@
 
         <div class="donation-item">
             <div class="donation-item-title">
-                <p>{% trans %}Number bank account Gabon{% endtrans %}</p>
+                <p>{% trans %}Account number in Gabon {% endtrans %}</p>
                 <img src="{{ asset('front/images/flag-1.png') }}" alt="">
             </div>
             <div class="donation-item-name">
@@ -120,7 +120,7 @@
 
         <div class="donation-item">
             <div class="donation-item-title">
-                <p>{% trans %}Number Bank account Nigeria{% endtrans %}</p>
+                <p>{% trans %}Account Number in  Nigeria {% endtrans %}</p>
                 <img src="{{ asset('front/images/flag-2.png') }}" alt="">
             </div>
             <div class="donation-item-name">
@@ -138,14 +138,14 @@
 
         <div class="donation-item">
             <div class="donation-item-title">
-                <p>{% trans %}Donation for Paypal{% endtrans %}</p>
+                <p>{% trans %}Donation Via Paypal{% endtrans %}</p>
                 <img src="{{ asset('front/images/paypal.png') }}" alt="">
             </div>
             <div class="donation-item-name">
-                <p>{% trans %}Name{% endtrans %}: ORIAKU Chimezie Joel</p>
+
             </div>
             <div class="donation-item-info">
-                <p><a>{% trans %}Click here{% endtrans %}</a></p>
+                <p><a>TBA</a></p>
             </div>
         </div>
 
