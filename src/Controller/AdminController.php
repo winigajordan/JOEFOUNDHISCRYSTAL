@@ -59,8 +59,8 @@ class AdminController extends AbstractController
         $this->tableRipo = $tableRipo;
         $this->inviteRipo = $inviteRipo;
         $this->reunionRipo = $reunionRipo;
-        $this->reunion = $reunionRipo->find(1);
-        $this->salle = $salleRipo->find(1);
+        $this->reunion = $reunionRipo->find(2);
+        $this->salle = $salleRipo->find(2);
         $this->demandes = $demandeRipo->findBy(['etat'=>false]);
         $this->demandeRipo = $demandeRipo;
         $this->encoder = $encoder;
@@ -370,5 +370,21 @@ class AdminController extends AbstractController
         $msg = str_replace(' ', '%20', $text);
         $msg = str_replace('/', '%2F',$msg);
         return $msg;
+    }
+
+    #[Route('/download/demandes', name:'download_demandes')]
+    public function downloadDemandes(){
+        $data = $this->demandes;
+        //dd(is_array($data));
+        $fileName = "demandes.csv";
+
+        $output = fopen($fileName, "w");
+        $header = ['nom', 'prenom', 'telephone', 'situation', 'civilite', 'her_name'];
+        fputcsv($output, $header);
+        foreach ($data as $row){
+            fputcsv($output, $row->toArray());
+        }
+        fclose($output);
+        return $this->redirectToRoute('admin');
     }
 }
