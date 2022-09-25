@@ -1,6 +1,6 @@
 {% extends 'base.admin.html.twig' %}
 
-{% block title %}Admin | {% endblock %}
+{% block title %}Admin {% endblock %}
 
 {% block body %}
     <!-- Stats -->
@@ -388,6 +388,11 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-outline-primary" href="{{ path('download_demandes') }}">
+                        Télécharger les demandes
+                    </a>
                 </div>
             </div>
         </div>

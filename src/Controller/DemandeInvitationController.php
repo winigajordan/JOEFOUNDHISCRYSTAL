@@ -36,7 +36,11 @@ class DemandeInvitationController extends AbstractController
         $demande = $this->generateDemande($request);
         $em->persist($demande);
         $em->flush();
-        $api->text($demande->getTelephone(), $this->messageText('Votre deande a bien été envoyé. Vous recevrez un lien très prochainement pour confirmer votre présence'));
+        $txt = 'Your request has been sent. You will receive a link very soon to confirm your presence';
+        if ($request->getLocale()=="fr"){
+            $txt = 'Votre deande a bien été envoyée. Vous recevrez un lien très prochainement pour confirmer votre présence';
+        }
+        //$api->text($demande->getTelephone(), $this->messageText(text: $txt));
         return $this->redirectToRoute('app_demande_invitation');
     }
 
