@@ -116,13 +116,13 @@
                         <div class="row d-flex justify-content-center mt-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputName1">Lien</label>
+                                    <label for="exampleInputName1">Lien Zoom</label>
                                     <input type="url" name="link" class="form-control" id="exampleInputName1" placeholder="Link" value="{{ reunion.url }}" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputName1">Password</label>
+                                    <label for="exampleInputName1">Lien Youtube</label>
                                     <input type="text" name="password" class="form-control" id="exampleInputName1" placeholder="Password" value="{{ reunion.password }}" required>
                                 </div>
                             </div>
@@ -288,6 +288,7 @@
                         <table class="table" >
                             <thead>
                             <tr>
+                                <th></th>
                                 <th>Nom</th>
                                 <th>Status/Table</th>
                                 <th>Invitation Validé</th>
@@ -298,6 +299,7 @@
                             <tbody>
                             {% for invite in invites %}
                                 <tr>
+                                    <td> {% if invite.herName %}  <label class="badge badge-primary"> Couple </label> {% else%} <label class="badge badge-primary"> Célibataire </label> {% endif %}</td>
                                     <td>{{ invite.prenom }} {{ invite.nom }} </td>
                                     <td>
                                         {%  if invite.type!="PHYSIQUE" %}
@@ -347,6 +349,7 @@
                             <thead>
                             <tr>
                                 <th>Nom</th>
+                                <th>Type</th>
                                 <th>Numero de telephone</th>
                                 <th>Acion | Table</th>
                                 <th></th>
@@ -357,6 +360,7 @@
                                 <form method="post" action="{{ path('demande_traitement') }}">
                                     <tr>
                                         <td> {{dm.prenom}} {{ dm.nom }}</td>
+                                        <td> {% if dm.herName %}  <label class="badge badge-primary"> Couple </label> {% else%} <label class="badge badge-primary"> Célibataire </label> {% endif %}</td>
                                         <td> {{dm.telephone}} </td>
                                         <td>
 
@@ -389,11 +393,13 @@
                         </table>
                     </div>
                 </div>
+                <!--
                 <div class="card-footer">
-                    <a class="btn btn-outline-primary" href="{{ path('download_demandes') }}">
+                    <a class="btn btn-outline-primary" href="#">
                         Télécharger les demandes
                     </a>
                 </div>
+                -->
             </div>
         </div>
     </div>

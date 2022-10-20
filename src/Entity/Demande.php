@@ -170,15 +170,4 @@ class Demande
 
         return $this;
     }
-
-    public function toArray(){
-        return [
-            'nom'=>$this->getNom(),
-            'prenom'=>$this->getPrenom(),
-            'telephone'=>$this->getTelephone(),
-            'situation'=>$this->getSituation(),
-            'civilite'=>$this->getCivilite(),
-            'her_name'=>$this->getHerName()
-        ];
-    }
 }
