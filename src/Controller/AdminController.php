@@ -207,7 +207,8 @@ class AdminController extends AbstractController
         $invite->setNom($data->get('nom'));
         $invite->setPrenom($data->get('prenom'));
         $invite->setEmail("");
-        $invite->setAdresse($data->get('adresse'));
+        $invite->setAdresse("");
+        //$invite->setAdresse($data->get('adresse'));
         $invite->setTelephone(str_replace(' ', '', $data->get('telephone')));
         $invite->setSituation($data->get('situation'));
         if (!empty($data->get("image"))){
@@ -305,7 +306,7 @@ class AdminController extends AbstractController
                     //$mail->send($invit->getEmail(), $this->reunion->getUrl(), $this->reunion->getPassword());
                     $url = $this->reunion->getUrl();
                     $password = $this->reunion->getPassword();
-                    $msg = "Bonjour, compte tenu de votre indisponibilité, nous vous invitons à suivre notre maniage sur le lien suivant : $url %0A mot de passe : $password ";
+                    $msg = "Bonjour, compte tenu de votre indisponibilité, nous vous invitons à suivre notre mariage sur les lien suivant:%0A Zoom  : $url %0A Youtube : $password ";
                     $api->text($invit->getTelephone(), $this->messageText($msg));
                     //un invite virtuel n'a pas la possibilité de valider son
                     $invit->setValide(true);
@@ -313,7 +314,7 @@ class AdminController extends AbstractController
                 } else {
                     //$mail->physique($invit->getEmail(), 'link');
                     $link = $_SERVER['HTTP_HOST'].'/invitation/'.$invit->getSlug();
-                    $msg = "Bonjour, nous vous invitons à confirmer votre présence à notre mariage en vous rendant sur ce lien : $link %0A %0A ce lien est unique et vous ne pourez confirmer votre présence qu'une fois";
+                    $msg = "Hello, we invite you to confirm your presence at our wedding by going to this link %0A %0A Bonjour, nous vous invitons à confirmer votre présence à notre mariage en vous rendant sur ce lien : $link %0A %0A ce lien est unique et vous ne pourez confirmer votre présence qu'une fois";
                     $api->text($invit->getTelephone(), $this->messageText($msg));
                 }
                 $sent = (new InvitationsEnvoye())
@@ -334,14 +335,14 @@ class AdminController extends AbstractController
            
             $url = $this->reunion->getUrl();
             $password = $this->reunion->getPassword();
-            $msg = "Bonjour, compte tenu de votre indisponibilité, nous vous invitons à suivre notre maniage sur le lien suivant : $url %0A mot de passe : $password ";
+            $msg = "Hello, given your unavailability, we invite you to follow our wedding on the following links  %0A %0A Bonjour, compte tenu de votre indisponibilité, nous vous invitons à suivre notre mariage sur les liens suivants %0A %0A %0A Zoom : $url %0A Youtube : $password ";
             
             $api->text($invit->getTelephone(), $this->messageText($msg));
             $invit->setValide(true);
         } else {
             
-            $link = $_SERVER['HTTP_HOST'].'/invitation/'.$invit->getSlug();
-            $msg = "Bonjour, nous vous invitons à confirmer votre présence à notre mariage en vous rendant sur ce lien : $link %0A %0A ce lien est unique et vous ne pourez confirmer votre présence qu'une fois";
+            $link = 'https://www.'.$_SERVER['HTTP_HOST'].'/invitation/'.$invit->getSlug();
+            $msg = "Hello, we invite you to confirm your presence at our wedding by going to this link %0A %0A Bonjour, nous vous invitons à confirmer votre présence à notre mariage en vous rendant sur ce lien : $link %0A %0A ce lien est unique et vous ne pourez confirmer votre présence qu'une fois";
             
             $api->text($invit->getTelephone(), $this->messageText($msg));
         }
@@ -370,21 +371,5 @@ class AdminController extends AbstractController
         $msg = str_replace(' ', '%20', $text);
         $msg = str_replace('/', '%2F',$msg);
         return $msg;
-    }
-
-    #[Route('/download/demandes', name:'download_demandes')]
-    public function downloadDemandes(){
-        $data = $this->demandes;
-        //dd(is_array($data));
-        $fileName = "demandes.csv";
-
-        $output = fopen($fileName, "w");
-        $header = ['nom', 'prenom', 'telephone', 'situation', 'civilite', 'her_name'];
-        fputcsv($output, $header);
-        foreach ($data as $row){
-            fputcsv($output, $row->toArray());
-        }
-        fclose($output);
-        return $this->redirectToRoute('admin');
     }
 }

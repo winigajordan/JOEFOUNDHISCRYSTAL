@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Invite;
 use App\Repository\InvitationsEnvoyeRepository;
 use App\Repository\InviteRepository;
 use App\Service\MessageSender\WhatsAppApi;
@@ -41,15 +42,30 @@ class InvitationController extends AbstractController
         $invite->setValide(true);
         //dd($data);
         if ($data->get('validation')=='no'){
-            $invite->setPlace(null);
+            $invit = new Invite();
+            $invit->setNom($invite->getNom());
+            $invit->setPrenom($invite->getPrenom());
+            $invit->setTelephone($invite->getTelephone());
+            $invit->setAdresse($invite->getAdresse());
+            $invit->setPhoto($invite->getPhoto());
+            $invit->setSituation($invite->getSituation());
+            $invit->setType("VIRTUEL");
+            $invit->setPlace(null);
+            $invit->setEmail("");
+            $invit->setValide(true);
+            $invit->setCivilite($invite->getCivilite());
+            $invit->setHerName($invite->getHerName());
+            $invit->setSlug($invite->getSlug());
+           
             $invite->setType("VIRTUEL");
             $invite->setValide(false);
             $sent = $sentRipo->findOneBy(['invite'=>$invite]);
-            $em->persist($invite);
-            $em->remove($sent);
+            $em->remove($invite);
+            $em->persist($invit);
+
+            
             if($invite->getHerPlace()){
                 $em->remove($invite->getHerPlace());
-                
             }
             $em->flush();
             return $this->redirectToRoute('app_home');

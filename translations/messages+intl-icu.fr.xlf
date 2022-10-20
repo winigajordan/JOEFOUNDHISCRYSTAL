@@ -428,10 +428,10 @@
             our wedding Event coordinator for more options via</source>
         <target>Pour des reservations de chambres hors hotel vous pouvez contacter Mme Runke Coordinatrice du Marriage via</target>
       </trans-unit>
-      <trans-unit id="shR3sLt" resname="For your reservation for rooms outside hotels mentioned &lt;br&gt; above please contact Mme Runke&#10;            our wedding Event coordinator for more options via">
-        <source>For your reservation for rooms outside hotels mentioned &lt;br&gt; above please contact Mme Runke
+      <trans-unit id="PuKGAGd" resname="For your reservation for rooms outside hotels mentioned &lt;br&gt; below please contact Mrs Ronke&#10;            our wedding Event coordinator for more options via">
+        <source>For your reservation for rooms outside hotels mentioned &lt;br&gt; below please contact Mrs Ronke
             our wedding Event coordinator for more options via</source>
-        <target><![CDATA[Pour votre réservation pour des chambres dans des appart hotels avec des prix abordables, veuillez s'il vous plait contacter <br> notre coordinatrice de marriage Mme Runke via]]></target>
+        <target><![CDATA[Pour votre réservation pour des chambres dans des appart hotels avec des prix abordables, veuillez s'il vous plait contacter <br> notre coordinatrice de marriage Mme Ronke via]]></target>
       </trans-unit>
       <trans-unit id="eWsBLCI" resname="Account Number in  Nigeria">
         <source>Account Number in  Nigeria</source>
@@ -456,6 +456,14 @@
       <trans-unit id="6AlUM7x" resname="Donation &amp; Your Gifts">
         <source>Donation &amp; Your Gifts</source>
         <target><![CDATA[Faire-Part & Cadeaux]]></target>
+      </trans-unit>
+      <trans-unit id="9wCtXX1" resname="Please precise the telephone code">
+        <source>Please precise the telephone code</source>
+        <target>Veuillez préciser l'indicatif téléphonique</target>
+      </trans-unit>
+      <trans-unit id="Q_KjHnb" resname="Mrs Ronke">
+        <source>Mrs Ronke</source>
+        <target>Mme Ronke</target>
       </trans-unit>
     </body>
   </file>

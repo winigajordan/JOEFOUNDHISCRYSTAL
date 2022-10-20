@@ -34,7 +34,8 @@
 
                     <div>
                         <label for="coupleLastName">{% trans %}Whatsapp Number{% endtrans %}</label>
-                        <input type="text" name="telephone" placeholder="+XX XXXXXXXX" id="coupleLastName" style="padding-left: 10px; font-family: 'Metal';" required>
+                        <input type="text" name="telephone" placeholder="+XX XXXXXXXX" id="coupleLastName" style="padding-left: 10px; font-family: 'Metal';"  pattern = "[+]+[0-9\s]{2,}" title="Please start with +" required>
+                        <small>{%trans%} Please precise the telephone code {%endtrans%}</small>
                     </div>
 
                     <div>
@@ -117,7 +118,8 @@
 
                     <div>
                         <label for="coupleLastName">{% trans %}Whatsapp Number{% endtrans %}</label>
-                        <input type="text" placeholder="+XX XXXXXXXX" name="telephone" id="coupleLastName" style="padding-left: 10px; font-family: 'Metal';" required>
+                        <input type="text" placeholder="+XX XXXXXXXX" name="telephone" id="coupleLastName" style="padding-left: 10px; font-family: 'Metal';"  pattern = "[+]+[0-9\s]{2,}" title="Please start with +" required>
+                        <small>{%trans%} Please precise the telephone code {%endtrans%}</small>
                     </div>
 
                     <div>

@@ -38,9 +38,9 @@ class DemandeInvitationController extends AbstractController
         $em->flush();
         $txt = 'Your request has been sent. You will receive a link very soon to confirm your presence';
         if ($request->getLocale()=="fr"){
-            $txt = 'Votre deande a bien été envoyée. Vous recevrez un lien très prochainement pour confirmer votre présence';
+            $txt = 'Votre demande a bien été envoyée. Vous recevrez un lien très prochainement pour confirmer votre présence';
         }
-        //$api->text($demande->getTelephone(), $this->messageText(text: $txt));
+        $api->text($demande->getTelephone(), $this->messageText($txt));
         return $this->redirectToRoute('app_demande_invitation');
     }
 
@@ -87,12 +87,14 @@ class DemandeInvitationController extends AbstractController
                 }
                 $invite->setPlace($tab);
             }
-            $this->generateQrCode($invite->getSlug());
-            $demande->setEtat(true);
+            //$this->generateQrCode($invite->getSlug());
+            
             $em->persist($demande);
             $em->persist($invite);
-            $em->flush();
-        }
+            
+        } 
+        $demande->setEtat(true);
+        $em->flush();
         return $this->redirectToRoute('admin');
     }
 
